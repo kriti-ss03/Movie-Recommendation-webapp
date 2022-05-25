@@ -1,0 +1,298 @@
+
+/*
+red
+color : #E60023 
+
+black
+color :#191414
+
+grey
+color: ##555555;
+
+white
+color : #f0f0f3;
+ */
+
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    position: relative;
+    background:#191414;
+    font-family: 'roboto', sans-serif;
+}
+
+/* .navbar{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    background: #191414;
+    padding: 0 2.5vw;
+    display: flex;
+    align-items: center;
+} */
+
+
+
+/* Navbar styling */
+.navbar{
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    padding: 0 2.5vw;
+    display: flex;
+    align-items: center;
+    /* margin:0; */
+    /* display:flex; */
+    /* justify-content:flex-end; */ 
+    /* align-items: center; */
+    background-color:#000;
+    /* padding-bottom: 10 rem; */
+    /* position:fixed; */
+}
+.navbar-brand{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 2em;
+    font-weight:bold;
+}
+/* .nav-img{
+    size: 1px;
+} */
+
+.nav-item{
+ padding: 0 18px;
+}
+
+.nav-link{
+    font-size:1.2rem;
+    font-family: Montserrat;
+}
+/* .nav-link:hover{
+    color:#ff4c68
+} */
+/* .navbar-nav > li> a:hover { color: #FF0000;} */
+.navbar-nav .nav-item .nav-link {
+    color: #fff;
+}
+.navbar-nav .nav-item.active .nav-link,
+.navbar-nav .nav-item:hover .nav-link {
+    color: #E60023 ;
+}
+
+.nav-btn{
+    background-color: #E60023 ;
+ }
+
+ 
+.navbar-nav > li > .dropdown-menu { background-color: #191414; }
+.navbar-nav > li > .dropdown-menu a{   color: #fff;  }
+.navbar-nav > li > .dropdown-menu a:hover { background-color: #E60023 ;}
+
+.search{
+    outline:none!important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+background-color: transparent;
+color:#fff;
+font-family:inherit;
+font-size:1rem;
+}
+/* #search-txt{
+    outline:none!important;
+} */
+.search:focus, .search:active{
+    background-color: transparent;
+    color:#fff;
+}
+
+textarea:hover, 
+input:hover, 
+textarea:active, 
+input:active, 
+textarea:focus, 
+input:focus,
+.search:focus, .search:active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+
+
+/* .search::placeholder{
+    color: #8e3131;
+} */
+
+/* .dropdown-menu{
+    background-color: #000;
+    color:#fff; 
+} */
+
+/* Page styling */
+.main{
+    position: relative;
+    margin-top: 60px;
+    width: 100%;
+    padding: 40px 2.5vw;
+    color: #fff;
+}
+
+/* carousel at top */
+.carousel-img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.heading{
+    text-transform: capitalize;
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.info{
+    width: 50%;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.movies{
+    width: 100%;
+    height: 250px;
+    margin-top: 40px;
+    position: relative;
+}
+
+.movie-heading{
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.movie-container{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+
+/* SCROLLBAR UPDATE */
+/* using cointaier!! to remove scrollbar */
+.movie-container::-webkit-scrollbar{
+    display: none;
+}
+
+.movie{
+    flex: 0 0 auto;
+    width: 24%;
+    /* width: 94%; --displays opnly 1 movie but on te same container length*/
+    height: 200px;
+    text-align: center;
+    margin-right: 12px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.movie img{
+    width: 100%;
+    height: 200px;
+    /* height: 170px; */
+    object-fit: cover;
+}
+
+.movie p{
+    font-family:'Courier New', Courier, monospace;
+    height: 20px;
+    text-transform: capitalize;
+    overflow: hidden;
+}
+
+/* Scroll Buttons */
+.pre-btn,
+.nxt-btn{
+    position: absolute;
+    height: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5vw;
+    background: #181818;
+    border: none;
+    outline: none;
+    opacity: 0;
+}
+.pre-btn{
+    left: -2.5vw;
+    color:#fff;
+}
+.nxt-btn{
+    right: -2.5vw;
+    color:#fff;
+}
+.nxt-btn:hover,
+.pre-btn:hover{
+    opacity: 1;
+}
+/* to remove white box onclick */
+.nxt-btn:focus,
+.pre-btn:focus{
+    outline:0;
+}
+
+/* footer */
+#footer{
+    padding: 4% 15%;
+    background-color: #121212;
+    margin:0;
+    text-align:center;  
+}
+.ft{
+    font-size:1rem;
+    color:#e0d3d3;
+}
+.ft-icon{
+    color:#fffefe;
+    margin: 10px;
+}
+.ft-icon:hover{
+    color:#ff4c68;
+}
+
+
+@media (min-width: 641px) {
+    span.icon {display:inline-block}
+    span.text {display:none}
+   
+}
+
+@media(max-width: 1028px){
+    body{
+        text-align:center;
+
+    }
+    .img{
+        
+        position:static;
+        transform:rotate(0deg);
+    }
+    span.icon {display:none}
+    span.text {display:inline-block}
+
+   
+       
+    
+}

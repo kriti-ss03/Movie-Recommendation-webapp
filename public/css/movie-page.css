@@ -1,0 +1,57 @@
+.body{
+    color: rgb(0, 0, 0);
+}
+
+.movie-info{
+    width: 100%;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.movie-detail{
+    width: 50%;
+    height: 100%;
+    background: rgb(24, 24, 24);
+    background: linear-gradient(90deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
+    padding: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+}
+
+.movie-name{
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.genres{
+    opacity: 0.6;
+    margin: 30px 0;
+}
+
+.des{
+    width: 70%;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+.starring span{
+    opacity: 0.6;
+}
+
+
+
+.heading{
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+iframe{
+    width: 400px;
+    height: 200px;
+}
+
