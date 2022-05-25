@@ -13,9 +13,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 
-
 app.get('/', (req, res) => {
   res.render("home");
+})
+
+app.get('/suggest_me', (req, res) => {
+  res.render("suggest_me");
 })
 
 app.get('/:id', (req, res) => {

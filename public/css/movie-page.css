@@ -42,7 +42,11 @@
     opacity: 0.6;
 }
 
-
+.trailer-container,
+.recommendations{
+    color: #fff;
+    padding: 5vw 5vw 0;
+}
 
 .heading{
     font-size: 30px;
@@ -55,3 +59,23 @@ iframe{
     height: 200px;
 }
 
+.recommendations-container{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie p{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    opacity: 0;
+}
+
+.movie:hover p{
+    opacity: 1;
+}

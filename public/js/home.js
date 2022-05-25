@@ -1,6 +1,8 @@
 //FOR DYNAMIC VALUES
 const main = document.querySelector('.main');
 
+
+//SEARCH 
 const buttonEl=document.querySelector("#search-btn");
 const inputEl=document.querySelector("#search-txt");
 
@@ -23,7 +25,7 @@ buttonEl.onclick= (event) =>{
       }))
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        //console.log(data);
         makeDivEl("From Search", data);
     })
     .catch(err =>  console.log(err));
@@ -138,7 +140,7 @@ fetch(popular_movies_http + new URLSearchParams({
 .then(res => res.json())
 .then(data => 
     {
-     //console.log(data)
+     console.log(data)
      makeDivEl( "popular",data);
     })
     .catch(err =>  console.log(err));
