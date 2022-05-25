@@ -88,3 +88,39 @@ fetch(`${movie_details_http}${movie_id}/videos?` + new URLSearchParams({
     }
 })
 
+//RECOMMENDATION
+//ADDING PATH TO BASE URL
+fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams({
+    api_key: api_key
+}))
+.then(res => res.json())
+.then(data => {
+    
+    console.log(`${movie_id}`);
+    let container = document.querySelector('.recommendations-container');
+    //running loop to create 16 movie cards
+    for(let i = 0; i < 16; i++){
+        if(data.results[i].backdrop_path == null){
+            i++;
+        }
+
+    
+    // if(!((name=="top")|| (name== "popular") || (name=="trending")) ){
+// // console.log(name);
+//   for(let i=0;i<19;i++){
+//       if(genres[i].name ===name){
+//      //console.log(genres[i].id);
+//      if(genres[i].id === item.genre_ids[0] ){
+//      //console.log("yesss");
+
+
+
+
+        container.innerHTML += `
+        <div class="movie" onclick="location.href = '/${data.results[i].id}'">
+            <img src="${img_url}${data.results[i].backdrop_path}" alt="">
+            <p class="movie-title">${data.results[i].title}</p>
+        </div>
+        `;
+    }
+})
