@@ -47,7 +47,7 @@ const genres = [
     },
     {
       "id": 12,
-      "name": "Adventure"
+      "name": "TV Movie"
     },
     {
       "id": 16,
@@ -234,7 +234,9 @@ const makeBox = (name, data) => {
     
     //FOR MOVIE SEARCH RESULTS------------
     if(data.results.length ===0){
-        console.log("No Items Found")
+      console.log("No Items Found")  
+      return
+      
     }
    
      data.results.forEach( (item,i) => {

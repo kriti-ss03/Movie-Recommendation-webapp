@@ -25,7 +25,7 @@ app.get('/home', (req, res) => {
 
 app.get('/suggest_me', (req, res) => {
 
-  // res.render("suggest_me", {kindaname: persondata[0].name });
+  //res.render("suggest_me", {kindaname: persondata[persondata.length -1].name });
   res.render("suggest_me");
 })
 
@@ -41,7 +41,7 @@ app.get('/:id', (req, res) => {
 //post request coming from landing page; i.e. is home route
 app.post("/", (req,res) => {
  
-  // console.log(req.body.name);
+  //console.log(req.body.name);
   let data ={
   name:req.body.name,
   age: req.body.age,

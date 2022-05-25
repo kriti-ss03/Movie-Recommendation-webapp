@@ -1,11 +1,18 @@
+let sp_movie_http="https://api.themoviedb.org/3/discover/movie?";
+//https://api.themoviedb.org/3/discover/movie?sort_by=release_date.desc&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31";
 
 
 const main = document.querySelector('.suggest_main');
 
 
+//LANGUAGE SELECTION
+var user=[];
+// console.log(user);
+// console.log(user.length);
+// //ALERT:WORK WITH RECENT
 
 
-//MAKING DIV ELEMEMENT/CATEGORY
+//MAKING DIV  WITH "RATE"
 const makeDivEl = (name) => {
     //USING TEMPLATE LITERALS/VARIABLES
      //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
@@ -25,105 +32,306 @@ const makeDivEl = (name) => {
     
     </div>
     `;
-  
-    // if (name ="popular"){
-    //   makeStyle(name,data);
-    //drop .movie style for cards!!!!
-    // }
-    // else
-    // makeBox(name,data);
-  
-  
-
 
 }
 
 
 
-
-
-
-
-makeDivEl("RATE");
-
-
-
-let id= "28";
-let genres ="action"
-
-//fetchMoviesListByMovie(genre_id, genre_name);
-
-
-const fetchMoviesListByMovie = (id, genres) => {
-    fetch(movie_genres_http + new URLSearchParams({
-        api_key: api_key,
-        //to get specific genre movies only
-        with_genres: id,
-        //to get random page b/w 1 to 3 but can leave this to page param also
-        page: Math.floor(Math.random() * 3) + 1
-        
-    }))
-.then(res => res.json())
-.then(data => {
-    //console.log(data);
-    //  makeDivEl(`${genres}`, data);
-     makeBox(data);
+for(let i=0; i<3; i++){
+document.querySelectorAll(".lang")[i].addEventListener("click",function(){
+    //to access globally
+    user.push(this.id);
+    check(user.length-1);
 })
-.catch(err =>  console.log(err));
+}
 
+//To GET LANGUAGE SELECTED
+function check(currentLang){
+    
+if(user[currentLang] =="en"){
+    //console.log("engg");
+   getChoice("en");
+
+}
+else if(user[currentLang] =="hi"){
+    //console.log("engg");
+   getChoice("hi");
+
+}
+else{
+    getChoice("NA");
+}
+}
+
+//AGE WISE GENRE DIVISON
+// <12 = ANIMATION FAMILY MUSIC
+// -30 = TOP5 GENRES: DRAMA COMEDY ACTION THRILLER ROMANCE
+// >30 =ALL EXCEPT:ANIMATION FANTASY MUSIC
+
+
+
+//FOR 10-30
+//KIDS
+let genre1=["Animation", "Fantasy","Family", "Music"];
+
+//except animation n fantasy
+//MIDDGROUP
+let genre2=["Drama","Comedy" ,"Action", "Music","Thriller","Romance","TV Movie","Science Fiction","Documentary","Horror"];
+
+
+
+
+
+//CHECKING SELECTED MOVIES' VOTE COUNT, VOTE-AVG AND RELEASE DATE OF THE CARD MOVIES 
+const fetchS = (gmdata,lan) => {
+    gmdata.results.forEach( (item,i) => {   
+        
+        if(lan ="en"){
+        //vote count n rating
+        if( item.vote_count>"1000" && item.vote_average>"7.5"){
+        //year 
+            if( item.release_date<"2022-02-11" && item.release_date> "2011-02-11"){
+                console.log(item);
+            
+                 //making container--TO GET NEW CONATINER FOR EACH MOVIE
+                    makeDivEl("RATE");
+                    const movieContainer = document.getElementById("RATE"); 
+            // makeBox();
+                if(item.backdrop_path == null){
+                    item.backdrop_path = item.poster_path;
+                    if(item.backdrop_path == null){
+                        return;
+                    }
+                }
+                //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
+                movieContainer.innerHTML += `
+                <div class="movie" onclick="location.href = '/${item.id}'">
+                    <img src="${img_url}${item.backdrop_path}" alt="">
+                    <p class="movie-title">${item.title}</p>
+                </div>
+                `;
+            //makeBox ends
+
+            }
+        }
+    }
+    else{
+        //vote count
+        if( item.vote_count>"300" && item.vote_average>"7"){
+            //year 
+                if( item.release_date<"2022-02-11" && item.release_date> "2011-02-11"){
+                    console.log(item);
+                }
+            }
+    }
+
+
+    })
+}
+
+//FETCHING MOVIES FROM EACH 5-GENRE
+const getChoice=(lang) =>{
+let genre= genre2[Math.floor(Math.random() * 4) + 1];
+fetch(sp_movie_http+ new URLSearchParams({
+    api_key:api_key,
+    with_genres: genre,
+    language:lang,
+//     sort_by:release_date.desc,
+//     primary_release_date:"2002-01-01",
+//    // primary_release_date.lte:"2005-12-31",
+    //  vote_average:8,
+    page: Math.floor(Math.random() * 5) + 1
+    
+}))
+.then(res => res.json())
+.then(data => 
+    {
+ fetchS(data, lang);
+})
+ .catch(err =>  console.log(err));
 }
 
 
-//make cards
-const makeBox = ( data) => {
-  
-    const movieContainer = document.getElementById("RATE"); 
-    //const item=data.results;
-    //console.log(data);
-   
-     data.results.forEach( (item,i) => {
-        console.log(item);
+ 
 
-        if(item.original_language =="en"){
-        if(item.vote_average >8 && item.vote_count> 1200 ){
-        console.log("english");
-        }
-    }
-    else if(item.original_language =="hi"){
-        if(item.vote_average >7.5 && item.vote_count> 30 ){
-console.log("hindi");
 
-        }
-    }
 
-        // //to check if poster is there or not
-        // (item.backdrop_path == null){
-        //     item.backdrop_path = item.poster_path;
-        //     if(item.backdrop_path == null){
-        //         return;
-        //     }
-        // }
 
-        // //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
-        // movieContainer.innerHTML += `
-        // <div class="movie" onclick="location.href = '/${item.id}'">
-        //     <img src="${img_url}${item.backdrop_path}" alt="">
-        //     <p class="movie-title">${item.title}</p>
-        // </div>
-        // `;
+
+
+//...................
+
+
+
+// const fetchS = (data) => {
+//   data.results.forEach( (item,i) => {   
+// //vote count n rating
+// if( item.vote_count>"1000" && item.vote_average>"7.5"){
+// //year 
+// if( item.release_date<"2022-02-11" && item.release_date> "2011-02-11"){
+// console.log(item);
+// }
+// }
+// })
+// }
+
+
+
+// //let genre=" ";
+// // vote_average.gte=8
+// fetch(sp_movie_http+ new URLSearchParams({
+//     api_key:api_key,
+//     with_genres: genre,
+//     language:"en",
+// //     sort_by:release_date.desc,
+// //     primary_release_date:"2002-01-01",
+// //    // primary_release_date.lte:"2005-12-31",
+//     //  vote_average:8,
+//     page: Math.floor(Math.random() * 5) + 1
+
     
-        // // movieContainer.innerHTML="hoo";
+// }))
+// .then(res => res.json())
+// .then(data => 
+//     {
+//  fetchS(data);
+// })
+//  .catch(err =>  console.log(err));
+ 
+
+  
+//------------------------------------------------
+
+
+
+
+
+
+
+// // const main = document.querySelector('.suggest_main');
+
+
+
+
+// // //MAKING DIV ELEMEMENT/CATEGORY
+// // const makeDivEl = (name) => {
+// //     //USING TEMPLATE LITERALS/VARIABLES
+// //      //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
+// //     main.innerHTML += `
+// //     <div class="movies" >
+
+// //     <button class="pre-btn"><i class="fa-solid fa-chevron-left"></i></button>
+
+    
+// //     <h1 class="movie-heading">${name} Movies</h1>
+    
+// //     <div class="movie-container" id="${name}">
+   
+// //     </div>
+    
+// //     <button class="nxt-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    
+// //     </div>
+// //     `;
+  
+// //     // if (name ="popular"){
+// //     //   makeStyle(name,data);
+// //     //drop .movie style for cards!!!!
+// //     // }
+// //     // else
+// //     // makeBox(name,data);
+  
+  
+
+
+// // }
+
+
+
+
+
+
+
+// // makeDivEl("RATE");
+
+
+
+// // let id= "28";
+// // let genres ="action"
+
+// // //fetchMoviesListByMovie(genre_id, genre_name);
+
+
+// // const fetchMoviesListByMovie = (id, genres) => {
+// //     fetch(movie_genres_http + new URLSearchParams({
+// //         api_key: api_key,
+// //         //to get specific genre movies only
+// //         with_genres: id,
+// //         //to get random page b/w 1 to 3 but can leave this to page param also
+// //         page: Math.floor(Math.random() * 3) + 1
+        
+// //     }))
+// // .then(res => res.json())
+// // .then(data => {
+// //     //console.log(data);
+// //     //  makeDivEl(`${genres}`, data);
+// //      makeBox(data);
+// // })
+// // .catch(err =>  console.log(err));
+
+// // }
+
+
+// // //make cards
+// // const makeBox = ( data) => {
+  
+// //     const movieContainer = document.getElementById("RATE"); 
+// //     //const item=data.results;
+// //     //console.log(data);
+   
+// //      data.results.forEach( (item,i) => {
+// //         console.log(item);
+
+// //         if(item.original_language =="en"){
+// //         if(item.vote_average >8 && item.vote_count> 1200 ){
+// //         console.log("english");
+// //         }
+// //     }
+// //     else if(item.original_language =="hi"){
+// //         if(item.vote_average >7.5 && item.vote_count> 30 ){
+// // console.log("hindi");
+
+// //         }
+// //     }
+
+// //         // //to check if poster is there or not
+// //         // (item.backdrop_path == null){
+// //         //     item.backdrop_path = item.poster_path;
+// //         //     if(item.backdrop_path == null){
+// //         //         return;
+// //         //     }
+// //         // }
+
+// //         // //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
+// //         // movieContainer.innerHTML += `
+// //         // <div class="movie" onclick="location.href = '/${item.id}'">
+// //         //     <img src="${img_url}${item.backdrop_path}" alt="">
+// //         //     <p class="movie-title">${item.title}</p>
+// //         // </div>
+// //         // `;
+    
+// //         // // movieContainer.innerHTML="hoo";
  
     
-    })
-    }
+// //     })
+// //     }
 
 
 
-fetchMoviesListByMovie(id, genres);
+// // fetchMoviesListByMovie(id, genres);
 
 
 
 
-//JS----------------------------------------------
-//TMDB 
+// // //JS----------------------------------------------
+// // //TMDB 

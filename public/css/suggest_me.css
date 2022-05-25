@@ -3,3 +3,16 @@
     height: 100vh !important;
     }
     }
+
+    .lang {
+        margin: 25px;
+        display: inline-block;
+        height: 200px;
+        width: 200px;
+        border: 10px solid black;
+        border-radius: 20%;
+      }
+    .pressed {
+        box-shadow: 0 0 20px white;
+        background-color: grey;
+      }
