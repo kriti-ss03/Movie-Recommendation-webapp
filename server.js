@@ -25,8 +25,8 @@ app.get('/home', (req, res) => {
 
 app.get('/suggest_me', (req, res) => {
 
-
-  res.render("suggest_me", {kindaname: persondata[0].name });
+  // res.render("suggest_me", {kindaname: persondata[0].name });
+  res.render("suggest_me");
 })
 
 app.get('/genre', (req, res) => {

@@ -1,37 +1,12 @@
 
 
-<form></form>
+const main = document.querySelector('.suggest_main');
 
 
-
-
-let id= "28";
-let genres ="action"
-
-//fetchMoviesListByMovie(genre_id, genre_name);
-
-
-const fetchMoviesListByMovie = (id, genres) => {
-    fetch(movie_genres_http + new URLSearchParams({
-        api_key: api_key,
-        //to get specific genre movies only
-        with_genres: id,
-        //to get random page b/w 1 to 3 but can leave this to page param also
-        page: Math.floor(Math.random() * 3) + 1
-        
-    }))
-.then(res => res.json())
-.then(data => {
-    console.log(data);
-    // makeDivEl(`${genres}`, data);
-})
-.catch(err =>  console.log(err));
-
-}
 
 
 //MAKING DIV ELEMEMENT/CATEGORY
-const makeDivEl = (name,data) => {
+const makeDivEl = (name) => {
     //USING TEMPLATE LITERALS/VARIABLES
      //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
     main.innerHTML += `
@@ -56,43 +31,88 @@ const makeDivEl = (name,data) => {
     //drop .movie style for cards!!!!
     // }
     // else
-    makeBox(name,data);
+    // makeBox(name,data);
   
   
+
+
 }
 
 
 
-const makeBox = (name, data) => {
+
+
+
+
+makeDivEl("RATE");
+
+
+
+let id= "28";
+let genres ="action"
+
+//fetchMoviesListByMovie(genre_id, genre_name);
+
+
+const fetchMoviesListByMovie = (id, genres) => {
+    fetch(movie_genres_http + new URLSearchParams({
+        api_key: api_key,
+        //to get specific genre movies only
+        with_genres: id,
+        //to get random page b/w 1 to 3 but can leave this to page param also
+        page: Math.floor(Math.random() * 3) + 1
+        
+    }))
+.then(res => res.json())
+.then(data => {
+    //console.log(data);
+    //  makeDivEl(`${genres}`, data);
+     makeBox(data);
+})
+.catch(err =>  console.log(err));
+
+}
+
+
+//make cards
+const makeBox = ( data) => {
   
-    const movieContainer = document.getElementById(name); 
+    const movieContainer = document.getElementById("RATE"); 
     //const item=data.results;
-    
-    //FOR MOVIE SEARCH RESULTS------------
-    if(data.results.length ===0){
-        console.log("No Items Found")
-    }
+    //console.log(data);
    
      data.results.forEach( (item,i) => {
-        //console.log(item)
+        console.log(item);
 
-        //to check if poster is there or not
-        if(item.backdrop_path == null){
-            item.backdrop_path = item.poster_path;
-            if(item.backdrop_path == null){
-                return;
-            }
+        if(item.original_language =="en"){
+        if(item.vote_average >8 && item.vote_count> 1200 ){
+        console.log("english");
         }
+    }
+    else if(item.original_language =="hi"){
+        if(item.vote_average >7.5 && item.vote_count> 30 ){
+console.log("hindi");
 
-        //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
-        movieContainer.innerHTML += `
-        <div class="movie" onclick="location.href = '/${item.id}'">
-            <img src="${img_url}${item.backdrop_path}" alt="">
-            <p class="movie-title">${item.title}</p>
-        </div>
-        `;
+        }
+    }
+
+        // //to check if poster is there or not
+        // (item.backdrop_path == null){
+        //     item.backdrop_path = item.poster_path;
+        //     if(item.backdrop_path == null){
+        //         return;
+        //     }
+        // }
+
+        // //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
+        // movieContainer.innerHTML += `
+        // <div class="movie" onclick="location.href = '/${item.id}'">
+        //     <img src="${img_url}${item.backdrop_path}" alt="">
+        //     <p class="movie-title">${item.title}</p>
+        // </div>
+        // `;
     
-
+        // // movieContainer.innerHTML="hoo";
  
     
     })

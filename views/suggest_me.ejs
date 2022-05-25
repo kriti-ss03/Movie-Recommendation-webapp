@@ -2,20 +2,55 @@
 
 <!-- STYLESHEET -->
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/movie-page.css">
 <link rel="stylesheet" href="css/suggest_me.css">
 
 <%- include("partials/navbar") %>
 
 
-
+<div>
 
 <!-- NOT WORKING??? -->
-<% console.log(kindaname) %>
- <p>Hello <%= kindaname %> </p>
+<header class="suggest_main">
+    <h1 class="heading">Hello ____</h1>
+    <p class="info">Fill this out to get some suggestions!</p>
 
 
 
 
+
+    <!-- RATINGS CARD -->
+ <div class="movies">
+
+    <button class="pre-btn"><i class="fa-regular fa-chevron-left"></i></button>
+
+    <h1 class="movie-heading"></h1>
+
+    <div class="movie-container">
+        <div class="movie">
+            <img src="img/logo.png"  alt="">
+            <p class="movie-title">movie name</p>
+        </div>
+    </div>
+
+    <button class="nxt-btn"><i class="fa-regular fa-chevron-right"></i></button>
+
+</div>
+
+ <!-- SUGGESTIONS -->
+
+ <div class="recommendations">
+    <h1 class="heading">Similar</h1>
+    <div class="recommendations-container">
+        <div class="movie">
+            <img src="img/logo.png" alt="">
+            <p class="movie-title">movie name</p>
+        </div>
+    </div>
+</div>
+
+</header>
+</div>
 
 
 

@@ -161,7 +161,7 @@ fetch(top_rated_movies_http + new URLSearchParams({
    .catch(err =>  console.log(err));
 
 
-//LIST BY GENRES NAME AND ID
+//LIST OF GENRES NAME AND ID
 fetch(genres_list_http + new URLSearchParams({
     // credentials: 'omit';
     api_key:api_key

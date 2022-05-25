@@ -21,3 +21,4 @@ let movie_details_http = "https://api.themoviedb.org/3/movie";
 
 let latest_movies_http="https://api.themoviedb.org/3/movie/latest?";
 
+// https://api.themoviedb.org/3/discover/movie?api_key=[MY_KEY]&language=en-US&sort_by=release_date.desc&page=1&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31&vote_average.gte=8&with_genres=35
