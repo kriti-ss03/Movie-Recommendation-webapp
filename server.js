@@ -12,21 +12,52 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}));
 
 
+const persondata=[];
+
 
 app.get('/', (req, res) => {
+  res.render("landing_page");
+})
+
+app.get('/home', (req, res) => {
   res.render("home");
 })
 
 app.get('/suggest_me', (req, res) => {
-  res.render("suggest_me");
+
+
+  res.render("suggest_me", {kindaname: persondata[0].name });
 })
+
+app.get('/genre', (req, res) => {
+  res.render("genre");
+})
+
 
 app.get('/:id', (req, res) => {
     res.render("movie");
   })
-app.use(function(req, res) {
+
+//post request coming from landing page; i.e. is home route
+app.post("/", (req,res) => {
+ 
+  // console.log(req.body.name);
+  let data ={
+  name:req.body.name,
+  age: req.body.age,
+  email:req.body.email
+};
+  persondata.push(data);
+
+  res.redirect("/home");
+
+})
+
+
+  app.use(function(req, res) {
     res.json("404");
 })
+
 
 
 

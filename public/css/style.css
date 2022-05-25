@@ -291,8 +291,21 @@ input:focus,
     }
     span.icon {display:none}
     span.text {display:inline-block}
-
    
-       
-    
 }
+
+/* LANDING PAGE */
+.bg-lp-img{
+    opacity:0.5;
+}
+
+/* .profile{
+
+    background: #191414;
+  background-image: -webkit-linear-gradient(top, #191414, #FCFFFC);
+  background-image: -moz-linear-gradient(top, #191414, #FCFFFC);
+  background-image: -ms-linear-gradient(top, #191414, #FCFFFC);
+  background-image: -o-linear-gradient(top, #191414, #FCFFFC);
+  background-image: linear-gradient(to bottom, #191414, #FCFFFC);
+   
+} */
