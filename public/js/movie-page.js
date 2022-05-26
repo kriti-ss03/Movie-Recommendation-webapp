@@ -16,7 +16,7 @@ fetch(`${movie_details_http}${movie_id}?` + new URLSearchParams({
 
 //movie details
 const setupMovieInfo = (data) => {
-    // console.log(data);
+    console.log(data);
     const title = document.querySelector('title');
     const movieName = document.querySelector('.movie-name');
     const genres = document.querySelector('.genres');

@@ -47,7 +47,7 @@ const genres = [
     },
     {
       "id": 12,
-      "name": "TV Movie"
+      "name": "Adventure"
     },
     {
       "id": 16,
