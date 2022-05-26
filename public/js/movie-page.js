@@ -97,7 +97,9 @@ fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams(
 .then(data => {
     
     console.log(`${movie_id}`);
-    let container = document.querySelector('.recommendations-container');
+    // let container = document.querySelector('.recommendations-container');
+
+     let container = document.querySelector('#mainall');
     //running loop to create 16 movie cards
     for(let i = 0; i < 16; i++){
         if(data.results[i].backdrop_path == null){
@@ -117,7 +119,7 @@ fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams(
 
 
         container.innerHTML += `
-        <div class="movie" onclick="location.href = '/${data.results[i].id}'">
+        <div class="movieall" onclick="location.href = '/${data.results[i].id}'">
             <img src="${img_url}${data.results[i].backdrop_path}" alt="">
             <p class="movie-title">${data.results[i].title}</p>
         </div>

@@ -33,10 +33,15 @@ app.get('/genre', (req, res) => {
   res.render("genre");
 })
 
+app.get('/search', (req, res) => {
+  res.render("search");
+})
 
 app.get('/:id', (req, res) => {
     res.render("movie");
   })
+
+  
 
 //post request coming from landing page; i.e. is home route
 app.post("/", (req,res) => {

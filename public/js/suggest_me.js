@@ -121,8 +121,8 @@ const sortData = (gmdata,lan,NUMBER) => {
         if( item.vote_count>"1000" && item.vote_average>"7.5"){
         //year 
             if( item.release_date<"2022-02-11" && item.release_date> "2011-02-11"){
-                console.log(item);
-                makeCard(item, NUMBER);
+                console.log("eng" + item);
+               // makeCard(item, NUMBER);
 
              
 
@@ -131,7 +131,6 @@ const sortData = (gmdata,lan,NUMBER) => {
     }
     else{
         //vote count
-         if(item.original_language="hi"){
         if( item.vote_count>"300" && item.vote_average>"7"){
             //year 
                 if( item.release_date<"2022-02-11" && item.release_date> "2009-02-11"){
@@ -143,22 +142,22 @@ const sortData = (gmdata,lan,NUMBER) => {
                 
                 }
             }
-    }}
-
+    
+        }
 
     })
 }
 
 
-// let genre1=["Drama", "Music","Romance", "Comedy"];
-// let genre2=[ "Action", "Adventure","Thriller","Horror"];
-// let genre3=["Science Fiction","Documentary", "TV Movie", "Mystery"];
 
 //FETCHING MOVIES FROM EACH 5-GENRE
 const getChoice=(lang) =>{
+
+//FOR ENGLISH
 //let genre= genre2[Math.floor(Math.random() * 4) + 1];
 
 //MAKING SINGLE ARRAY WHICH GETS MOVIE-GENRE FROM EACH OF 3 GENRE-DIVIDED-ARRAY
+
 let genres= [];
 let a={
     id: "A",
@@ -185,7 +184,7 @@ genres.forEach(item =>{
 fetch(sp_movie_http+ new URLSearchParams({
     api_key:api_key,
     with_genres: item.name,
-    //original_language:lang,
+    with_original_language:lang,
 //     sort_by:release_date.desc,
 //     primary_release_date:"2002-01-01",
 //    // primary_release_date.lte:"2005-12-31",
@@ -197,31 +196,74 @@ fetch(sp_movie_http+ new URLSearchParams({
 .then(data => 
     {
  sortData(data,lang,item.id);
+ console.log(data)
 })
  .catch(err =>  console.log(err));
 })
-}
 
 
- 
+
+
+
+
+
 //IF HINDI
 //card 1 movie id similar to /374173 KAPOOR AND SONS: Drama, Romance, Comedy
 //card 2 /375290  AIRLIFT  History, Action
 //card 3 /581361 BADLA Crime, Mystery, Thriller
-let pickid=["/374173","/375290","/581361"]
-let movie_id= pickid[ Math.floor(Math.random() * 3) + 1];
+// if(lang="hi"){
+//  let pickid=["/374173","/375290","/581361"]
+// let item_id= Math.floor(Math.random() * 2) + 1
+//  let movie_id= pickid[item_id];
 
-fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams({
-    api_key: api_key
-}))
-.then(res => res.json())
-.then(data => {
-    //sortData(data,lang,item.id);
-    console.log(`${movie_id}`);
-    console.log(data);
-   //make div
-   //makecards
-})
+// //movie_id="/375290"
+
+// fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams({
+//     api_key: api_key
+// }))
+// .then(res => res.json())
+// .then(data => {
+//     sortData(data,lang,item_id);
+//     //console.log(`${movie_id}`);
+//     console.log(data);
+//    //make div
+//    //makecards
+// })
+// }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+// //IF HINDI
+// //card 1 movie id similar to /374173 KAPOOR AND SONS: Drama, Romance, Comedy
+// //card 2 /375290  AIRLIFT  History, Action
+// //card 3 /581361 BADLA Crime, Mystery, Thriller
+// let pickid=["/374173","/375290","/581361"]
+// let movie_id= pickid[ Math.floor(Math.random() * 3) + 1];
+
+// fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams({
+//     api_key: api_key
+// }))
+// .then(res => res.json())
+// .then(data => {
+//     //sortData(data,lang,item.id);
+//     console.log(`${movie_id}`);
+//     console.log(data);
+//    //make div
+//    //makecards
+// })
 
 
 

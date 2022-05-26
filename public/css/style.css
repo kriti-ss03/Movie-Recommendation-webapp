@@ -23,9 +23,13 @@ body{
     width: 100%;
     position: relative;
     background:#191414;
-    font-family: 'roboto', sans-serif;
+    font-family:Montserrat;
+    line-height:1.4
 }
 
+/* .container-fluid{
+    padding: 3%;
+} */
 /* .navbar{
     width: 100%;
     height: 60px;
@@ -50,6 +54,7 @@ body{
     padding: 0 2.5vw;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     /* margin:0; */
     /* display:flex; */
     /* justify-content:flex-end; */ 
@@ -139,7 +144,8 @@ input:focus,
 
 /* Page styling */
 .main{
-    position: relative;
+    position:relative;
+    overflow: hidden;
     margin-top: 60px;
     width: 100%;
     padding: 40px 2.5vw;
@@ -220,6 +226,16 @@ input:focus,
     height: 20px;
     text-transform: capitalize;
     overflow: hidden;
+}
+.movie p{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    opacity: 0;
 }
 
 /* Scroll Buttons */

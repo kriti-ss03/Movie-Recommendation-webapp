@@ -1,0 +1,44 @@
+
+
+<%- include("partials/header") %>
+
+
+
+<!-- STYLESHEET -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/search.css">
+<!-- <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/movie-page.css"> -->
+
+
+<%- include("partials/navbar") %>
+    <!-- <header>
+        <form  id="form">
+            <input type="text" placeholder="Search" id="search" class="search">
+        </form>
+    </header> -->
+
+    <div id="genrebtns">
+        <!-- <div calss="tag" id="genre_id">ACTION</div> -->
+        <button class="genrebtn">Action</button>
+    </div>
+
+    <hr>
+
+
+      </div>
+    <main id="mainall">
+        <div calss="movieall">
+       <img src="${poster_path? IMG_URL+poster_path: "" }" alt="${title}">
+            <h3>${title}</h3>
+        </div>
+
+    </main>
+
+  
+
+
+    <script src="js/api.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
