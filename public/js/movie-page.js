@@ -89,13 +89,36 @@ fetch(`${movie_details_http}${movie_id}/videos?` + new URLSearchParams({
 })
 
 //RECOMMENDATION
+const load = document.getElementById('load')
+const current = document.getElementById('current')
+
+var currentPage = 1;
+var loadPage=2;
+var lastUrl = '';
+var totalPages = 100;
+
 //ADDING PATH TO BASE URL
-fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams({
+getMovies(`${movie_details_http}${movie_id}/recommendations?sort_by=popularity.desc&`);
+
+
+function getMovies(url) {
+    lastUrl = url;
+fetch( url + new URLSearchParams({
     api_key: api_key
 }))
 .then(res => res.json())
 .then(data => {
-    
+    console.log(data);  
+
+    currentPage = data.page;
+    console.log(currentPage);
+    loadPage=currentPage+1;
+    totalPages = data.total_pages;
+    if(currentPage>= totalPages){
+    //console.log("jo h bass yhi h");
+    load.classList.add("disabled");
+    }
+
     console.log(`${movie_id}`);
     // let container = document.querySelector('.recommendations-container');
 
@@ -106,18 +129,6 @@ fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams(
             i++;
         }
 
-    
-    // if(!((name=="top")|| (name== "popular") || (name=="trending")) ){
-// // console.log(name);
-//   for(let i=0;i<19;i++){
-//       if(genres[i].name ===name){
-//      //console.log(genres[i].id);
-//      if(genres[i].id === item.genre_ids[0] ){
-//      //console.log("yesss");
-
-
-
-
         container.innerHTML += `
         <div class="movieall" onclick="location.href = '/${data.results[i].id}'">
             <img src="${img_url}${data.results[i].backdrop_path}" alt="">
@@ -126,3 +137,38 @@ fetch(`${movie_details_http}${movie_id}/recommendations?` + new URLSearchParams(
         `;
     }
 })
+}
+
+//FOR PAGINATION
+
+load.addEventListener('click', () => {
+    //IF MORE PAGES EXIST THEN OLY
+    if(loadPage <= totalPages){
+      moreData(loadPage);
+    }
+  })
+function  moreData(page){
+    let urlSplit = lastUrl.split('?');
+    console.log("yoo");
+    //AFTER SPLITTING BASE URL+ QUERY PARAMS
+    let queryParams = urlSplit[1].split('&');
+    console.log(queryParams);
+    //TO GET PAGENO --2ND LAST ELEMENT
+    let key = queryParams[queryParams.length -2].split('=');
+    
+    //CHECKING IF THERE IS PAGE OR NOT IN THE API
+    if(key[1] != 'page'){
+      let url = lastUrl + 'page='+ page  + '&';
+      //'&api_key=${api_key}'
+      getMovies(url);
+    }else{ 
+      //FOR OTHER PAGES
+      key[1] = page.toString();
+      let a = key.join('=');
+      queryParams[queryParams.length -1] = a;
+      //JOINING QUERY PARAMS TO STRING
+      let b = queryParams.join('&');
+      let url = urlSplit[0] +'?'+ b;
+      getMovies(url);
+    }
+}

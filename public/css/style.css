@@ -269,6 +269,12 @@ input:focus,
     outline:0;
 }
 
+.prev-btn.disabled,
+.nxt-btn.disabled{
+    cursor:not-allowed;
+    color:grey;
+}
+
 /* footer */
 #footer{
     padding: 4% 15%;

@@ -83,7 +83,7 @@
 .genrebtn{
     color:white;
     padding:10px 20px;
-    background-color: orange;
+    background-color: rgb(83, 76, 61);
     border-radius: 50px;
     margin:5px;
     display:inline-block;
@@ -91,14 +91,39 @@
 }
 
 .focus{
-    background-color: #E60023 ;
+    background-color: #6c1825 ;
 }
 
 .try-again{
     color:white;
 }
 
-  
+.pagination{
+    display:flex;
+    margin:10px 30px;
+    align-items: center;
+    justify-content: center;
+    color:white;
+}
+
+.page{
+    padding:20px;
+    cursor:pointer;
+}
+
+.page.disabled{
+    cursor:not-allowed;
+    color:rgb(191, 10, 10);
+}
+
+.current{
+    border-radius: 50%;
+    padding: 10px 20px;
+    border: 5px solid #6c1825;
+    font-size: 20px;
+    font-weight: 600;
+}
+
   
 
 

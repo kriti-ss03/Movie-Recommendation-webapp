@@ -1,100 +1,27 @@
-
-
-
-const genres = [
-    {
-      "id": 28,
-      "name": "Action"
-    },
-    {
-      "id": 12,
-      "name": "Adventure"
-    },
-    {
-      "id": 16,
-      "name": "Animation"
-    },
-    {
-      "id": 35,
-      "name": "Comedy"
-    },
-    {
-      "id": 80,
-      "name": "Crime"
-    },
-    {
-      "id": 99,
-      "name": "Documentary"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    },
-    {
-      "id": 10751,
-      "name": "Family"
-    },
-    {
-      "id": 14,
-      "name": "Fantasy"
-    },
-    {
-      "id": 36,
-      "name": "History"
-    },
-    {
-      "id": 27,
-      "name": "Horror"
-    },
-    {
-      "id": 10402,
-      "name": "Music"
-    },
-    {
-      "id": 9648,
-      "name": "Mystery"
-    },
-    {
-      "id": 10749,
-      "name": "Romance"
-    },
-    {
-      "id": 878,
-      "name": "Science Fiction"
-    },
-    {
-      "id": 10770,
-      "name": "TV Movie"
-    },
-    {
-      "id": 53,
-      "name": "Thriller"
-    },
-    {
-      "id": 10752,
-      "name": "War"
-    },
-    {
-      "id": 37,
-      "name": "Western"
-    }
-  ]
-
 const main = document.getElementById('mainall');
+let containerbtn = document.querySelector('#genrebtns');
 
+// const prev = document.getElementById('prev')
+// const next = document.getElementById('next')
+const load = document.getElementById('load')
+const current = document.getElementById('current')
 
-const btnEl= document.getElementById('genrebtns');
-
+var currentPage = 1;
+// var nextPage = 2;
+// var prevPage = 3;
+var loadPage=2;
+var lastUrl = '';
+var totalPages = 100;
 
 var selectedGenre = [];
 let i=0;
 setGenre();
 function setGenre() {    
-  let container = document.querySelector('#genrebtns');
+  //let containerbtn = document.querySelector('#genrebtns');
    
-  container.innerHTML=``
+  containerbtn.innerHTML=''
     genres.forEach((item) =>{
-    container.innerHTML += `
+    containerbtn.innerHTML += `
     <button class="genrebtn" id="${item.id}">${item.name}</button>
     `;
     })
@@ -123,7 +50,7 @@ function setGenre() {
             
         } 
         console.log(selectedGenre);
-        getMovies(API_URL +`&with_genres=`+ encodeURI(selectedGenre.join(`,`)) +`&`);
+        getMovies( sort_http +`&with_genres=`+ encodeURI(selectedGenre.join(`,`)) +`&`);
         activeSelection();
     })
 
@@ -149,30 +76,41 @@ function activeSelection() {
     }
 }
 
-let containerbtn = document.querySelector('#genrebtns');
 function clearBtn(){
     let clearBtn = document.getElementById('clear');
     
     if(clearBtn){
         clearBtn.classList.add('focus')
     }else{       
-    
-     containerbtn.innerHTML += 
-     `<button class="genrebtn focus" id="clear">Clear ❌</button>
-       `;
-        document.querySelector("#clear").addEventListener('click', () => {
-           //RESET EVERYTHING TO ORG
+        let clear = document.createElement('button');
+        clear.classList.add('genrebtn','focus');
+        clear.id = "clear";
+        clear.innerText = 'Clear ❌';
+        clear.addEventListener("click", () => {
             selectedGenre = [];
             setGenre();            
-            getMovies(API_URL);
+            getMovies( sort_http);
         })
+        containerbtn.append(clear);
+
+
+    //  containerbtn.innerHTML += 
+    //  `<button class="genrebtn focus" id="clear">Clear ❌</button>
+    //    `;
+    //     document.querySelector("#clear").addEventListener('click', () => {
+    //        //RESET EVERYTHING TO ORG
+    //         selectedGenre = [];
+    //         setGenre();            
+    //         getMovies( sort_http);
+    //         //document.location.reload();
+    //     })
     }
 }
 
 
-getMovies(API_URL);
+getMovies(sort_http);
 function getMovies(url) {
-    
+    lastUrl = url;
     fetch(url + new URLSearchParams({
         api_key:api_key
     }))
@@ -185,20 +123,45 @@ function getMovies(url) {
         mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !<\h1>` ;
     }else{
         showMovies(data.results);
+        currentPage = data.page;
+        console.log(currentPage);
+            loadPage=currentPage+1;
+            // nextPage = currentPage + 1;
+            // prevPage = currentPage - 1;
+            totalPages = data.total_pages;
+
+
+
+            // if(currentPage <= 1){
+            //   prev.classList.add('disabled');
+            //   next.classList.remove('disabled')
+            // }else if(currentPage>= totalPages){
+            //   prev.classList.remove('disabled');
+            //   next.classList.add('disabled')
+            // }else{
+            //   prev.classList.remove('disabled');
+            //   next.classList.remove('disabled')
+            // }
+
+            //tagsEl.scrollIntoView({behavior : 'smooth'})
     }
     })
     .catch(err =>  console.log(err));
     }
+   
     
-        const showMovies = (data) =>{
+ //DISPLAY MOVIE IN CARDS   
+const showMovies = (data) =>{
+    // TO LOAD WITH BUTTONS
     
-        // let container = document.querySelector('.recommendations-container');
-         mainall.innerHTML=` `
+    // if(load more key not pressed ){
+    // mainall.innerHTML=` `
+// }
+
         let container = document.querySelector('#mainall');
         //running loop to create 16 movie cards
         data.forEach( (item) => {
-            console.log(item)
-
+            // console.log(item)
             if(item.backdrop_path == null){
                 item.backdrop_path = item.poster_path;
                 if(item.backdrop_path == null){
@@ -219,8 +182,49 @@ function getMovies(url) {
 //------------------------------------------------
 
 
+// prev.addEventListener('click', () => {
+//     if(prevPage > 0){
+//         moreData(prevPage);
+//     }
+//   })
+  
+//   next.addEventListener('click', () => {
+//     //IF MORE PAGES EXIST THEN OLY
+//     if(nextPage <= totalPages){
+//       moreData(nextPage);
+//     }
+//   })
+  load.addEventListener('click', () => {
+    //IF MORE PAGES EXIST THEN OLY
+    if(loadPage <= totalPages){
+      moreData(loadPage);
+    }
+  })
+function  moreData(page){
+    let urlSplit = lastUrl.split('?');
+    //AFTER SPLITTING BASE URL+ QUERY PARAMS
+    let queryParams = urlSplit[1].split('&');
+    console.log(queryParams);
+    //TO GET PAGENO --2ND LAST ELEMENT
+    let key = queryParams[queryParams.length -2].split('=');
+    
+    //CHECKING IF THERE IS PAGE OR NOT IN THE API
+    if(key[1] != 'page'){
+      let url = lastUrl + 'page='+ page  + '&';
+      //'&api_key=${api_key}'
+      getMovies(url);
+    }else{ 
+      //FOR OTHER PAGES
+      key[1] = page.toString();
+      let a = key.join('=');
+      queryParams[queryParams.length -1] = a;
+      //JOINING QUERY PARAMS TO STRING
+      let b = queryParams.join('&');
+      let url = urlSplit[0] +'?'+ b;
+      getMovies(url);
+    }
+}
 
-yesssssssssssssssssssssssssssssssssssfa-spin
 
 
 

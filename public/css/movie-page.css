@@ -143,6 +143,24 @@ iframe{
 .movieall:hover p{
     opacity: 1;
 }
+.page{
+    /* display:flex;
+    flex-wrap: wrap;
+    justify-content: center; */
+    /* margin:auto; */
+    margin: 1rem auto;
+}
+.page.disabled{
+    cursor:not-allowed;
+    background-color:rgb(103, 103, 103);
+    border-color:black !important;
+}
+/* to remove shadow and line */
+.page.disabled:focus {
+    outline: none;
+  box-shadow: none;
+  }
+
 /* .movieall:hover{
     outline:#fff;
 } */
