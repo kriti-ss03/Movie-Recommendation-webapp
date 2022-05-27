@@ -17,8 +17,8 @@
       <div class="row">   
         <div class="col-lg-6 col-sm-12">
           <h1>Play Now</h1>
-          <button type="button" class="btn btn-dark btn-lg download-btn"><i class="fab fa-apple"></i> Download</button>
-          <button type="button" class="btn btn-outline-light btn-lg download-btn"><i class="fa-brands fa-google-play"></i> Download</button>
+          <button type="button" class="btn btn-dark btn-lg choicebtn" id="kid"> AGE < 15 </button>
+          <button type="button" class="btn btn-outline-light btn-lg choicebtn" id="adult">AGE >15 </button>
         </div>
         <div class="col-lg-6">
           <img class="img" src="img/screen.jpg" alt="iphone-mockup">
@@ -31,57 +31,36 @@
 
 
 
-  <!-- Pricing -->
+  <!-- RATING -->
 
-  <section id="pricing">
+  <section id="rating">
 
     <h2>Select.Search.Shoot.</h2>
     <p>Fill this out to get some suggestions especially for you!</p>
 
-    <div class="row">
-      <div class="pricecol col-lg-4 col-md-6">
-   
-            <div class="card">
+    <form action="/suggest_me" method="post">
+    <div class="row rating-container">
+<!-- <div class="pricecol col-lg-4 col-md-6">
+          
+        <div class="card">
+
               <div class="card-header">
-                <h3>Chihuahua</h3> 
+                <h3>movie name</h3> 
               </div>
             <div class="card-body">     
-            <h2>1</h2>
             <img src="img/screen.jpg">
-            <button type="button" class="btn btn-lg btn-dark">Sign Up</button>
+            <input type="text" name="movie1" placeholder="rate out of 5">
             </div>
-          </div>
-          </div>
 
-          <div class="pricecol col-lg-4 col-md-6">
-            <div class="card">
-                <div class="card-header">
-                  <h3>Labrador</h3>
-                </div>
-                <div class="card-body">
-                  <h2>2</h2>
-                  <img src="img/screen.jpg">
-                  <button type="button" class="btn btn-lg btn-outline-dark">Sign Up</button>
-              </div>
-            </div>
-          </div>
+          </div> -->
+         
 
-          <div class="pricecol col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <h3>Mastiff</h3>
-            </div>
-          <div class="card-body">     
-            <h2>3</h2>
-          <img src="img/screen.jpg">
-            <!-- <button type="button">Sign Up</button> -->
-          <button type="button" class="btn btn-lg btn-block btn-outline-dark">Sign Up</button>
           </div>
-        </div>
-        </div>
+          </div>
 
         </div>
-
+        <button type="button" class="btn btn-lg btn-dark">SUBMIT</button>
+      </form>
   </section>
 
 
@@ -102,51 +81,13 @@
 
 
 
-<div>
-
-<!-- NOT WORKING??? -->
-<header class="suggest_main main">
-    <h1 class="heading">Hello</h1>
-    
-    <!-- <h1 class="heading" id=""> kindaname  </h1>-->
-  
-    <p class="info"></p>
-
-    <p class="info">Select language</p>
-    
-    <div class="set">
-        <button class="lang" id="hi">Hindi</button>
-        <button class="lang" id="en">English</button>
-        <button class="lang" id="na">Any</button>
-      </div>
-
-
-
-    <!-- RATINGS CARD -->
- <div class="movies">
-
-    <button class="pre-btn"><i class="fa-regular fa-chevron-left"></i></button>
-
-    <h1 class="movie-heading"></h1>
-
-    <div class="movie-container">
-        <div class="movie">
-            <img src="img/logo.png"  alt="">
-            <p class="movie-title">movie name</p>
-        </div>
-    </div>
-
-    <button class="nxt-btn"><i class="fa-regular fa-chevron-right"></i></button>
-
-</div>
-
  <!-- SUGGESTIONS -->
 
  <div class="recommendations">
     <h1 class="heading">Similar</h1>
     <div class="recommendations-container">
         <div class="movie">
-            <img src="img/logo.png" alt="">
+            <!-- <img src="img/logo.png" alt=""> -->
             <p class="movie-title">movie name</p>
         </div>
     </div>
@@ -162,7 +103,7 @@
 
 
 <script src="js/api.js"></script>
-    <script src="js/buttons.js"></script>
+    <!-- <script src="js/search.js"></script> -->
     <script src="js/suggest_me.js"></script>
   
 </body>

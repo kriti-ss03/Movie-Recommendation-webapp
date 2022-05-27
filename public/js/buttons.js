@@ -1,5 +1,5 @@
 const makeSwipe = () => {
-    const conainter = [...document.querySelectorAll('.movie-container')];
+    const conainter = [...document.querySelectorAll('.swipe')];
     const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
     const preBtn = [...document.querySelectorAll('.pre-btn')];
 

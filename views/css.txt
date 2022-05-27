@@ -1,3 +1,164 @@
+//SEARCH_ME.JS
+<div>
+
+<!-- NOT WORKING??? -->
+<header class="suggest_main main">
+    <h1 class="heading">Hello</h1>
+    
+    <!-- <h1 class="heading" id=""> kindaname  </h1>-->
+  
+    <p class="info"></p>
+
+    <p class="info">Select language</p>
+    
+    <div class="set">
+        <button class="lang" id="hi">Hindi</button>
+        <button class="lang" id="en">English</button>
+        <button class="lang" id="na">Any</button>
+      </div>
+
+
+
+    <!-- RATINGS CARD -->
+ <div class="movies">
+
+    <button class="pre-btn"><i class="fa-regular fa-chevron-left"></i></button>
+
+    <h1 class="movie-heading"></h1>
+
+    <div class="movie-container">
+        <div class="movie">
+            <img src="img/logo.png"  alt="">
+            <p class="movie-title">movie name</p>
+        </div>
+    </div>
+
+    <button class="nxt-btn"><i class="fa-regular fa-chevron-right"></i></button>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+//FROM BOOTSSTRAP
+const makeCarousel = (name,data) => {
+    //USING TEMPLATE LITERALS/VARIABLES
+     //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
+     console.log("yo1");
+     main.innerHTML += `
+ 
+    
+    
+ <div id="top-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-pause="hover" >
+ 
+  <div class="carousel-inner" id="${name}>
+    
+
+  </div> 
+  <button class="carousel-control-prev" type="button" data-bs-target="#top-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" ></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#top-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+  
+</div>
+    `;
+    console.log("yo2");
+    makeBanner(name,data);
+  
+  
+}
+
+
+// FOR TRENDING MOVIES BANNER
+const makeBanner = (name, data) => {
+ 
+    const movieContainer = document.getElementById(name); 
+    //const item=data.results;
+   
+     data.results.forEach( (item,i) => {
+        console.log(item)
+
+        //to check if poster is there or not
+        if(item.backdrop_path == null){
+            item.backdrop_path = item.poster_path;
+            if(item.backdrop_path == null){
+                return;
+            }
+        }
+
+        //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
+      
+
+        movieContainer.innerHTML += `
+
+        <div class="carousel-item" onclick="location.href = '/${item.id}' >
+        <img src="${img_url}${item.backdrop_path}" alt="">
+        <p class=" ">${item.title}</p>
+      </div>
+
+        `;
+    
+    
+        // if(i == data.results.length - 1){
+        //     setTimeout(() => {
+        //         makeSwipe();
+        //     }, 100);
+            
+        // }
+ 
+        console.log("banner");
+    })
+    }
+  
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 h1{
     font-family: Montserrat-Black,sans-serif;
     font-weight:900; 
@@ -29,3 +190,148 @@ p{
     /* margin: 5px auto; */
     /* width:40% */
 }
+
+
+
+<div id="" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-pause="hover" >
+<ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active" >
+      <h2 class="testimonial-text">I no longer have to sniff other dogs for love. I've found the hottest Corgi on TinDog. Woof.</h2>
+      <img class="banner-img" src="" alt="">
+      <em>Pebbles, New York</em>
+    </div>
+    <div class="carousel-item" >
+      <h2 class="testimonial-text">My dog used to be so lonely, but with TinDog's help, they've found the love of their life. I think.</h2>
+      <img class="test-img" src="images/lady-img.jpg" alt="lady-profile">
+      <em>Beverly, Illinois</em>
+    </div>
+  </div> 
+  <button class="carousel-control-prev" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" ></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+  
+</div>
+
+
+
+//prev
+
+   <div class="carousel" >
+
+    <button class="pre-btn"><i class="fa-solid fa-chevron-left"></i></button>
+    
+    <div class="carousel-container" id="${name}">
+   
+    </div>
+    
+    <button class="nxt-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    
+    </div>
+    
+
+    <img src="${img_url}${item.backdrop_path}" alt="">
+            <p class=" ">${item.title}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+            ////////////////////
+            
+  
+//MAKING CAROUSEL
+const makeCarousel = (name,data) => {
+    //USING TEMPLATE LITERALS/VARIABLES
+     //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
+    main.innerHTML += `
+ 
+    
+    
+ <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000" data-bs-pause="hover" >
+ <ol class="carousel-indicators">
+ <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+ <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+ <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+</ol>
+  <div class="carousel-inner" id="${name}>
+    
+
+  </div> 
+  <button class="carousel-control-prev" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" ></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+  
+</div>
+    `;
+    makeBanner(name,data);
+  
+  
+}
+
+
+// FOR TRENDING MOVIES BANNER
+const makeBanner = (name, data) => {
+  
+    const movieContainer = document.getElementById(name); 
+    //const item=data.results;
+   
+     data.results.forEach( (item,i) => {
+        //console.log(item)
+
+        //to check if poster is there or not
+        if(item.backdrop_path == null){
+            item.backdrop_path = item.poster_path;
+            if(item.backdrop_path == null){
+                return;
+            }
+        }
+
+        //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
+        if( movieContainer.innerHTML=''){
+            movieContainer.innerHTML = `
+            <div class="carousel-item active"  onclick="location.href = '/${item.id}'>
+          <img src="${img_url}${item.backdrop_path}" alt="">
+          <p class=" ">${item.title}</p>
+        </div>  
+        `;}
+
+       else{
+
+        movieContainer.innerHTML += `
+
+        <div class="carousel-item" onclick="location.href = '/${item.id}' >
+        <img src="${img_url}${item.backdrop_path}" alt="">
+        <p class=" ">${item.title}</p>
+      </div>
+
+        `;
+    }
+    
+        // if(i == data.results.length - 1){
+        //     setTimeout(() => {
+        //         makeSwipe();
+        //     }, 100);
+            
+        // }
+ 
+    
+    })
+    }

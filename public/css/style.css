@@ -277,11 +277,11 @@ input:focus,
 .pre-btn,
 .nxt-btn{
     position: absolute;
-    /* height: 200px;
-    top: 50%; */
+    height: 200px;
+    top: 50%; 
     transform: translateY(-50%);
     width: 2.5vw;
-    background: #181818;
+    background: #140101;
     border: none;
     outline: none;
     opacity: 0;
@@ -341,8 +341,8 @@ input:focus,
 
 .carousel{
     width: 100%;
-    height: 300px;
-    margin: 40px 0 0;
+    height: 450px;
+    margin-top: 40px ;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -351,6 +351,7 @@ input:focus,
 
 .carousel-container{
     width: 100%;
+    height: 400px;
     /* height: 500px; */
     display: flex;
     align-items: center;
@@ -368,21 +369,24 @@ input:focus,
 
 .banner{
     flex: 0 0 auto;
-    width: 500px;
+    flex-wrap:wrap;
+    width: 600px;
     border-radius: 2px;
     /* width: 94%; --displays opnly 1 movie but on te same container length*/
-    height: 280px;
+    height: 400px;
     text-align: center;
     margin-right: 1rem;
     cursor: pointer;
     position: relative;
 }
 .banner img{
-    width: 500px; 
+    width: 100%; 
+    height: 400px;
+    object-fit: cover;
 }
-.banner-title{
+.banner p{
     position: absolute;
-    bottom: 20px;
+    /* bottom: 20px; */
     width: 100%;
     height: 30px;
     line-height: 30px;
@@ -480,6 +484,7 @@ input:focus,
 
 
 @media (min-width: 641px) {
+    
     span.icon {display:inline-block}
     span.text {display:none}
    
@@ -495,8 +500,12 @@ input:focus,
     .movie img{
         object-fit: fit;
     }
+    .banner img{
+        object-fit: fit;
+    }
     .banner{
-        width: 300px ;
+        width: 250px ;
+        /* margin-right:2rem; */
     }
     /* .img{
         

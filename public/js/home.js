@@ -2,20 +2,6 @@
 const main = document.querySelector('.main');
 
 
-//TRENDING MOVIES 
-//FETCHING DATA USING URLSearchParams(TO ADD REQUIRED PARAMETERS)
-fetch(trending_movies_http + new URLSearchParams({
-    api_key:api_key
-}))
-.then(res => res.json())
-.then(data => 
-    {
-     //console.log(data)
-    //  makeDivEl( "trending",data);
-     makeCarousel( "trending",data);
-    })
-    .catch(err =>  console.log(err));
-
 
 
 //POPULAR MOVIES
@@ -45,6 +31,24 @@ fetch(top_rated_movies_http + new URLSearchParams({
    })
    .catch(err =>  console.log(err));
 
+
+
+
+//TRENDING MOVIES 
+//FETCHING DATA USING URLSearchParams(TO ADD REQUIRED PARAMETERS)
+fetch(trending_movies_http + new URLSearchParams({
+    api_key:api_key
+}))
+.then(res => res.json())
+.then(data => 
+    {
+     //console.log(data)
+    //  makeDivEl( "trending",data);
+     makeCarousel( "trending",data);
+    })
+    .catch(err =>  console.log(err));
+
+    
 
 //LIST OF GENRES NAME AND ID
 fetch(genres_list_http + new URLSearchParams({
@@ -79,6 +83,7 @@ const fetchMoviesListByGenres = (id, genres) => {
 }
 
 
+
 //MAKING DIV ELEMEMENT/CATEGORY
 const makeDivEl = (name,data) => {
     //USING TEMPLATE LITERALS/VARIABLES
@@ -91,7 +96,7 @@ const makeDivEl = (name,data) => {
     
     <h2 class="movie-heading">${name} Movies</h2>
     
-    <div class="movie-container" id="${name}">
+    <div class="movie-container swipe" id="${name}">
    
     </div>
     
@@ -118,11 +123,11 @@ const makeBox = (name, data) => {
     //const item=data.results;
     
     //FOR MOVIE SEARCH RESULTS------------
-    if(data.results.length ===0){
-      console.log("No Items Found")  
-      return
+    // if(data.results.length ===0){
+    //   console.log("No Items Found")  
+    //   return
       
-    }
+    // }
    
      data.results.forEach( (item,i) => {
         //console.log(item)
@@ -169,7 +174,7 @@ const makeCarousel = (name,data) => {
 
     <button class="pre-btn" id="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
     <h2 class="movie-heading">${name} Movies</h2>
-    <div class=" carousel-container" id="${name}">
+    <div class=" carousel-container swipe" id="${name}">
    
     </div>
     
@@ -204,7 +209,7 @@ const makeBanner = (name, data) => {
         movieContainer.innerHTML += `
         <div class="banner" onclick="location.href = '/${item.id}'">
             <img src="${img_url}${item.backdrop_path}" alt="">
-            <p class="banner-title">${item.title}</p>
+            <p class="movie-title">${item.title}</p>
         </div>
         `;
     
@@ -213,35 +218,9 @@ const makeBanner = (name, data) => {
         // console.log(data.results.length);
         if(i == data.results.length - 1){
             setTimeout(() => {
-               
-                    const conainter = document.querySelectorAll('.carousel-container');
-                    const nxtBtn = document.querySelectorAll('#n-btn');
-                    const preBtn = document.querySelectorAll('#p-btn');
-                
-                    
-                    conainter.forEach((item, i) => {
-                        
-                        //TO GET CONTAINER'S DIMENSION
-                        let containerSize = item.getBoundingClientRect();
-                        let containerWidth = containerSize.width;
-                        console.log(containerWidth);
-                        
-                        //INDIVIDUAL BUTTONS' EVENT LISTENER
-                        nxtBtn[i].addEventListener('click', () => {
-                            item.scrollLeft += containerWidth;
-                            console.log(containerWidth);
-                        })
-                
-                        preBtn[i].addEventListener('click', () => {
-                            item.scrollLeft -= containerWidth;
-                            console.log(containerWidth);
-                        })
-                    })
-                
+               makeSwipe();
             }, 100);     
         }
- 
-    console.log("pass");
     })
     }
   
