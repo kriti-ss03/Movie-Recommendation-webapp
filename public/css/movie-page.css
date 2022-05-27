@@ -48,20 +48,16 @@
     font-weight: bold;
 }
 
-.movie-info span.green{
-    color:lightgreen;
+.vote_average{
+    color:rgb(70, 69, 69)
 }
 
-.movie-info span.orange{
-    color:orange;
-}
-
-.movie-info span.red{
-    color:red;
+.vote_red{
+    color:#ff4c68;
 }
 
 
-/* RESPONSIOVE CSS */
+/* RECOMENDATION N TRAILER */
 
 #mainall, #videos{
     display:flex;
@@ -102,65 +98,9 @@ iframe{
     text-align:center;    
 }
 
-/* RESPONSIVE RECOMMENDATION */
-
-
-/* .heading{
-    font-size: 30px;
-    font-weight: 300;
-    margin-bottom: 20px;
-} */
-
-
-
-/* movie ->movieall */
-/* .movieall {
-    width: 300px;
-    margin: 1rem;
-    border-radius: 2px;
-    box-shadow: 0.2px 4px 5px rgba(43, 2, 2, 0.1);
-    position:relative;
-    overflow: hidden;
-}
-
-
-.movieall img{
-    width: 100%;
-    object-fit: cover;
-}
-
-.movieall p{
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    opacity: 0;
-}
-
-.movieall:hover p{
+/* .movieall:hover p{
     opacity: 1;
-} */
-.page{
-    /* display:flex;
-    flex-wrap: wrap;
-    justify-content: center; */
-    /* margin:auto; */
-    margin: 1rem auto;
-}
-.page.disabled{
-    cursor:not-allowed;
-    background-color:rgb(103, 103, 103);
-    border-color:black !important;
-}
-/* to remove shadow and line */
-.page.disabled:focus {
-    outline: none;
-  box-shadow: none;
-  }
+}  */
 
 /* .movieall:hover{
     outline:#fff;

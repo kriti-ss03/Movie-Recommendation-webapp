@@ -232,6 +232,7 @@ input:focus,
 
 .movie{
     flex: 0 0 auto;
+    /* width:24%; */
     width: 300px;
     border-radius: 2px;
     /* width: 94%; --displays opnly 1 movie but on te same container length*/
@@ -276,8 +277,8 @@ input:focus,
 .pre-btn,
 .nxt-btn{
     position: absolute;
-    height: 200px;
-    top: 50%;
+    /* height: 200px;
+    top: 50%; */
     transform: translateY(-50%);
     width: 2.5vw;
     background: #181818;
@@ -285,6 +286,8 @@ input:focus,
     outline: none;
     opacity: 0;
 }
+
+
 .pre-btn{
     left: -2.5vw;
     color:#fff;
@@ -451,6 +454,30 @@ input:focus,
     color:#ff4c68;
 }
 
+/* PAGINATION */
+.pagination{
+    display:flex;
+    margin:10px 30px;
+    align-items: center;
+    justify-content: center;
+    color:white;
+}
+
+.page{
+    margin: 1rem auto;
+}
+
+.page.disabled{
+    cursor:not-allowed;
+    background-color:rgb(103, 103, 103);
+    border-color:black !important;
+}
+
+.page.disabled:focus {
+    outline: none;
+  box-shadow: none;
+  }
+
 
 @media (min-width: 641px) {
     span.icon {display:inline-block}
@@ -462,11 +489,14 @@ input:focus,
     body{
         text-align:center;
     }
-    /* .movie {
+    .movie {
         width: 200px ;
-    } */
+    }
     .movie img{
         object-fit: fit;
+    }
+    .banner{
+        width: 300px ;
     }
     /* .img{
         

@@ -7,8 +7,8 @@ const load = document.getElementById('load')
 const current = document.getElementById('current')
 
 var currentPage = 1;
-// var nextPage = 2;
-// var prevPage = 3;
+var k=1;
+
 var loadPage=2;
 var lastUrl = '';
 var totalPages = 100;
@@ -22,12 +22,16 @@ function setGenre() {
   containerbtn.innerHTML=''
     genres.forEach((item) =>{
     containerbtn.innerHTML += `
-    <button class="genrebtn" id="${item.id}">${item.name}</button>
+    <button class="btn btn-danger genrebtn " id="${item.id}">${item.name}</button>
     `;
     })
 
     for(let i=0; i< genres.length ;i++){
    document.querySelectorAll(".genrebtn")[i].addEventListener("click",()=>{
+   
+    //TO  GET NEW DATA
+    mainall.innerHTML=` `
+
     // document.querySelector(".genrebtn").addEventListener("click",function(){
      if(selectedGenre.length == 0){
         //NO ELEMENT PRESENT
@@ -80,15 +84,20 @@ function clearBtn(){
     let clearBtn = document.getElementById('clear');
     
     if(clearBtn){
-        clearBtn.classList.add('focus')
+        clearBtn.classList.add('clearbtn')
     }else{       
         let clear = document.createElement('button');
-        clear.classList.add('genrebtn','focus');
+        clear.classList.add('btn','btn-secondary','clearbtn');
         clear.id = "clear";
         clear.innerText = 'Clear ❌';
         clear.addEventListener("click", () => {
             selectedGenre = [];
-            setGenre();            
+            setGenre(); 
+
+            //TO REMOVE MO MORE RESULTS
+            mainall.innerHTML=` `
+            
+
             getMovies( sort_http);
         })
         containerbtn.append(clear);
@@ -120,30 +129,16 @@ function getMovies(url) {
      console.log(data);
 
       if(data.results.length ==0){
+         //TO DISABLE BUTTON AND SEARCH 
+        document.querySelector("#load").classList.add('disabled');
         mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !<\h1>` ;
     }else{
         showMovies(data.results);
         currentPage = data.page;
         console.log(currentPage);
-            loadPage=currentPage+1;
-            // nextPage = currentPage + 1;
-            // prevPage = currentPage - 1;
-            totalPages = data.total_pages;
+        loadPage=currentPage+1;
+        totalPages = data.total_pages;
 
-
-
-            // if(currentPage <= 1){
-            //   prev.classList.add('disabled');
-            //   next.classList.remove('disabled')
-            // }else if(currentPage>= totalPages){
-            //   prev.classList.remove('disabled');
-            //   next.classList.add('disabled')
-            // }else{
-            //   prev.classList.remove('disabled');
-            //   next.classList.remove('disabled')
-            // }
-
-            //tagsEl.scrollIntoView({behavior : 'smooth'})
     }
     })
     .catch(err =>  console.log(err));
@@ -158,8 +153,8 @@ const showMovies = (data) =>{
     // mainall.innerHTML=` `
 // }
 
-        let container = document.querySelector('#mainall');
-        //running loop to create 16 movie cards
+let container = document.querySelector('#mainall');
+console.log(data);
         data.forEach( (item) => {
             // console.log(item)
             if(item.backdrop_path == null){
@@ -179,25 +174,11 @@ const showMovies = (data) =>{
     })
 }
 
-//------------------------------------------------
-
-
-// prev.addEventListener('click', () => {
-//     if(prevPage > 0){
-//         moreData(prevPage);
-//     }
-//   })
-  
-//   next.addEventListener('click', () => {
-//     //IF MORE PAGES EXIST THEN OLY
-//     if(nextPage <= totalPages){
-//       moreData(nextPage);
-//     }
-//   })
+//PAGINATION
   load.addEventListener('click', () => {
     //IF MORE PAGES EXIST THEN OLY
     if(loadPage <= totalPages){
-      moreData(loadPage);
+        moreData(loadPage);
     }
   })
 function  moreData(page){
@@ -227,4 +208,43 @@ function  moreData(page){
 
 
 
+//SEARCH 
+const buttonEl=document.querySelector("#search-btn");
+const inputEl=document.querySelector("#search-txt");
+
+buttonEl.onclick= (event) =>{
+       event.preventDefault();
+        //TO  GET NEW DATA
+    mainall.innerHTML=` `
+    
+      // location.href = '/search_http?query=${value}'
+     const value=inputEl.value;
+    //  if(value === " "){
+    //      console.log("no results");
+    //  }
+    console.log(value);
+    fetchSearch(value);
+}
+
+const fetchSearch = (value) => {
+     fetch(search_http + new URLSearchParams({
+            api_key: api_key,
+            //to get specific genre movies only
+            query:value
+      }))
+    .then(res => res.json())
+    .then(data => {
+        //console.log(data);
+        showMovies(data.results);
+    })
+    .catch(err =>  console.log(err));
+    
+    }
+
+    // movieContainer.innerHTML += `
+    // <div class="movie" onclick="location.href = '/${item.id}'">
+    //     <img src="${img_url}${item.backdrop_path}" alt="">
+    //     <p class="movie-title">${item.title}</p>
+    // </div>
+    // `;
 

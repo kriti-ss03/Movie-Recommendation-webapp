@@ -22,6 +22,8 @@ const setupMovieInfo = (data) => {
     const genres = document.querySelector('.genres');
     const des = document.querySelector('.des');
     const backdrop = document.querySelector('.movie-info');
+    const vote = document.querySelector('.vote');
+  
 
     title.innerHTML = movieName.innerHTML = data.title; 
     //TO GET YEAR
@@ -40,7 +42,20 @@ const setupMovieInfo = (data) => {
     if(data.adult == true){
         genres.innerHTML += ' | +18';
     }
-   
+
+//VOTE
+//<span class="${getColor(vote_average)}">${vote_average}</span>
+vote.innerHTML+=data.vote_average;
+// getColor(vote);
+
+// function getColor(vote) {
+//     if(vote>= 6){
+//         vote.classList.add('vote_red');
+//     }else{
+//         vote.classList.add('vote_grey');
+//     }
+// }
+
 //DESCRIPTION
     des.innerHTML = data.overview.substring(0, 200) + '...';
 //MOVIE BANNER

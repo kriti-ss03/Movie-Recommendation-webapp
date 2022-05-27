@@ -2,44 +2,6 @@
 const main = document.querySelector('.main');
 
 
-//SEARCH 
-const buttonEl=document.querySelector("#search-btn");
-const inputEl=document.querySelector("#search-txt");
-
-buttonEl.onclick= (event) =>{
-       event.preventDefault();
-      // location.href = '/search_http?query=${value}'
-     const value=inputEl.value;
-    //  if(value === " "){
-    //      console.log("no results");
-    //  }
-    console.log(value);
-
-    fetchSearch(value);
-}
-    const fetchSearch = (value) => {
-        fetch(search_http + new URLSearchParams({
-            api_key: api_key,
-            //to get specific genre movies only
-            query:value
-      }))
-    .then(res => res.json())
-    .then(data => {
-        //console.log(data);
-        makeDivEl("From Search", data);
-    })
-    .catch(err =>  console.log(err));
-    
-    }
-
-    // movieContainer.innerHTML += `
-    // <div class="movie" onclick="location.href = '/${item.id}'">
-    //     <img src="${img_url}${item.backdrop_path}" alt="">
-    //     <p class="movie-title">${item.title}</p>
-    // </div>
-    // `;
-
-
 //TRENDING MOVIES 
 //FETCHING DATA USING URLSearchParams(TO ADD REQUIRED PARAMETERS)
 fetch(trending_movies_http + new URLSearchParams({
@@ -49,6 +11,7 @@ fetch(trending_movies_http + new URLSearchParams({
 .then(data => 
     {
      //console.log(data)
+    //  makeDivEl( "trending",data);
      makeCarousel( "trending",data);
     })
     .catch(err =>  console.log(err));
@@ -205,12 +168,12 @@ const makeCarousel = (name,data) => {
     <div class="carousel" >
 
     <button class="pre-btn" id="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
-    <h2 class="movie-heading" id="n-btn">${name} Movies</h2>
+    <h2 class="movie-heading">${name} Movies</h2>
     <div class=" carousel-container" id="${name}">
    
     </div>
     
-    <button class="nxt-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    <button class="nxt-btn" id="n-btn"><i class="fa-solid fa-chevron-right"></i></button>
     
     </div>
     `;
@@ -266,10 +229,12 @@ const makeBanner = (name, data) => {
                         //INDIVIDUAL BUTTONS' EVENT LISTENER
                         nxtBtn[i].addEventListener('click', () => {
                             item.scrollLeft += containerWidth;
+                            console.log(containerWidth);
                         })
                 
                         preBtn[i].addEventListener('click', () => {
                             item.scrollLeft -= containerWidth;
+                            console.log(containerWidth);
                         })
                     })
                 
