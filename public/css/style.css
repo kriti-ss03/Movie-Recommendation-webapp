@@ -16,20 +16,27 @@ color : #f0f0f3;
  *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body{
-    width: 100%;
-    position: relative;
-    background:#191414;
-    font-family:Montserrat;
+    /* width: 100%;
+    position: relative; */
+  background: #040000;
+  background-image: -webkit-linear-gradient(top, #040000, #191414);
+  background-image: -moz-linear-gradient(top, #040000, #191414);
+  background-image: -ms-linear-gradient(top, #040000, #191414);
+  background-image: -o-linear-gradient(top, #040000, #191414);
+  background-image: linear-gradient(to bottom, #040000, #191414);
+
+    /* font-family:Montserrat; */
     line-height:1.4
 }
 
-/* .container-fluid{
-    padding: 3%;
-} */
+/* LANDING PAGE */
+.bg-lp-img{
+    opacity:0.5;
+}
+
 /* .navbar{
     width: 100%;
     height: 60px;
@@ -42,6 +49,41 @@ body{
     align-items: center;
 } */
 
+#title{
+    position:relative;
+    /* font-weight:normal; */
+}
+h1{
+    text-transform: capitalize;
+    font-family: Montserrat-Black,sans-serif;
+    color: white;
+    /* margin:100px auto; */
+    font-size:3.5rem;
+    line-height:1.2;
+}
+h2{
+    text-transform: capitalize;
+    color: white;
+    /* font-weight: 900;
+    font-size: 50px; */
+
+    font-size: 2.5rem;
+    font-weight:bold; 
+    margin-bottom: 20px;
+}
+h3{
+    font-family: Montserrat-Bold,sans-serif;
+    /* AS BOLD WORD IS NOT WORKING */
+    font-weight:bold; 
+    font-size:2.5rem;
+
+}
+
+.info{
+    width: 50%;
+    font-size: 20px;
+    margin-top: 10px;
+}
 
 
 /* Navbar styling */
@@ -49,22 +91,16 @@ body{
     width: 100%;
     height: 60px;
     position: fixed;
+    /* opacity:0.8; */
     top: 0;
     z-index: 9;
     padding: 0 2.5vw;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* margin:0; */
-    /* display:flex; */
-    /* justify-content:flex-end; */ 
-    /* align-items: center; */
-    background-color:#000;
-    /* padding-bottom: 10 rem; */
-    /* position:fixed; */
+}
+.navbar .navbar-fixed-top .navbar-dark{
+    background-color: rgba(204, 22, 22, 1) !important;
 }
 .navbar-brand{
-    font-family:'Courier New', Courier, monospace;
+    font-family: Montserrat;
     font-size: 2em;
     font-weight:bold;
 }
@@ -102,14 +138,15 @@ body{
 .navbar-nav > li > .dropdown-menu a:hover { background-color: #E60023 ;}
 
 .search{
-    outline:none!important;
-    -webkit-appearance:none;
-    box-shadow: none !important;
+outline:none!important;
+-webkit-appearance:none;
+box-shadow: none !important;
 background-color: transparent;
 color:#fff;
 font-family:inherit;
 font-size:1rem;
 }
+
 /* #search-txt{
     outline:none!important;
 } */
@@ -146,36 +183,23 @@ input:focus,
 .main{
     position:relative;
     overflow: hidden;
+    display:flex;
+    flex-wrap: wrap;
     margin-top: 60px;
     width: 100%;
     padding: 40px 2.5vw;
     color: #fff;
 }
 
-/* carousel at top */
-.carousel-img{
-    height: 200px;
-    width: 200px;
-    object-fit: cover;
-}
-
-.heading{
-    text-transform: capitalize;
-    font-weight: 900;
-    font-size: 50px;
-}
-
-.info{
-    width: 50%;
-    font-size: 20px;
-    margin-top: 10px;
-}
 
 .movies{
     width: 100%;
     height: 250px;
     margin-top: 40px;
     position: relative;
+    
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .movie-heading{
@@ -189,6 +213,10 @@ input:focus,
     width: 100%;
     height: 200px;
     display: flex;
+   
+ /* flex-wrap: wrap;
+    justify-content: center; */
+
     align-items: center;
     overflow-x: auto;
     overflow-y: hidden;
@@ -204,11 +232,12 @@ input:focus,
 
 .movie{
     flex: 0 0 auto;
-    width: 24%;
+    width: 300px;
+    border-radius: 2px;
     /* width: 94%; --displays opnly 1 movie but on te same container length*/
     height: 200px;
     text-align: center;
-    margin-right: 12px;
+    margin-right: 1rem;
     cursor: pointer;
     position: relative;
 }
@@ -217,17 +246,21 @@ input:focus,
 .movie img{
     width: 100%;
     height: 200px;
-    /* height: 170px; */
     object-fit: cover;
 }
 
 .movie p{
-    font-family:'Courier New', Courier, monospace;
-    height: 20px;
-    text-transform: capitalize;
-    overflow: hidden;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    opacity: 0;
 }
-.movie p{
+/* .movie p{
     position: absolute;
     bottom: 20px;
     width: 100%;
@@ -236,7 +269,8 @@ input:focus,
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
     opacity: 0;
-}
+} */
+
 
 /* Scroll Buttons */
 .pre-btn,
@@ -275,7 +309,130 @@ input:focus,
     color:grey;
 }
 
-/* footer */
+
+
+
+/* FOR CAROUSEL/BANNER */
+
+/* .banner-img{
+    width:10%;
+    border-radius:100%;
+    margin:20px;
+} */
+
+
+/* .carousel-item{
+    padding: 7% 15%;
+}
+.test-img{
+    width:10%;
+    border-radius:100%;
+    margin:20px;
+
+} */
+
+
+
+
+
+
+.carousel{
+    width: 100%;
+    height: 300px;
+    margin: 40px 0 0;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.carousel-container{
+    width: 100%;
+    /* height: 500px; */
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+}
+
+
+/* SCROLLBAR UPDATE */
+/* using cointaier!! to remove scrollbar */
+.carousel-container::-webkit-scrollbar{
+    display: none;
+}
+
+.banner{
+    flex: 0 0 auto;
+    width: 500px;
+    border-radius: 2px;
+    /* width: 94%; --displays opnly 1 movie but on te same container length*/
+    height: 280px;
+    text-align: center;
+    margin-right: 1rem;
+    cursor: pointer;
+    position: relative;
+}
+.banner img{
+    width: 500px; 
+}
+.banner-title{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: rgb(197, 56, 56);
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+/* FOR OTHER CARDS -- CARD NO. DEC WITH SIZE */
+.movieall {
+    /* width: 24%; */
+    width: 300px;
+    margin: 2vh;
+    border-radius: 2px;
+    box-shadow: 0.2px 4px 5px rgba(43, 2, 2, 0.1);
+    position:relative;
+    overflow: hidden;
+}
+
+
+.movieall img{
+    width: 100%;
+    /* height: 200px; */
+    /* height: 170px; */
+    object-fit: cover;
+
+}
+
+.movieall p{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    opacity: 0;
+}
+
+.movieall:hover p{
+    opacity: 1;
+}
+
+
+/* FOOTER */
 #footer{
     padding: 4% 15%;
     background-color: #121212;
@@ -304,30 +461,21 @@ input:focus,
 @media(max-width: 1028px){
     body{
         text-align:center;
-
     }
-    .img{
+    /* .movie {
+        width: 200px ;
+    } */
+    .movie img{
+        object-fit: fit;
+    }
+    /* .img{
         
         position:static;
         transform:rotate(0deg);
-    }
+    } */
     span.icon {display:none}
     span.text {display:inline-block}
    
 }
 
-/* LANDING PAGE */
-.bg-lp-img{
-    opacity:0.5;
-}
 
-/* .profile{
-
-    background: #191414;
-  background-image: -webkit-linear-gradient(top, #191414, #FCFFFC);
-  background-image: -moz-linear-gradient(top, #191414, #FCFFFC);
-  background-image: -ms-linear-gradient(top, #191414, #FCFFFC);
-  background-image: -o-linear-gradient(top, #191414, #FCFFFC);
-  background-image: linear-gradient(to bottom, #191414, #FCFFFC);
-   
-} */

@@ -17,20 +17,30 @@
             <input type="text" placeholder="Search" id="search" class="search">
         </form>
     </header> -->
+<div class="container-fluid">
+    <div class="input-group rounded">
+      <input type="search" class="form-control rounded search" id="search-txt" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <button type="button" id="search-btn" class="btn btn-primary nav-btn btn-danger">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+</div>
 
+<div class="container-fluid" >
+    <h1 id="#genre">See by Gnere</h1>
     <div id="genrebtns">
         <!-- <div calss="tag" id="genre_id">ACTION</div> -->
         <button class="genrebtn">Action</button>
     </div>
-
+</div>
     <hr>
 
 
       </div>
     <main id="mainall">
-        <div calss="movieall">
+        <!-- <div calss="movieall">
        <img src="${poster_path? IMG_URL+poster_path: "" }" alt="${title}">
-            <h3>${title}</h3>
+            <h3>${title}</h3> -->
         </div>
 
     </main>

@@ -1,0 +1,31 @@
+h1{
+    font-family: Montserrat-Black,sans-serif;
+    font-weight:900; 
+    color: white;
+    margin:50px auto;
+    font-size:3.5rem;
+    line-height:1.2;
+}
+
+h2{
+    font-family: Montserrat-Bold,sans-serif;
+    /* AS BOLD WORD IS NOT WORKING */
+    font-weight:bold; 
+    font-size:2.5rem;
+
+}
+
+h3{
+    font-family: Montserrat-Bold,sans-serif;
+    font-weight:bold; 
+    font-size: 2srem;
+    /* margin: 10px auto; */
+}
+p{
+    font-family: Montserrat,sans-serif;
+    font-weight:500;
+    font-size:0.8rem;
+    color:#8f8f8f;
+    /* margin: 5px auto; */
+    /* width:40% */
+}

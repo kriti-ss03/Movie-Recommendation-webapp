@@ -49,10 +49,12 @@ fetch(trending_movies_http + new URLSearchParams({
 .then(data => 
     {
      //console.log(data)
-     makeDivEl( "trending",data);
+     makeCarousel( "trending",data);
     })
     .catch(err =>  console.log(err));
- 
+
+
+
 //POPULAR MOVIES
 fetch(popular_movies_http + new URLSearchParams({
     api_key:api_key
@@ -124,7 +126,7 @@ const makeDivEl = (name,data) => {
     <button class="pre-btn"><i class="fa-solid fa-chevron-left"></i></button>
 
     
-    <h1 class="movie-heading">${name} Movies</h1>
+    <h2 class="movie-heading">${name} Movies</h2>
     
     <div class="movie-container" id="${name}">
    
@@ -193,7 +195,92 @@ const makeBox = (name, data) => {
     }
 
 
+  
+  
+//MAKING CAROUSEL
+const makeCarousel = (name,data) => {
+    //USING TEMPLATE LITERALS/VARIABLES
+     //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
+    main.innerHTML += `
+    <div class="carousel" >
+
+    <button class="pre-btn" id="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
+    <h2 class="movie-heading" id="n-btn">${name} Movies</h2>
+    <div class=" carousel-container" id="${name}">
    
+    </div>
+    
+    <button class="nxt-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    
+    </div>
+    `;
+    makeBanner(name,data);
+  
+  
+}
+
+
+// FOR TRENDING MOVIES BANNER
+const makeBanner = (name, data) => {
+  
+    const movieContainer = document.getElementById(name); 
+    //const item=data.results;
+   
+     data.results.forEach( (item,i) => {
+        //console.log(item)
+
+        //to check if poster is there or not
+        if(item.backdrop_path == null){
+            item.backdrop_path = item.poster_path;
+            if(item.backdrop_path == null){
+                return;
+            }
+        }
+
+        //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
+        movieContainer.innerHTML += `
+        <div class="banner" onclick="location.href = '/${item.id}'">
+            <img src="${img_url}${item.backdrop_path}" alt="">
+            <p class="banner-title">${item.title}</p>
+        </div>
+        `;
+    
+        // CARD SLIDER CODE; WORKS ONLY AFTER CARDS ARE MADE
+        // console.log(data);
+        // console.log(data.results.length);
+        if(i == data.results.length - 1){
+            setTimeout(() => {
+               
+                    const conainter = document.querySelectorAll('.carousel-container');
+                    const nxtBtn = document.querySelectorAll('#n-btn');
+                    const preBtn = document.querySelectorAll('#p-btn');
+                
+                    
+                    conainter.forEach((item, i) => {
+                        
+                        //TO GET CONTAINER'S DIMENSION
+                        let containerSize = item.getBoundingClientRect();
+                        let containerWidth = containerSize.width;
+                        console.log(containerWidth);
+                        
+                        //INDIVIDUAL BUTTONS' EVENT LISTENER
+                        nxtBtn[i].addEventListener('click', () => {
+                            item.scrollLeft += containerWidth;
+                        })
+                
+                        preBtn[i].addEventListener('click', () => {
+                            item.scrollLeft -= containerWidth;
+                        })
+                    })
+                
+            }, 100);     
+        }
+ 
+    console.log("pass");
+    })
+    }
+  
+
     
 
 

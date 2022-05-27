@@ -1,4 +1,4 @@
-@media (min-width: 1025px) {
+/* @media (min-width: 1025px) {
     .h-custom {
     height: 100vh !important;
     }
@@ -15,4 +15,45 @@
     .pressed {
         box-shadow: 0 0 20px white;
         background-color: grey;
-      }
+      } */
+
+      body{
+        font-family:Montserrat;
+        line-height:1.4;
+        background-color: rgb(54, 14, 14);
+        /* background-color:#4cffd8; */
+       
+    }
+    .suggest_me{
+        padding: 5vw;
+    }
+    
+    #title{
+        
+        font-family: ubuntu,sans-serif;
+        position:relative;
+        /* font-weight:normal; */
+    }
+    
+    
+    
+    .img{
+        padding-left: 100px;
+        width:70%;
+        /* transform:rotate(20deg); */
+    }
+    
+    
+/* PRICING SECTION */
+#pricing{
+  background-color: rgb(54, 14, 14);
+  padding: 7% 15%;
+  text-align:center;
+}
+/* .card{ 
+  will give margin to intrA cards also
+  margin: 2%;
+} */
+.pricecol{
+   padding: 2% 3%;
+}

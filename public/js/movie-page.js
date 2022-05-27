@@ -111,7 +111,7 @@ fetch( url + new URLSearchParams({
     console.log(data);  
 
     currentPage = data.page;
-    console.log(currentPage);
+    //console.log(currentPage);
     loadPage=currentPage+1;
     totalPages = data.total_pages;
     if(currentPage>= totalPages){
@@ -119,7 +119,7 @@ fetch( url + new URLSearchParams({
     load.classList.add("disabled");
     }
 
-    console.log(`${movie_id}`);
+    //console.log(`${movie_id}`);
     // let container = document.querySelector('.recommendations-container');
 
      let container = document.querySelector('#mainall');

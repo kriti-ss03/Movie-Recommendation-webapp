@@ -1,6 +1,3 @@
-.body{
-    color: rgb(0, 0, 0);
-}
 
 .movie-info{
     width: 100%;
@@ -66,52 +63,58 @@
 
 /* RESPONSIOVE CSS */
 
-.trailer-container{
-    /* display:flex;
+#mainall, #videos{
+    display:flex;
     flex-wrap: wrap;
-    justify-content: center; */
-    color: #fff;
-    padding: 5vw 5vw 0;
+    justify-content: center;
+    /* background-color: #fff; */
+    /* justify-content: left;
+    margin: 0 4vw; */
 }
 
-
-
-.heading{
-    font-size: 30px;
-    font-weight: 300;
-    margin-bottom: 20px;
-}
-
-iframe{
-    width: 400px;
-    height: 200px;
-}
-
-/* RESPONSIVE RECOMMENDATION */
-.recommendations h1{
+.recommendations h2,.videos h2{
     color: #fff;
     padding: 5vw 8vw 0;
+    text-align:center;
 }
 
-.recommendations-container{
-    
-    /* margin: 1rem;
-    border-radius: 3px;
-    box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
-    position:relative;
-    overflow: hidden;  */
-    width: 100%;
+.trailer-container,.recommendations-container{
+     width: 100%;
+     align-items: center;
     display: flex;
-    flex-wrap: wrap;
-}
-#mainall{
-    display:flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+.trailer-container{
+    margin: 2vw 7vw 0;
+}
+
+
+iframe{
+    width: 300px;
+    /* height: 200px; */
+    margin: 2vh;
+    border-radius: 2px;
+    box-shadow: 0.2px 4px 5px rgba(43, 2, 2, 0.1);
+    position:relative;
+    overflow: hidden;
+    text-align:center;    
+}
+
+/* RESPONSIVE RECOMMENDATION */
+
+
+/* .heading{
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 20px;
+} */
+
+
+
 /* movie ->movieall */
-.movieall {
+/* .movieall {
     width: 300px;
     margin: 1rem;
     border-radius: 2px;
@@ -123,8 +126,6 @@ iframe{
 
 .movieall img{
     width: 100%;
-    /* height: 200px; */
-    /* height: 170px; */
     object-fit: cover;
 }
 
@@ -142,7 +143,7 @@ iframe{
 
 .movieall:hover p{
     opacity: 1;
-}
+} */
 .page{
     /* display:flex;
     flex-wrap: wrap;
