@@ -59,7 +59,7 @@
 
 /* RECOMENDATION N TRAILER */
 
-#mainall, #videos{
+ #videos{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -74,17 +74,16 @@
     text-align:center;
 }
 
-.trailer-container,.recommendations-container{
+.trailer-container{
      width: 100%;
      align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
 
-.trailer-container{
     margin: 2vw 7vw 0;
 }
+
 
 
 iframe{

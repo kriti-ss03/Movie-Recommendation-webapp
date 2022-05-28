@@ -62,7 +62,7 @@ function setGenre() {
  }
 }  
 
-
+//HIGHLIGHTING SELECTED BUTTON
 function activeSelection() {
     //REMOVING CSS
     const sbtns = document.querySelectorAll('.genrebtn');
@@ -116,7 +116,7 @@ function clearBtn(){
     }
 }
 
-
+//FETCHING DATA
 getMovies(sort_http);
 function getMovies(url) {
     lastUrl = url;
@@ -129,10 +129,11 @@ function getMovies(url) {
      console.log(data);
 
       if(data.results.length ==0){
-         //TO DISABLE BUTTON AND SEARCH 
-        document.querySelector("#load").classList.add('disabled');
+         //TO DISABLE BUTTON AND DISPLAY TEXT
+        document.querySelector("#load").classList.add('dead');
         mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !<\h1>` ;
     }else{
+
         showMovies(data.results);
         currentPage = data.page;
         console.log(currentPage);
@@ -147,14 +148,15 @@ function getMovies(url) {
     
  //DISPLAY MOVIE IN CARDS   
 const showMovies = (data) =>{
-    // TO LOAD WITH BUTTONS
-    
-    // if(load more key not pressed ){
-    // mainall.innerHTML=` `
-// }
+
+    if(load.classList.contains('dead')){
+      console.log("hata denge isko");
+      load.classList.remove('dead');
+    }
 
 let container = document.querySelector('#mainall');
 console.log(data);
+
         data.forEach( (item) => {
             // console.log(item)
             if(item.backdrop_path == null){
@@ -213,8 +215,10 @@ const buttonEl=document.querySelector("#search-btn");
 const inputEl=document.querySelector("#search-txt");
 
 buttonEl.onclick= (event) =>{
-       event.preventDefault();
-        //TO  GET NEW DATA
+    // SO THAT OUR TEXT DON'T GO
+    event.preventDefault();
+    
+       //TO  GET NEW DATA
     mainall.innerHTML=` `
     
       // location.href = '/search_http?query=${value}'
@@ -234,17 +238,21 @@ const fetchSearch = (value) => {
       }))
     .then(res => res.json())
     .then(data => {
-        //console.log(data);
-        showMovies(data.results);
+
+        //TO CHECK IF RESULTS ARE THERE OR NOT
+        if(data.results.length ==0){
+           //TO DISABLE BUTTON AND DISPLAY TEXT
+          document.querySelector("#load").classList.add('dead');
+          mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !<\h1>` ;
+      }else{
+          showMovies(data.results);
+          currentPage = data.page;
+          console.log(currentPage);
+          loadPage=currentPage+1;
+          totalPages = data.total_pages;
+      }   
     })
-    .catch(err =>  console.log(err));
-    
+    .catch(err =>  console.log(err));  
     }
 
-    // movieContainer.innerHTML += `
-    // <div class="movie" onclick="location.href = '/${item.id}'">
-    //     <img src="${img_url}${item.backdrop_path}" alt="">
-    //     <p class="movie-title">${item.title}</p>
-    // </div>
-    // `;
-
+    

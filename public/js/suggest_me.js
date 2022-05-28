@@ -1,150 +1,141 @@
-let sp_movie_http="https://api.themoviedb.org/3/discover/movie?";
-//https://api.themoviedb.org/3/discover/movie?sort_by=release_date.desc&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31";
 
+const main = document.getElementById('mainall');
 const rating_container = document.querySelector('.rating-container');
+//URL from Postman based on popularity, vote-count, year of release and language 
+//GENRES ARRAY based on Age group- 1) Kids= Animation n Family 2)Adults= Top 5 Genres as per google and after studying data= Action,Comedy,Romance,Adventure,Mystery
 
 
+let genresnow=[];
+let langnow=[];
 
-//let selectedAge=[];
+function getAge(id){
 
-getChoice();
-function getChoice(){
+    if(id=="kid"){
+        console.log(id);
+       genresnow=[];
+      genresnow.push(genres[2]);
+      genresnow.push(genres[8]);
 
-for(let i=0; i<2 ;i++){
-    document.querySelectorAll(".choicebtn")[i].addEventListener("click",()=>{
-    
-
-    if(i==0){
-        // selectedAge="<15";
-        // selectedAge.push("kid");
-        console.log("YOUNG");
-        getChoiceA();
     }
     else{
-        //selectedAge.push("adult");
+        console.log(id);
         console.log("ADULT");
-        getChoiceB();
-    }  
-  
+        genresnow=[];
+        //getChoiceB();
+        genresnow.push(genres[0]);
+        genresnow.push(genres[3]);
+        genresnow.push(genres[13]);
+        genresnow.push(genres[1]);
+        genresnow.push(genres[12]);
 
-})
-
-}}
-
-
-
+    }
+    //activeSelection()
+    //console.log(genresnow);
+}
 
 
-//FOR 10-30
-//KIDS
-//=====================3 cards only-- animation music action
-// let genre1=["Animation", "Fantasy","Family", "Music"];
+function getLang(id){
+    langnow=[];
 
-//except animation n fantasy
-//MIDDGROUP
-//let genresTop=["Drama","Comedy" ,"Action","Thriller","Romance","Science Fiction"];
+if (id=="hi"){
+   // console.log(id);
+    langnow.push(id);
+   // document.querySelector("id").classList.toggle("focus");
+    
+    if(genresnow.length==0)
+        alert("Choose Age Group First and then select Language");
+    
+    else
+    combine(hindi_sort_url);
 
-// -----------------------------FOR ALL AGE GROUPS-------------------------
-//BUILDING 3 CARTDS -> 3 GENRE ARRAY OF SIMILAR TYPE
+}
+else{
+    //console.log(id);
+    langnow.push(id);
+    if(genresnow.length==0)
+     alert("Choose Age Group First and then select Language");
 
-// let genre1=["Drama"];
-// let genre2=[]
-// let genre2=[ "Action", "Adventure","Thriller","Horror"];
-// let genre3=["Science Fiction","Documentary", "TV Movie", "Mystery"];
-let genresTop=[
-{
-    "id": 28,
-    "name": "Action"
-  },
-  {
-    "id": 35,
-    "name": "Comedy"
-  },
-  {
-    "id": 18,
-    "name": "Drama"
-  },
-  {
-    "id": 10749,
-    "name": "Romance"
-  },
-  {
-    "id": 878,
-    "name": "Science Fiction"
-  },
-  {
-    "id": 53,
-    "name": "Thriller"
-  }]
+    else
+     combine(eng_sort_url);
+}
+console.log(genresnow);
+//activeSelection()
+}
+
+
+//HIGHLIGHTING SELECTED BUTTON --->ID PASS KARNI H ; REMOVIE BHI KARNA HOGA PHIR
+//TOGGLE
+// function activeSelection() {
+//     //REMOVING CSS
+//     const sbtns = document.querySelectorAll('.choicebtn');
+//     sbtns.forEach(choicebtn => {
+//         choicebtn.classList.remove('focus')
+//     })
+
+//     //ADDING CSS
+//     if(selectedGenre.length !=0){   
+//         selectedGenre.forEach(id => {
+//             const activeBtn = document.getElementById(id);
+//             activeBtn.classList.add('focus');
+//         })
+//     }
+// }
+
+
 
 let filteredItems=[];
 let n=Math.random() * 200 +1;
 
-const getChoiceB=( ) =>{
- genresTop.forEach(item =>{
-     filteredItems=[]
-     n++;
-    fetchMoviesListByGenres("53", "Thriller");
-})
-  }
+// const getChoiceB=( ) =>{
+//  genresTop.forEach(item =>{
+//      filteredItems=[]
+//      n++;
+//     fetchMovieNow();
+// })
+//   }
+const combine=(url) => {
+   genresnow.forEach(item =>{
+    //    console.log("shoot");
+    //    console.log(url);
+    //    console.log(item);
+       fetchMovieNow(url,item);
+   })
+}
 
-const fetchMoviesListByGenres = (id, genres) => {
-    fetch(movie_genres_http + new URLSearchParams({
+const fetchMovieNow = (urlNow, genreItem) => {
+    // filteredItems=[];
+    // console.log(genreItem.id);
+    fetch(urlNow + new URLSearchParams({
         api_key: api_key,
-        with_genres: id,
-        page: n
+        with_genres:genreItem.id
+        // page: n
           }))
 .then(res => res.json())
 .then(data => {
-    //console.log(data);
-    sortData(data,id);
-    //makeDivEl(`${genres}`, data);
+  //console.log(data);
+   
+
+    data.results.forEach( (item) => {
+        filteredItems.push(item);
+    })
+
+ let k=Math.floor(Math.random() * filteredItems.length/2)*2;
+    console.log(k)
+    makeRatingCard(filteredItems[k],genreItem.id);
+    // makeRatingCard(data, genreItem.id)
+
 })
 .catch(err =>  console.log(err));
 
 }
 
-//CHECKING SELECTED MOVIES' VOTE COUNT, VOTE-AVG AND RELEASE DATE OF THE CARD MOVIES 
-const sortData = (data,NUMBER) => {
-    
-    //making container--TO GET NEW CONATINER FOR EACH MOVIE--ONE CONTAINER FOR EACH gmdata
-    //makeRatingCard(NUMBER);
-   console.log(data);
-     data.results.forEach( (item) => {   
-           
-           if(item.original_language ="en"){
-           //vote count n rating
-           if( item.vote_count>"1000" && item.vote_average>"6"){
-           //year 
-                      console.log( item);
-                      filteredItems.push(item);
-                   
-           }
-       }
-       else{
-           //vote count
-           if( item.vote_count>"300" && item.vote_average>"5"){
-               //year    
-                       console.log("hi");
-                       filteredItems.push(item);
-                       //makeCard(item, NUMBER);  
-               }
-           }
-          
-           
-       }) 
 
-       //console.log(data);
-       console.log("hoi");
-
-       //TO GET ONLY RANDOM ITEM'S DATA AND NOT PROTOTYPE
-       let k=Math.floor(Math.random() * filteredItems.length/2)*2;
-       console.log(k)
-       makeRatingCard(filteredItems[k],NUMBER);
-   }
    
 const makeRatingCard= (item,genre_id )=> {
-    console.log(filteredItems);
+    console.log("FILTERED ITEMS->")
+console.log(filteredItems);
+
+    // /console.log(filteredItems);
     console.log(item)
     console.log("aagye");
     if(item.backdrop_path == null){
@@ -156,16 +147,98 @@ const makeRatingCard= (item,genre_id )=> {
     rating_container.innerHTML+=
 `<div class="pricecol col-lg-4 col-md-6">
 <div class="card">
-    <div class="card-header">
+    <div class="card-header" >
                 <h3>${item.title}</h3> 
               </div>
             <div class="card-body">     
-            <img src="${img_url}${item.backdrop_path}"alt="">
+            <img src="${img_url}${item.backdrop_path}"alt=""  onclick="location.href = '/${item.id}'">
+            <p class="">${item.overview.substring(0, 200) + '...'}</p>
     <input type="text" name="movie1" placeholder="rate out of 5">
    </div>
    </div>
    </div>`;
 
+   filteredItems=[];
+   console.log(filteredItems);
+   console.log("END ");
+}
+
+//SUGGESTIONS FROM SELECTED BUTTONS
+
+
+
+//SUGGESTIONS FROM CARD RATING
+getSuggestions=(movie_id,lang) =>{
+url=`${movie_details_http}${movie_id}/recommendations?`;
+getMovies=""
+}
+
+
+ //DISPLAY MOVIE    
+ const showMovies = (data) =>{
+
+    mainall.innerHTML=` `
+
+    if(load.classList.contains('dead')){
+      load.classList.remove('dead');
+    }
+
+let container = document.querySelector('#mainall');
+console.log(data);
+
+        data.forEach( (item) => {
+            // console.log(item)
+            if(item.backdrop_path == null){
+                item.backdrop_path = item.poster_path;
+                if(item.backdrop_path == null){
+                    return;
+                }
+            }
+            
+
+        container.innerHTML += `
+        <div class="movieall" onclick="location.href = '/${item.id}'">
+            <img src="${img_url}${item.backdrop_path}" alt="">
+            <p class="movie-title">${item.title}</p>
+        </div>
+        `;
+    })
+}
+
+
+
+//FOR PAGINATION
+
+load.addEventListener('click', () => {
+    //IF MORE PAGES EXIST THEN OLY
+    if(loadPage <= totalPages){
+      moreData(loadPage);
+    }
+  })
+function  moreData(page){
+    let urlSplit = lastUrl.split('?');
+    console.log("yoo");
+    //AFTER SPLITTING BASE URL+ QUERY PARAMS
+    let queryParams = urlSplit[1].split('&');
+    console.log(queryParams);
+    //TO GET PAGENO --2ND LAST ELEMENT
+    let key = queryParams[queryParams.length -2].split('=');
+    
+    //CHECKING IF THERE IS PAGE OR NOT IN THE API
+    if(key[1] != 'page'){
+      let url = lastUrl + 'page='+ page  + '&';
+      //'&api_key=${api_key}'
+      getMovies(url);
+    }else{ 
+      //FOR OTHER PAGES
+      key[1] = page.toString();
+      let a = key.join('=');
+      queryParams[queryParams.length -1] = a;
+      //JOINING QUERY PARAMS TO STRING
+      let b = queryParams.join('&');
+      let url = urlSplit[0] +'?'+ b;
+      getMovies(url);
+    }
 }
 
 
@@ -173,10 +246,45 @@ const makeRatingCard= (item,genre_id )=> {
 
 
 
+/////////////////////////////
 
+// //CHECKING SELECTED MOVIES' VOTE COUNT, VOTE-AVG AND RELEASE DATE OF THE CARD MOVIES 
+// const sortData = (data,NUMBER) => {
+    
+//     //making container--TO GET NEW CONATINER FOR EACH MOVIE--ONE CONTAINER FOR EACH gmdata
+//     //makeRatingCard(NUMBER);
+//    console.log(data);
+//      data.results.forEach( (item) => {    
+//            if(item.original_language ="en"){
+//            //vote count n rating
+//            if( item.vote_count>"1000" && item.vote_average>"6"){
+//            //year 
+//                       console.log( item);
+//                       filteredItems.push(item);
+                   
+//            }
+//        }
+//        else{
+//            //vote count
+//            if( item.vote_count>"300" && item.vote_average>"5"){
+//                //year    
+//                        console.log("hi");
+//                        filteredItems.push(item);
+//                        //makeCard(item, NUMBER);  
+//                }
+//            }
+          
+           
+//        }) 
 
+//        //console.log(data);
+//        console.log("hoi");
 
-
+//        //TO GET ONLY RANDOM ITEM'S DATA AND NOT PROTOTYPE
+//        let k=Math.floor(Math.random() * filteredItems.length/2)*2;
+//        console.log(k)
+//        makeRatingCard(filteredItems[k],NUMBER);
+//    }
 
 
 

@@ -24,6 +24,9 @@
         /* background-color:#4cffd8; */
        
     }
+    h1{
+      color:antiquewhite;
+    }
     .suggest_me{
         padding: 5vw;
     }
@@ -52,3 +55,4 @@
 .pricecol{
    padding: 2% 3%;
 }
+/* NEW CSS----------- */

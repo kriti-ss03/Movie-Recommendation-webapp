@@ -3,29 +3,40 @@
 <!-- STYLESHEET -->
 <!-- <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/movie-page.css"> -->
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/suggest_me.css">
 
-<%- include("partials/navbar") %>
+
 
 
 
  
 <section id="title">
     <div class="container-fluid suggest_me">
+ 
+      <h1>Select.Search.Shoot.</h1>
 
         <!-- Title -->
       <div class="row">   
         <div class="col-lg-6 col-sm-12">
-          <h1>Play Now</h1>
-          <button type="button" class="btn btn-dark btn-lg choicebtn" id="kid"> AGE < 15 </button>
-          <button type="button" class="btn btn-outline-light btn-lg choicebtn" id="adult">AGE >15 </button>
+          <h2>Choose Age Group</h2>
+          <button type="button" class="btn btn-danger btn-lg choicebtn" id="kid" onClick="getAge(this.id)">AGE < 15</button>
+          <button type="button" class="tbtn btn-danger btn-lg choicebtn" id="adult" onClick="getAge(this.id)">AGE > 15</button>
         </div>
         <div class="col-lg-6">
-          <img class="img" src="img/screen.jpg" alt="iphone-mockup">
+          <!-- <img class="img" src="img/screen.jpg" alt="iphone-mockup">
+         -->
+
+         <h2>Choose Language</h2>
+          <button type="button" class="btn btn-danger btn-lg choicebtn" id="hi" onClick="getLang(this.id)">INDIE</button>
+          <button type="button" class="btn btn-danger btn-lg choicebtn" id="en" onClick="getLang(this.id)">WESTERN </button>
         </div>
       </div>
- 
+      <div class="pagination">
+        <button class="btn btn-danger loadbtn" id="filterUp">FILTER MORE</button>
     </div>
+    </div>
+
   </section>
 
 
@@ -35,15 +46,14 @@
 
   <section id="rating">
 
-    <h2>Select.Search.Shoot.</h2>
+   
     <p>Fill this out to get some suggestions especially for you!</p>
 
     <form action="/suggest_me" method="post">
     <div class="row rating-container">
-<!-- <div class="pricecol col-lg-4 col-md-6">
-          
-        <div class="card">
 
+<!-- <div class="pricecol col-lg-4 col-md-6">       
+        <div class="card">
               <div class="card-header">
                 <h3>movie name</h3> 
               </div>
@@ -51,13 +61,10 @@
             <img src="img/screen.jpg">
             <input type="text" name="movie1" placeholder="rate out of 5">
             </div>
-
-          </div> -->
-         
-
           </div>
           </div>
-
+        </div>
+        </div> -->
         </div>
         <button type="button" class="btn btn-lg btn-dark">SUBMIT</button>
       </form>
@@ -66,37 +73,23 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  <!-- SUGGESTIONS -->
-
- <div class="recommendations">
-    <h1 class="heading">Similar</h1>
-    <div class="recommendations-container">
-        <div class="movie">
-            <!-- <img src="img/logo.png" alt=""> -->
-            <p class="movie-title">movie name</p>
-        </div>
-    </div>
-</div>
-
-</header>
+<div class="suggestions" >
+  <h2 class="heading">Suggestions</h2>
+  <div class="suggestion-container" id="mainall">
+      <!-- <div class="movieall">
+          <img src="img/logo.png" alt="">
+          <p class="movie-title">movie name</p>
+          </div> -->
+      
+  </div>
 </div>
 
 
+
+<div class="pagination">
+  <button class="btn btn-danger loadbtn" id="load">Load More</button>
+</div>
 
 
   <%- include("partials/footer") %>

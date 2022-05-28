@@ -254,7 +254,7 @@ input:focus,
     position: absolute;
     bottom: 20px;
     width: 100%;
-    height: 30px;
+    height: 20px;
     line-height: 30px;
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
@@ -402,10 +402,18 @@ input:focus,
 
 
 
-/* FOR OTHER CARDS -- CARD NO. DEC WITH SIZE */
+/* FOR OTHER CARDS -- CARD NO. DEC WITH SIZE --MOVIE PAGE, SEARCH PAGE,..*/
+
+#mainall{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .movieall {
     /* width: 24%; */
     width: 300px;
+    height:150px ;
     margin: 2vh;
     border-radius: 2px;
     box-shadow: 0.2px 4px 5px rgba(43, 2, 2, 0.1);
@@ -418,7 +426,7 @@ input:focus,
     width: 100%;
     /* height: 200px; */
     /* height: 170px; */
-    object-fit: cover;
+    object-fit: cover !important;
 
 }
 
@@ -467,20 +475,81 @@ input:focus,
     color:white;
 }
 
-.page{
+/* BUTTONS */
+.loadbtn{
     margin: 1rem auto;
 }
 
-.page.disabled{
-    cursor:not-allowed;
+.dead{
+    cursor:not-allowed !important;
+    border-color: rgb(103, 103, 103);
     background-color:rgb(103, 103, 103);
-    border-color:black !important;
+    outline: 0;
+  box-shadow: none;
+}
+/* .dead:focus{
+    outline: 0;
+    box-shadow: none;
+    background-color:rgb(103, 103, 103);
+
+} */
+.dead:hover{
+    border-color: rgb(103, 103, 103);
+    box-shadow: none;
+    background-color:rgb(103, 103, 103);
+
 }
 
-.page.disabled:focus {
+/* GNERE FILTER ON SEARCH PAGE */
+#genrebtns{
+    width:80%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+}
+
+.choicebtn,.genrebtn{
+    /* color:white;
+    padding:10px 20px;
+    border-radius: 50px; */
+    background-color: #6c1825;
     outline: none;
-  box-shadow: none;
-  }
+    box-shadow: none;
+    margin:5px;
+    display:inline-block;
+}
+
+.focus{
+    background-color: #c21630 ;
+}
+/* FOR CLEAR BTN */
+.clearbtn{
+    background-color: #3b3a3a ;
+    margin:5px;
+    display:inline-block;
+}
+
+.try-again{
+    color:white;
+}
+
+
+/* FOR SUGGESTION/RECOMENDATION CONTAINER/SEARCH RESULS */
+.recommendations-container,suggestion-container{
+    width: 100%;
+    align-items: center;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+
+
+
+
+
 
 
 @media (min-width: 641px) {
@@ -500,12 +569,19 @@ input:focus,
     .movie img{
         object-fit: fit;
     }
-    .banner img{
-        object-fit: fit;
+    .carousel{
+        height:400px;
+    }
+    .carousel-container{
+        height:350px;  
     }
     .banner{
-        width: 250px ;
+        width: 450px ;
+        height:350px;
         /* margin-right:2rem; */
+    }
+    .banner img{
+        object-fit:fit;
     }
     /* .img{
         

@@ -23,6 +23,11 @@ const movie_details_http = base_url+'/movie';
 
 const latest_movies_http=base_url+'/movie/latest?';
 
+
+//FROM POSTMAN
+const hindi_sort_url="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&primary_release_date.lte=2021-12-30&primary_release_date.gte=2007-01-01&vote_average.gte=6&with_original_language=hi&certification_country=IN&";
+const eng_sort_url="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&primary_release_date.lte=2021-12-30&primary_release_date.gte=2010-01-01&vote_average.gte=7&with_original_language=en&";
+
 // https://api.themoviedb.org/3/discover/movie?api_key=[MY_KEY]&language=en-US&sort_by=release_date.desc&page=1&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31&vote_average.gte=8&with_genres=35
 
 
@@ -31,78 +36,97 @@ const latest_movies_http=base_url+'/movie/latest?';
 // const searchURL = BASE_URL + '/search/movie?'+API_KEY;
 
 const genres = [
-    {
+    //0
+     {
       "id": 28,
       "name": "Action"
     },
+    //1
     {
       "id": 12,
       "name": "Adventure"
     },
+    //2
     {
       "id": 16,
       "name": "Animation"
     },
+    //3
     {
       "id": 35,
       "name": "Comedy"
     },
+    //4
     {
       "id": 80,
       "name": "Crime"
     },
+    //5
     {
       "id": 99,
       "name": "Documentary"
     },
+    //6
     {
       "id": 18,
       "name": "Drama"
     },
+    //7
     {
       "id": 10751,
       "name": "Family"
     },
+    //8
     {
       "id": 14,
       "name": "Fantasy"
     },
+    //9
     {
       "id": 36,
       "name": "History"
     },
+    //10
     {
       "id": 27,
       "name": "Horror"
     },
+    //11
     {
       "id": 10402,
       "name": "Music"
     },
+    //12
     {
       "id": 9648,
       "name": "Mystery"
     },
+    //13
     {
       "id": 10749,
       "name": "Romance"
     },
+    //14
     {
       "id": 878,
       "name": "Science Fiction"
     },
+    //15
     {
       "id": 10770,
       "name": "TV Movie"
     },
+    //16
     {
       "id": 53,
       "name": "Thriller"
     },
+    //17
     {
       "id": 10752,
       "name": "War"
     },
+    //18
     {
       "id": 37,
       "name": "Western"
