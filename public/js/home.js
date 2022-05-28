@@ -309,7 +309,7 @@ const makeBanner = (name, data) => {
 //   } 
 // }
 // }
-// }
+// 
    
 
         
