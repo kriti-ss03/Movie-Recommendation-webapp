@@ -27,9 +27,6 @@ body{
   background-image: -ms-linear-gradient(top, #040000, #191414);
   background-image: -o-linear-gradient(top, #040000, #191414);
   background-image: linear-gradient(to bottom, #040000, #191414);
-
-    /* font-family:Montserrat; */
-    line-height:1.4
 }
 
 /* LANDING PAGE */
@@ -50,32 +47,55 @@ body{
 } */
 
 #title{
+    text-align:center;
     position:relative;
+    padding: 8vw 20vw ;
+    line-height: 1.2;
     /* font-weight:normal; */
 }
+
+hr {
+    border-style:none;
+    border-top: 1px solid red;
+    border-width:0.2vw;
+    
+  }
+
 h1{
-    text-transform: capitalize;
-    font-family: Montserrat-Black,sans-serif;
-    color: white;
-    /* margin:100px auto; */
+    font-family:Montserrat-Black,sans-serif;
+    color:antiquewhite;
     font-size:3.5rem;
-    line-height:1.2;
+    font-weight:medium; 
+    /* line-height:1.4; */
 }
 h2{
+    font-family: Montserrat;
+    font-size: 1.6em;
+    font-style: normal;
+    font-weight: 400;
     text-transform: capitalize;
     color: white;
-    /* font-weight: 900;
-    font-size: 50px; */
-
-    font-size: 2.5rem;
-    font-weight:bold; 
+/*     
+    font-family:Nunito Sans;
+    font-size: 2rem;
+    font-weight:semi-bold;  */
     margin-bottom: 20px;
 }
 h3{
-    font-family: Montserrat-Bold,sans-serif;
-    /* AS BOLD WORD IS NOT WORKING */
+    color: rgb(231, 231, 231);
+    font-family:Nunito Sans;
+    font-size: 1.2rem;
+    font-style: normal;
+    /* font-weight: 600; */
+    margin-bottom: 20px;
+    
+    /* font-size:1.2rem; */
+    
+   
+    
+    /* font-family: Montserrat-Bold,sans-serif;
     font-weight:bold; 
-    font-size:2.5rem;
+    font-size:2.5rem; */
 
 }
 
@@ -91,18 +111,19 @@ h3{
     width: 100%;
     height: 60px;
     position: fixed;
-    /* opacity:0.8; */
+    opacity:0.94;
     top: 0;
     z-index: 9;
-    padding: 0 2.5vw;
+    padding: 0 5vw;
 }
 .navbar .navbar-fixed-top .navbar-dark{
     background-color: rgba(204, 22, 22, 1) !important;
 }
 .navbar-brand{
     font-family: Montserrat;
-    font-size: 2em;
-    font-weight:bold;
+    font-size: 1.6em;
+    font-style: normal;
+    font-weight: 800;
 }
 /* .nav-img{
     size: 1px;
@@ -112,9 +133,14 @@ h3{
  padding: 0 18px;
 }
 
+
 .nav-link{
-    font-size:1.2rem;
-    font-family: Montserrat;
+    color:#fff;
+    /* font-size:1.2rem; */
+    font-family:Nunito Sans;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
 }
 /* .nav-link:hover{
     color:#ff4c68
@@ -187,7 +213,7 @@ input:focus,
     flex-wrap: wrap;
     margin-top: 60px;
     width: 100%;
-    padding: 40px 2.5vw;
+    padding: 1.6vw 4vw;
     color: #fff;
 }
 
@@ -197,17 +223,17 @@ input:focus,
     height: 250px;
     margin-top: 40px;
     position: relative;
-    
+    /* padding:0 4vw;  */
     display: flex;
     flex-wrap: wrap;
 }
 
-.movie-heading{
+/* .movie-heading{
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 20px;
     text-transform: capitalize;
-}
+} */
 
 .movie-container{
     width: 100%;
@@ -519,6 +545,11 @@ input:focus,
     box-shadow: none;
     margin:5px;
     display:inline-block;
+    transition: none;
+}
+.choicebtn:focus, .genrebtn:focus{
+    outline: none;
+    box-shadow:none;
 }
 
 .focus{
@@ -537,30 +568,40 @@ input:focus,
 
 
 /* FOR SUGGESTION/RECOMENDATION CONTAINER/SEARCH RESULS */
-.recommendations-container,suggestion-container{
+.recommendations-container,suggestion-container,.rating-container{
     width: 100%;
     align-items: center;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
 }
-
-
-
-
-
-
-
-
-@media (min-width: 641px) {
-    
-    span.icon {display:inline-block}
-    span.text {display:none}
-   
+.recommendations h2,.suggestions h2{
+    color: #fff;
+    padding: 5vw 8vw 0;
+    text-align:center;
 }
 
-@media(max-width: 1028px){
+
+
+
+@media(max-width: 838px){
+.nav-item{
+    font-size:0.8rem
+}
+.navbar-collapse{
+    background-color: #191414;
+}
+}
+
+
+
+
+@media(max-width: 992px){
+
     body{
+        text-align:center;
+    }
+    p,.movie-heading{
         text-align:center;
     }
     .movie {
@@ -583,13 +624,13 @@ input:focus,
     .banner img{
         object-fit:fit;
     }
+    
+
     /* .img{
         
         position:static;
         transform:rotate(0deg);
     } */
-    span.icon {display:none}
-    span.text {display:inline-block}
    
 }
 

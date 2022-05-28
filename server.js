@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-const persondata=[];
+const personName=[];
 
 
 app.get('/', (req, res) => {
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/home', (req, res) => {
-  res.render("home");
+  res.render("home",{kindaname: personName});
 })
 
 app.get('/suggest_me', (req, res) => {
@@ -32,6 +32,10 @@ app.get('/suggest_me', (req, res) => {
 app.get('/genre', (req, res) => {
   res.render("genre");
 })
+
+// app.get('/trending', (req, res) => {
+//   res.render("home",{kindaname: personName},"#trending");
+// })
 
 app.get('/search', (req, res) => {
   res.render("search");
@@ -48,11 +52,11 @@ app.post("/", (req,res) => {
  
   //console.log(req.body.name);
   let data ={
-  name:req.body.name,
+  // name:req.body.name,
   age: req.body.age,
   email:req.body.email
 };
-  persondata.push(data);
+  personName.push(req.body.name);
 
   res.redirect("/home");
 

@@ -1,58 +1,79 @@
-/* @media (min-width: 1025px) {
-    .h-custom {
-    height: 100vh !important;
-    }
-    }
+/* FILTER UP CARDS */
+.rateCard{
+  width: 20vw;
+  height: 30vw;
+  padding: 4%;
+  margin: 1vw;
+  border-radius: 3px;
+  box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+  background-color: #2e0105;
+  position:relative;
+  overflow: hidden;
 
-    .lang {
-        margin: 25px;
-        display: inline-block;
-        height: 200px;
-        width: 200px;
-        border: 10px solid black;
-        border-radius: 20%;
-      }
-    .pressed {
-        box-shadow: 0 0 20px white;
-        background-color: grey;
-      } */
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items: center;
+}
+.rateCard:hover{
+  cursor: pointer;
+}
 
-      body{
-        font-family:Montserrat;
-        line-height:1.4;
-        background-color: rgb(54, 14, 14);
-        /* background-color:#4cffd8; */
-       
-    }
-    h1{
-      color:antiquewhite;
-    }
-    .suggest_me{
-        padding: 5vw;
-    }
-    
-   
-    
-    
-    
-    .img{
-        padding-left: 100px;
-        width:70%;
-        /* transform:rotate(20deg); */
-    }
-    
-    
-/* PRICING SECTION */
-#pricing{
-  background-color: rgb(54, 14, 14);
-  padding: 7% 15%;
+.rateCard img{
+  /* margin:2vw 0.8vw 0; */
+  width:100%;
+  height:12vw;;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+
+.card_des{
+  margin:0.3vw auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+}
+
+
+.rateCard h3{
+  margin-bottom:0.6vw;
+  font-family: Montserrat;
+  font-size: 1.6rem;
+  font-style: normal;
   text-align:center;
+  color:antiquewhite;
+  /* margin-top: 0.8vw; */
+  
 }
-/* .card{ 
-  will give margin to intrA cards also
-  margin: 2%;
-} */
-.pricecol{
-   padding: 2% 3%;
+
+.card_des p{
+   color: rgb(231, 231, 231);
+    font-family:Nunito Sans;
+    font-size: 1rem;
+    line-height:1.2;
+    font-style: normal;
+    position:relative;
 }
-/* NEW CSS----------- */
+
+
+/* call for action */
+#cta{
+  color:white;
+  text-align:center;
+  padding: 0 25% 7%;
+}
+
+
+@media(max-width: 992px){
+
+  .rateCard h3{
+    font-size: 0.8em;
+  }
+  .card_des p{
+    font-size: 0.6rem;
+  }
+
+}

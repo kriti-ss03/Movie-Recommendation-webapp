@@ -1,3 +1,101 @@
+//old RATING bs card
+   
+const makeRatingCard= (item,genre_id )=> {
+    console.log("FILTERED ITEMS->")
+console.log(filteredItems);
+
+    // /console.log(filteredItems);
+    console.log(item)
+    console.log("aagye");
+    if(item.backdrop_path == null){
+        item.backdrop_path = item.poster_path;
+        if(item.backdrop_path == null){
+            return;
+        }
+    }
+    rating_container.innerHTML+=
+`<div class="pricecol col-lg-4 col-md-6">
+<div class="card">
+    <div class="card-header" >
+                <h3>${item.title}</h3> 
+              </div>
+            <div class="card-body">     
+            <img src="${img_url}${item.backdrop_path}"alt=""  onclick="location.href = '/${item.id}'">
+            <p class="">${item.overview.substring(0, 200) + '...'}</p>
+    <input type="text" name="movie1" placeholder="rate out of 5">
+   </div>
+   </div>
+   </div>`;
+
+   filteredItems=[];
+   console.log(filteredItems);
+   console.log("END ");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+`<div class="pricecol col-lg-4 col-md-6">
+<div class="card">
+    <div class="card-header" >
+                <h3>${item.title}</h3> 
+              </div>
+            <div class="card-body">     
+            <img src="${img_url}${item.backdrop_path}"alt=""  onclick="location.href = '/${item.id}'">
+            <p class="">${item.overview.substring(0, 200) + '...'}</p>
+    <input type="text" name="movie1" placeholder="rate out of 5">
+   </div>
+   </div>
+   </div>`;
+
+
+
+
+
+
+
+
+main.innerHTML = '';
+
+    data.forEach(movie => {
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+             <img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+            <div class="movie-info">
+                <h3>${title}</h3>
+                <span class="${getColor(vote_average)}">${vote_average}</span>
+            </div>
+            <div class="overview">
+                <h3>Overview</h3>
+                ${overview}
+                <br/> 
+                <button class="know-more" id="${id}">Know More</button
+            </div>
+        ===========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //SEARCH_ME.JS
 <div>
 

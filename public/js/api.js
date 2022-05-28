@@ -24,16 +24,10 @@ const movie_details_http = base_url+'/movie';
 const latest_movies_http=base_url+'/movie/latest?';
 
 
-//FROM POSTMAN
+//FROM POSTMAN FOR SUGGEST ME
 const hindi_sort_url="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&primary_release_date.lte=2021-12-30&primary_release_date.gte=2007-01-01&vote_average.gte=6&with_original_language=hi&certification_country=IN&";
 const eng_sort_url="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&primary_release_date.lte=2021-12-30&primary_release_date.gte=2010-01-01&vote_average.gte=7&with_original_language=en&";
 
-// https://api.themoviedb.org/3/discover/movie?api_key=[MY_KEY]&language=en-US&sort_by=release_date.desc&page=1&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31&vote_average.gte=8&with_genres=35
-
-
-//movie_details_http -"/movie"
-
-// const searchURL = BASE_URL + '/search/movie?'+API_KEY;
 
 const genres = [
     //0

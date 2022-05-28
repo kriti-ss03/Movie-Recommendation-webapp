@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/suggest_me.css">
 
 
-
+<%- include("partials/navbar") %>
 
 
  
@@ -15,59 +15,48 @@
     <div class="container-fluid suggest_me">
  
       <h1>Select.Search.Shoot.</h1>
-
-        <!-- Title -->
+      <hr>
+      <h3>Find the movies that get interests you. Choose your Age group first and then Region and then you'll get suggestions based on that!</h3>
+       <h3>Scroll for Suggestions!</h3>
+      <!-- Title -->
       <div class="row">   
+   
         <div class="col-lg-6 col-sm-12">
-          <h2>Choose Age Group</h2>
-          <button type="button" class="btn btn-danger btn-lg choicebtn" id="kid" onClick="getAge(this.id)">AGE < 15</button>
-          <button type="button" class="tbtn btn-danger btn-lg choicebtn" id="adult" onClick="getAge(this.id)">AGE > 15</button>
-        </div>
-        <div class="col-lg-6">
+          <h2 style="font-size:1.2rem;">Choose Age Group</h2>
+           <button type="button" class="btn btn-danger btn-lg choicebtn" id="kid" onClick="getAge(this.id)">Age < 15</button>
+           <button type="button" class="btn btn-danger btn-lg choicebtn" id="adult" onClick="getAge(this.id)">Age > 15</button>
+         </div>
           <!-- <img class="img" src="img/screen.jpg" alt="iphone-mockup">
          -->
-
-         <h2>Choose Language</h2>
-          <button type="button" class="btn btn-danger btn-lg choicebtn" id="hi" onClick="getLang(this.id)">INDIE</button>
+         <div class="col-lg-6 col-sm-12">
+         <h2 style="font-size:1.2rem;">Choose Region</h2>
+          <button type="button" class="btn btn-danger btn-lg choicebtn" id="hi" onClick="getLang(this.id)">INDIAN</button>
           <button type="button" class="btn btn-danger btn-lg choicebtn" id="en" onClick="getLang(this.id)">WESTERN </button>
         </div>
       </div>
-      <div class="pagination">
-        <button class="btn btn-danger loadbtn" id="filterUp">FILTER MORE</button>
+      
     </div>
-    </div>
-
+    
   </section>
 
 
 
 
-  <!-- RATING -->
+  <!-- CARDS -->
 
-  <section id="rating">
+  <section id="cta">
+    <h3>FILTER UP</h3>
+    <p>Dunno what to watch yet? Filter Up a bit more with the button Shoot and get amazing movies sorted from various parameters! You can further checkout that movie by clicking on the card.</p>
+        <div class="pagination">
+          <button class="btn btn-danger loadbtn" id="filterUp" onClick="filtertime()">Shoot</button>
+        </div>
+    <!-- <main id="main">
 
+    </main> -->
    
-    <p>Fill this out to get some suggestions especially for you!</p>
-
-    <form action="/suggest_me" method="post">
-    <div class="row rating-container">
-
-<!-- <div class="pricecol col-lg-4 col-md-6">       
-        <div class="card">
-              <div class="card-header">
-                <h3>movie name</h3> 
-              </div>
-            <div class="card-body">     
-            <img src="img/screen.jpg">
-            <input type="text" name="movie1" placeholder="rate out of 5">
-            </div>
-          </div>
-          </div>
-        </div>
-        </div> -->
-        </div>
-        <button type="button" class="btn btn-lg btn-dark">SUBMIT</button>
-      </form>
+    <div class="rating-container">
+    </div>
+    
   </section>
 
 
