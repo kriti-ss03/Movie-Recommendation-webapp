@@ -1,8 +1,6 @@
 const main = document.getElementById('mainall');
 let containerbtn = document.querySelector('#genrebtns');
 
-// const prev = document.getElementById('prev')
-// const next = document.getElementById('next')
 const load = document.getElementById('load')
 const current = document.getElementById('current')
 
