@@ -24,7 +24,7 @@
   
 <form action="/" method="post">
    <div class="input-group rounded">
-    <input type="text" class="form-control rounded enter" name="name" id="enter-text" placeholder="Enter your name" aria-label="Search" aria-describedby="search-addon" />
+    <input type="text" class="form-control rounded enter" name="name" id="enter-text" placeholder="Enter your name" aria-label="Search" aria-describedby="search-addon" autocomplete="off" />
     <button  type="submit" id="" class="btn btn-primary btn-danger">ENTER</button>
   </div> 
 </form>  
@@ -58,9 +58,10 @@
          <li>All the Similar Movies for each of the movie is also provided.</li>
          <li>An easy-to-use search option helps to find the desired movie.</li>
          <li>Finding movies with multiple genres is also feasible. Select as many genres as you want and the best movie that fits will be shown!</li>
-         <li>SUGGEST ME feature makes it feasible to get movie specific for your age and language you like!</li>
-         <li>Suggestion doesn't stop here! The SHOOT MORE option is also given to filter up movies based on the popularity, genres popular for that age, year of release and vote count based on the language and age group chosen!!</li>
+         <li><em style="color:#ff4c68">SUGGEST ME</em> feature makes it feasible to get movie specific for your age and language you like!</li>
+         <li>Suggestion doesn't stop here! The <em style="color:#ff4c68">SHOOT MORE</em> option is also given to filter up movies based on the popularity, genres popular for that age, year of release and vote count based on the language and age group chosen!!</li>
         <li>Further. explore the similar movie options for each!</li>
+        <li>Apart from this <em style="color:#ff4c68">ASK FRIEND</em> feature idea is also there which helps the user to get recommendation from their closed ones</li>
         <li>Responsive and easy to the eyes UI</li>
         </ul> 
 </h3>
@@ -83,7 +84,7 @@
 
 
 
-  <%- include("partials/footer") %>
+
 
 </body>
 </html>
