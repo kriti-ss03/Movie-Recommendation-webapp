@@ -81,14 +81,15 @@ According to resarch and data analysis.
 Logic Behind AGE GROUP
 
 i) Popular genres in Age group of kids are Animation/Fantasy and Family movies
-ii) Popular Genres in Age group of adult are DRAMA ACTION COMEDY THRILLER ROMANCE. However on analysis I came to conclusions that DRAMA genre is very common and usually present in most of the movies. Thus,increasing teh chance of suggesting SIMILAR ITEMS twice. Likewise for Thriller. So I tried to fix this by dropping them and adding 2 additional yet popular genres MYSTERY and ADVENTURE. This also increased the scope that user  will like any of these genres atleast.
+ii) Popular Genres in Age group of adult are DRAMA ACTION COMEDY THRILLER ROMANCE. However on analysis I came to conclusions that DRAMA genre is very common and usually present in most of the movies. Thus,increasing teh chance of suggesting SIMILAR ITEMS twice. Likewise for Thriller. So I tried to fix this by dropping them and adding 2 additional yet popular genres MYSTERY and ADVENTURE. The reason for choosing these two is based on data analysis that other genres like documentry,sci-fi,TV movies don't lack user base or items.
+This further increase the scope that user will like any of these genres atleast.
 
 Logic Behind REGION/LANGUAGE
 
 The preferred language helped to decide VOTE COUNT, VOTE AVERAGE and year of PRIMARY RELEASE range!
-As the English movies are more rated than Indian ones so I used vote average> 7 for English and >6 for hindi
+As the English movies are more viewed and thus more rated than Indian ones so I used vote average> 7 for English and >6 for hindi depending upon teh voted count.
 
-Finally I suggested the items from params
+Finally fetched the data using params
 
 - year of release
 
@@ -100,7 +101,7 @@ Finally I suggested the items from params
 
 -arrays of genres
 
-The SHOOT MORE feature enhances the user experience  by providing unique elements out of each filtered results
+The SHOOT MORE feature enhances the user experience  by providing unique elements out of each filtered results !!!
 
 This feature somewhat act as COLLABORATIVE FILTERING because it sorts the data based on specific type of user who belongs to certain age and prefers certain lamguage. 
 Although a wholesome collaborative filtering is much more user centric but it won't be able to suggest items without the database of the user and that is not possible if the user is NEW TO PLATFORM!!
@@ -129,14 +130,21 @@ Currently I'm building Ask Friend feature so the buttons won't work there!
 
 Technologies and Resources used:
 
-Front end languages and technologies: HTML,CSS,Javascript
-Front-end framework: Bootstrap to design the user interface (UI)
-Templating language: EJS
-Backend: Node.js, Express.js
-Api and databas: from TMDB dev community
-Postman: to build apis and verify/analyze data for the suggest-me feature
-Fontawesome and Flaticon: For all the icons in the web app
-Freepik ans Unsplash: For all the images in the web app
+-Front end languages and technologies: HTML,CSS,Javascript
+
+-Front-end framework: Bootstrap to design the user interface (UI)
+
+-Templating language: EJS
+
+-Backend: Node.js, Express.js
+
+-Api and databas: from TMDB dev community
+
+-Postman: to build apis and verify/analyze data for the suggest-me feature
+
+-Fontawesome and Flaticon: For all the icons in the web app
+
+-Freepik ans Unsplash: For all the images in the web app
 
 
 
