@@ -9,16 +9,27 @@ Movix is a platform to make movie-browsing experience smooth and efficient. It r
 Features:
 
 The Top 20 trending movies are highlighted to make users up to date and discover it easily.
+
 Discover all-time hits and popular movies.
+
 Explore all the genre-based categorised movies on the landing page. 
+
 For each movie, the important details are provided to help the user make a better choice.
+
 Trailers and Videos Clips are attached which can be zoomed in and out as per the choice.
+
 All the Similar Movies for each of the movie is also provided.
+
 An easy-to-use search option helps to find the desired movie.
-Finding movies with multiple genres is also feasible. Select as many genres as you can and the intersection of them will be shown!
+
+Finding movies with multiple genres is also feasible. Select as many genres as you can and the intersection of them will be shown!!!
+
 SUGGEST ME feature makes it feasible to get movie specific for your age and language you like.
-The SHOOT MORE option is also given to filter up movies based on the popularity, genres popular at that age, year of release and vote count for the language and age group chosen.
+
+The SHOOT MORE option is also given to filter up movies based on the popularity, genres popular at that age, year of release and vote count for the language and age group chosen!
+
 Further. explore the similar movie options for each!
+
 Responsive and easy to the eyes UI
 
 
