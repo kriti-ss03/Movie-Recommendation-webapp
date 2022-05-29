@@ -23,7 +23,10 @@ Responsive and easy to the eyes UI
 
 
 
+
+
 How to run this project locally:
+
 Clone the given repository into your device
 Run the command npm install in your terminal in the root directory of the project to install the various dependencies
 Install nodemon as a dev dependency by running npm install --save-dev nodemon, body-parser to cover post request by npm install body-parser
@@ -33,8 +36,16 @@ The app is now up and running on port 3000!
 
 
 
+
+
 Important note:
+
 Currently I'm building Ask Friend feature so the buttons won't work there! 
+
+
+
+
+
 
 
 Technologies and Resources used
@@ -46,6 +57,11 @@ Backend: Node.js, Express.js
 Api and databas: from TMDB dev community
 Fontawesome and Flaticon: For all the icons in the web app
 Freepik: For all the images in the web app
+
+
+
+
+
 
 Software Development Cycle in the making of this app:
 Throught the tenure i organiseed myself to learn-design-develop-review-evalute procedure to solve all the bugs and minor issues that a user can face!
@@ -63,9 +79,19 @@ Understanding the process and implementing the features
 
 
 
+
+
+
+
+
 Thought behind the UI/UX
 
 I wanted the UI to be simple and eye soothing, since this was a movie-recommender-app which meant the user was going to be spending a lot of time in front of the screen. I designed it in dark theme and make each page connected to each other. Moreover, I tried to highlight things like Trending section, Anchor keys and button that give the user idea to understand the flow.I tried to see wheteher correct button is selcted or not by providing prompts and it's get focused if selected to let user know about the same. The main motto is that it's Fast, Smooth and give better user experience
+
+
+
+
+
 
 
 
