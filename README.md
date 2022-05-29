@@ -48,7 +48,7 @@ Currently I'm building Ask Friend feature so the buttons won't work there!
 
 
 
-Technologies and Resources used
+Technologies and Resources used:
 
 Front end languages and technologies: HTML,CSS,Javascript
 Front-end framework: Bootstrap to design the user interface (UI)
@@ -64,7 +64,8 @@ Freepik: For all the images in the web app
 
 
 Software Development Cycle in the making of this app:
-Throught the tenure i organiseed myself to learn-design-develop-review-evalute procedure to solve all the bugs and minor issues that a user can face!
+
+Throught the tenure i organized myself to learn-design-develop-review-evalute procedure to solve all the bugs and minor issues that a user can face!
 LEARN
 Understanding the PS and learning basics that were new.
 
@@ -84,7 +85,7 @@ Understanding the process and implementing the features
 
 
 
-Thought behind the UI/UX
+Thought behind the UI/UX:
 
 I wanted the UI to be simple and eye soothing, since this was a movie-recommender-app which meant the user was going to be spending a lot of time in front of the screen. I designed it in dark theme and make each page connected to each other. Moreover, I tried to highlight things like Trending section, Anchor keys and button that give the user idea to understand the flow.I tried to see wheteher correct button is selcted or not by providing prompts and it's get focused if selected to let user know about the same. The main motto is that it's Fast, Smooth and give better user experience
 
@@ -95,7 +96,7 @@ I wanted the UI to be simple and eye soothing, since this was a movie-recommende
 
 
 
-What's next for the app?
+What's next for the app?:
 
 Make the Ask Friend feature for sending movie names via nodemailer and also having personalized movie viewing and chatting room
 Make Suggest Me smart. By making the app hands free with the help of AI and database. By collecting data and selecting the genres based on their of selections and movies watched.
