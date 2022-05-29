@@ -134,6 +134,7 @@ Front-end framework: Bootstrap to design the user interface (UI)
 Templating language: EJS
 Backend: Node.js, Express.js
 Api and databas: from TMDB dev community
+Postman: to build apis and verify/analyze data for the suggest-me feature
 Fontawesome and Flaticon: For all the icons in the web app
 Freepik ans Unsplash: For all the images in the web app
 
