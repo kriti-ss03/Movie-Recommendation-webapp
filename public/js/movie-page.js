@@ -16,7 +16,7 @@ fetch(`${movie_details_http}${movie_id}?` + new URLSearchParams({
 
 //movie details
 const setupMovieInfo = (data) => {
-    console.log(data);
+    //console.log(data);
     const title = document.querySelector('title');
     const movieName = document.querySelector('.movie-name');
     const genres = document.querySelector('.genres');
@@ -25,7 +25,7 @@ const setupMovieInfo = (data) => {
     const vote = document.querySelector('.vote');
   
 
-    title.innerHTML = movieName.innerHTML = data.title; 
+    movieName.innerHTML = data.title; 
     //TO GET YEAR
     genres.innerHTML = `${data.release_date.split('-')[0]} | `;
     //GENRES WITH SPACE
@@ -44,17 +44,8 @@ const setupMovieInfo = (data) => {
     }
 
 //VOTE
-//<span class="${getColor(vote_average)}">${vote_average}</span>
 vote.innerHTML+=data.vote_average;
-// getColor(vote);
 
-// function getColor(vote) {
-//     if(vote>= 6){
-//         vote.classList.add('vote_red');
-//     }else{
-//         vote.classList.add('vote_grey');
-//     }
-// }
 
 //DESCRIPTION
     des.innerHTML = data.overview.substring(0, 200) + '...';

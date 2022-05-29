@@ -3,7 +3,7 @@ const main = document.getElementById('mainall');
 const rating_container = document.querySelector('.rating-container');
 const filterBtn = document.querySelector('#filterUp');
 
-//URL from Postman based on popularity, vote-count, year of release and language. For both the languages year of release range, vote count is different, It's because en-Us movies generally are more popular and seen worldwde!
+//URL from Postman based on popularity, vote-count, year of release and language. For both the LANGUAGES year of release range, vote count is different, It's because en-Us movies generally are more popular and seen worldwde!
 //GENRES ARRAY based on Age group- 1) Kids= Animation n Family 2)Adults= Top 5 Genres as per google and after studying data= Action,Comedy,Romance,Adventure,Mystery
 
 

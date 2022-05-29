@@ -38,6 +38,7 @@ hr {
   }
 
 h1{
+    text-align:center;
     font-family:Montserrat;
     color:antiquewhite;
     font-size:3.5rem;
@@ -77,11 +78,17 @@ h3{
     opacity:0.5;
 }
 
-#landing-page{
+#landing-page,
+#description{
     text-align:center;
     position:relative;
     padding: 8% 20% 6% ;
     line-height: 1.2;
+}
+#ft-img{
+    padding: 80px 0 0 0 ;
+    width: 100%;
+    
 }
 .cta-feature{
 display:flex;
@@ -103,6 +110,7 @@ color:white;
     line-height: 1.2;
     /* font-weight:normal; */
 }
+
 
 .hero p{
     color: rgb(231, 231, 231);
@@ -315,18 +323,20 @@ input:focus,
 }
 
 .movie p{
+    font-family:Nunito Sans;
+    font-weight:100;
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     width: 100%;
-    height: 20px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 20px;
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
     opacity: 0;
 }
 .movie:hover p{
-    opacity: 1;
+    opacity: 2;
 }
 /* .movie p{
     position: absolute;
@@ -452,15 +462,21 @@ input:focus,
     object-fit: cover;
 }
 .banner p{
+    font-family: Nunito Sans;
+    font-weight: 200;
+    font-size:1.2rem;
     position: absolute;
-    /* bottom: 20px; */
+    bottom: 40px;
     width: 100%;
-    height: 30px;
+    /* height: 0px; */
     line-height: 30px;
-    color: rgb(197, 56, 56);
+    color: #fff;
     background: rgba(0, 0, 0, 0.5);
     text-align: center;
     opacity: 0;
+}
+.banner:hover p {
+    opacity: 1;
 }
 
 
@@ -473,10 +489,10 @@ input:focus,
 
 #mainall,.rating-container{
     width: 100%;
-    align-items: center;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 .movieall{
@@ -627,7 +643,13 @@ input:focus,
 }
 
 
-
+/* FOR ASK FRND */
+.compose{
+    padding: 15% 7%;
+}
+.copmose label{
+ color:white;
+}
 
 
 

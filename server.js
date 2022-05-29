@@ -1,12 +1,11 @@
 const express = require('express');
-const app = express();
-// const server = require('http').Server(app)
 const bodyParser = require('body-parser');
 const ejs = require("ejs");
+// const nodemailer = require("nodemailer");
+
+const app = express();
+
 app.use(express.static("public"))
-
-
-
 app.set('view engine', 'ejs') 
 // app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,8 +23,6 @@ app.get('/home', (req, res) => {
 })
 
 app.get('/suggest_me', (req, res) => {
-
-  //res.render("suggest_me", {kindaname: persondata[persondata.length -1].name });
   res.render("suggest_me");
 })
 
@@ -33,42 +30,35 @@ app.get('/genre', (req, res) => {
   res.render("genre");
 })
 
-// app.get('/trending', (req, res) => {
-//   res.render("home",{kindaname: personName},"#trending");
-// })
-
 app.get('/search', (req, res) => {
   res.render("search");
 })
 
+
+app.get('/ask_frnd', (req, res) => {
+  res.render("ask_frnd");
+})
+
 app.get('/:id', (req, res) => {
     res.render("movie");
-  })
-
+})
   
+
 
 //post request coming from landing page; i.e. is home route
 app.post("/", (req,res) => {
- 
- personName=[];
-  personName.push(req.body.name);
-
-  res.redirect("/home");
+personName=[];
+personName.push(req.body.name);
+res.redirect("/home");
 
 })
 
 
-
-
-
-  app.use(function(req, res) {
+app.use(function(req, res) {
     res.json("404");
 })
 
 
-
-
-
-app.listen(3070, function() {
-    console.log('listening on port 3070......');
+app.listen(3000, function() {
+    console.log('listening on port 3000......');
 })

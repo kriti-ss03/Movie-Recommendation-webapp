@@ -173,7 +173,7 @@ const makeCarousel = (name,data) => {
     <div class="carousel" id=carousel >
 
     <button class="pre-btn" id="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
-    <h2 id="">${name} Movies</h2>
+    <h2 id="${name}+heading">${name} Movies</h2>
     <div class=" carousel-container swipe" id="${name}">
    
     </div>

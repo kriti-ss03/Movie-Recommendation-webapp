@@ -9,7 +9,7 @@
 .movie-detail{
     width: 50%;
     height: 100%;
-   padding: 5vw;
+    padding: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -20,8 +20,12 @@
 }
 
 .movie-name{
-    font-size: 30px;
-    font-weight: 500;
+    /* text-align: left;
+    font-family: Montserrat; */
+    color: antiquewhite;
+    /* color: #c93d52; */
+    font-size: 3.5rem;
+    font-weight: 600;
 }
 
 .genres,.votes{
@@ -44,12 +48,12 @@
     font-weight: bold;
 }
 
-.vote_average{
+/* .vote_average{
     color:rgb(70, 69, 69)
-}
+} */
 
-.vote_red{
-    color:#ff4c68;
+.vote{
+color: antiquewhite;
 }
 
 
@@ -93,34 +97,26 @@ iframe{
     text-align:center;    
 }
 
-/* .movieall:hover p{
-    opacity: 1;
-}  */
-
-/* .movieall:hover{
-    outline:#fff;
-} */
 
 
 
-
-@media(max-width: 838px){
+@media(max-width: 992px){
    
     .movie-info{
         width: 100%;
-        height: calc(100vh - 40px);
-        margin-top: 40px;
+        height: calc(100vh - 20px);
+        margin-top: 0;
         text-align: left; 
     }
 
    .movie-detail{
     width: 70%;
     display: flex;
-    /* flex-direction: column; */
-    /* flex-wrap: wrap; */
     justify-content: center;
-    margin: 10vh;
+    margin: 15%;
     align-items: center;
+    background: transparent;
+    background: linear-gradient(0deg, rgba(24, 24, 24, 1), rgba(24, 24, 24, 0) 100%);
    }
    .des,.starring{
     width: 100%;

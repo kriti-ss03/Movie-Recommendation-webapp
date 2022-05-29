@@ -130,8 +130,9 @@ function getMovies(url) {
 
       if(data.results.length ==0){
          //TO DISABLE BUTTON AND DISPLAY TEXT
-        document.querySelector("#load").classList.add('dead');
-        mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !<\h1>` ;
+          document.querySelector("#load").classList.add('dead');
+          mainall.innerHTML = '';
+        mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !</h1>` ;
     }else{
 
         showMovies(data.results);
@@ -249,7 +250,7 @@ const fetchSearch = (value) => {
         if(data.results.length ==0){
            //TO DISABLE BUTTON AND DISPLAY TEXT
           document.querySelector("#load").classList.add('dead');
-          mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !<\h1>` ;
+          mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !</h1>` ;
       }else{
           showMovies(data.results);
           currentPage = data.page;
