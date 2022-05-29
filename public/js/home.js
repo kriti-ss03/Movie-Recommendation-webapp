@@ -288,7 +288,7 @@ const makeBanner = (name, data) => {
 //   } 
 // }
 // }
-// }
+// 
    
 
         
