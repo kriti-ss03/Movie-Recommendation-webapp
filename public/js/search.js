@@ -1,8 +1,8 @@
 const main = document.getElementById('mainall');
+
 let containerbtn = document.querySelector('#genrebtns');
 
-// const prev = document.getElementById('prev')
-// const next = document.getElementById('next')
+
 const load = document.getElementById('load')
 const current = document.getElementById('current')
 
@@ -94,7 +94,7 @@ function clearBtn(){
             selectedGenre = [];
             setGenre(); 
 
-            //TO REMOVE MO MORE RESULTS
+            //TO REMOVE NO MORE RESULTS
             mainall.innerHTML=` `
             
 
@@ -214,19 +214,25 @@ function  moreData(page){
 const buttonEl=document.querySelector("#search-btn");
 const inputEl=document.querySelector("#search-txt");
 
+
+//ADDING ENTER KEY EVENTLISTENER
+inputEl.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    buttonEl.click();
+  }
+});
+
+//ADDING BUTTON EVENT LISTENER
 buttonEl.onclick= (event) =>{
     // SO THAT OUR TEXT DON'T GO
     event.preventDefault();
-    
        //TO  GET NEW DATA
     mainall.innerHTML=` `
     
-      // location.href = '/search_http?query=${value}'
-     const value=inputEl.value;
-    //  if(value === " "){
-    //      console.log("no results");
-    //  }
-    console.log(value);
+
+    const value=inputEl.value;
+    //console.log(value);
     fetchSearch(value);
 }
 

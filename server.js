@@ -12,7 +12,7 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-const personName=[];
+let personName=[];
 
 
 app.get('/', (req, res) => {
@@ -50,12 +50,7 @@ app.get('/:id', (req, res) => {
 //post request coming from landing page; i.e. is home route
 app.post("/", (req,res) => {
  
-  //console.log(req.body.name);
-  let data ={
-  // name:req.body.name,
-  age: req.body.age,
-  email:req.body.email
-};
+ personName=[];
   personName.push(req.body.name);
 
   res.redirect("/home");

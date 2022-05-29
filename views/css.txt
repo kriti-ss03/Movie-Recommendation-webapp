@@ -1,3 +1,43 @@
+HOME SECTION
+
+
+  <section id="title" class="hero">
+       <div class="container-fluid">
+       
+       <!-- <h1 class="heading"</h1>
+        <p class="info"></p> -->
+    
+        <h1>Hola <%= kindaname %></h1>
+        <hr>
+
+        <h2>Find movies that suits you!</h2>
+        <p>TRENDING | TOP-RATED | POPULAR </p>
+        <nav-item><a class="nav-item" href="#trending">Get started</a></nav-item>
+
+
+        <h1>Find movies that suits you!</h1>
+        <hr>
+        <h2><%= kindaname %> find the Trending Movies now</h2>
+        <p><a class="landing-link" href="#top">Get started</a></p>
+        
+        </div>
+        <div class="pagination">
+          <!-- <button class="btn btn-outline-light" href="/home#carousel">Trending</button> -->
+      </div>
+        </section>
+
+
+
+        
+
+
+
+
+
+
+
+
+
 //old RATING bs card
    
 const makeRatingCard= (item,genre_id )=> {

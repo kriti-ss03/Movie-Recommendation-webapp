@@ -1,12 +1,12 @@
 /* FILTER UP CARDS */
 .rateCard{
-  width: 20vw;
-  height: 30vw;
-  padding: 4%;
+  width: 300px;
+  height: 400px;
+  padding: 2%;
   margin: 1vw;
   border-radius: 3px;
   box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
-  background-color: #2e0105;
+  background-color: #240204;
   position:relative;
   overflow: hidden;
 
@@ -22,14 +22,15 @@
 .rateCard img{
   /* margin:2vw 0.8vw 0; */
   width:100%;
-  height:12vw;;
+  height:200px;
+  margin-top:0;
   object-fit: cover;
   border-radius: 3px;
 }
 
 
 .card_des{
-  margin:0.3vw auto;
+  margin:3px 0.8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,13 +40,11 @@
 
 
 .rateCard h3{
-  margin-bottom:0.6vw;
-  font-family: Montserrat;
-  font-size: 1.6rem;
-  font-style: normal;
-  text-align:center;
-  color:antiquewhite;
-  /* margin-top: 0.8vw; */
+font-weight:400;
+text-transform: uppercase;
+text-align:center;
+color:antiquewhite;
+margin-bottom: 12px auto 4px;
   
 }
 
@@ -59,18 +58,11 @@
 }
 
 
-/* call for action */
-#cta{
-  color:white;
-  text-align:center;
-  padding: 0 25% 7%;
-}
-
 
 @media(max-width: 992px){
 
   .rateCard h3{
-    font-size: 0.8em;
+    font-size: 1rem;
   }
   .card_des p{
     font-size: 0.6rem;

@@ -3,8 +3,8 @@ const main = document.getElementById('mainall');
 const rating_container = document.querySelector('.rating-container');
 const filterBtn = document.querySelector('#filterUp');
 
-//URL from Postman based on popularity, vote-count, year of release and language 
-//GENRES ARRAY based on Age group- 1) Kids= Animation n Family 2)Adults= Top 5 Genres as per google and after studying data= Mystery,Action,Comedy,Romance,Adventure
+//URL from Postman based on popularity, vote-count, year of release and language. For both the languages year of release range, vote count is different, It's because en-Us movies generally are more popular and seen worldwde!
+//GENRES ARRAY based on Age group- 1) Kids= Animation n Family 2)Adults= Top 5 Genres as per google and after studying data= Action,Comedy,Romance,Adventure,Mystery
 
 
 let genresnow=[];
@@ -165,7 +165,7 @@ const makeRatingCard= (item,genre_id )=> {
     rating_container.innerHTML += `
   
     <div class="rateCard" onclick="location.href = '/${item.id}'">
-    <h3>${item.title}</h3>
+    <h3>${item.title.substring(0,50) }</h3>
     <img src="${img_url}${item.backdrop_path}"alt=""  >
    <div class="card_des">
        <p class="">${item.overview.substring(0, 100) + '...'}</p>
@@ -193,6 +193,7 @@ const displayNow = (urlNow, genreItem) => {
           }))
 .then(res => res.json())
 .then(data => {
+    console.log("genre begins");
     data.results.forEach(item =>{
     showMovies(item);
     })
@@ -206,12 +207,13 @@ const displayNow = (urlNow, genreItem) => {
 
  //DISPLAY MOVIE    
  const showMovies = (item) =>{
-//console.log(item);
+  
+    console.log(item);
     //mainall.innerHTML=` `
 
-    if(load.classList.contains('dead')){
-      load.classList.remove('dead');
-    }
+    // if(load.classList.contains('dead')){
+    //   load.classList.remove('dead');
+    // }
 
 let container = document.querySelector('#mainall');
 
@@ -234,40 +236,6 @@ let container = document.querySelector('#mainall');
 
 
 
-//FOR PAGINATION
 
-load.addEventListener('click', () => {
-    //IF MORE PAGES EXIST THEN OLY
-    if(loadPage <= totalPages){
-      moreData(loadPage);
-    }else{
-     document.querySelector("#load").classList.add('dead');
-    }
-  })
-function  moreData(page){
-    let urlSplit = lastUrl.split('?');
-   
-    //AFTER SPLITTING BASE URL+ QUERY PARAMS
-    let queryParams = urlSplit[1].split('&');
-   
-    //TO GET PAGENO --2ND LAST ELEMENT
-    let key = queryParams[queryParams.length -2].split('=');
-    
-    //CHECKING IF THERE IS PAGE OR NOT IN THE API
-    if(key[1] != 'page'){
-      let url = lastUrl + 'page='+ page  + '&';
-      //'&api_key=${api_key}'
-      getMovies(url);
-    }else{ 
-      //FOR OTHER PAGES
-      key[1] = page.toString();
-      let a = key.join('=');
-      queryParams[queryParams.length -1] = a;
-      //JOINING QUERY PARAMS TO STRING
-      let b = queryParams.join('&');
-      let url = urlSplit[0] +'?'+ b;
-      getMovies(url);
-    }
-}
 
 

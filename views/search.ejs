@@ -1,35 +1,39 @@
-
-
 <%- include("partials/header") %>
 
 
 <!-- STYLESHEET -->
 <link rel="stylesheet" href="css/style.css">
+
 <%- include("partials/navbar") %>
 
-
-    <!-- <header>
-        <form  id="form">
-            <input type="text" placeholder="Search" id="search" class="search">
-        </form>
-    </header> -->
+<section id="title">
 <div class="container-fluid">
+    <h1>Search</h1>
     <div class="input-group rounded">
-      <input type="search" class="form-control rounded search" id="search-txt" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <input type="search" class="form-control rounded search" id="search-txt" placeholder="Search Movie" aria-label="Search" aria-describedby="search-addon" />
       <button type="button" id="search-btn" class="btn btn-primary btn-danger">
         <i class="fas fa-search"></i>
       </button>
     </div>
 </div>
+<!-- <hr> -->
+</section>
+
+
+<section id="cta">
+    <div class="container-fluid">
+        <h2 id="#genre">Search By Genres</h2>
+        <p>Get all the movies of your desired genres. Select multiple genres and get suggestions!</p>
+   
+    </div>
+</section>
 
 <div class="container-fluid" >
-    <h1 id="#genre">See by Gnere</h1>
     <div id="genrebtns">
-        <!-- <div calss="tag" id="genre_id">ACTION</div> -->
-        <button class="genrebtn">Action</button>
+        <!-- <button class="genrebtn">Action</button> -->
     </div>
 </div>
-    <hr>
+   
 
 
       </div>

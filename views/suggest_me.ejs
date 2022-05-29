@@ -12,29 +12,30 @@
 
  
 <section id="title">
-    <div class="container-fluid suggest_me">
- 
+    <div class="container-fluid">
+      <div class="suggest_me">
       <h1>Select.Search.Shoot.</h1>
-      <hr>
-      <h3>Find the movies that get interests you. Choose your Age group first and then Region and then you'll get suggestions based on that!</h3>
+    </div>
+    <hr>
+      <h3>Find the movies that interests you. Choose your Age group first and then Region and then you'll get suggestions based on that!</h3>
        <h3>Scroll for Suggestions!</h3>
       <!-- Title -->
       <div class="row">   
    
         <div class="col-lg-6 col-sm-12">
-          <h2 style="font-size:1.2rem;">Choose Age Group</h2>
+          <h2>Choose Age Group</h2>
            <button type="button" class="btn btn-danger btn-lg choicebtn" id="kid" onClick="getAge(this.id)">Age < 15</button>
            <button type="button" class="btn btn-danger btn-lg choicebtn" id="adult" onClick="getAge(this.id)">Age > 15</button>
          </div>
           <!-- <img class="img" src="img/screen.jpg" alt="iphone-mockup">
          -->
          <div class="col-lg-6 col-sm-12">
-         <h2 style="font-size:1.2rem;">Choose Region</h2>
-          <button type="button" class="btn btn-danger btn-lg choicebtn" id="hi" onClick="getLang(this.id)">INDIAN</button>
-          <button type="button" class="btn btn-danger btn-lg choicebtn" id="en" onClick="getLang(this.id)">WESTERN </button>
+         <h2>Choose Region</h2>
+          <button type="button" class="btn btn-danger btn-lg choicebtn" id="hi" onClick="getLang(this.id)">Indian</button>
+          <button type="button" class="btn btn-danger btn-lg choicebtn" id="en" onClick="getLang(this.id)">Western</button>
         </div>
-      </div>
       
+    </div>
     </div>
     
   </section>
@@ -45,16 +46,21 @@
   <!-- CARDS -->
 
   <section id="cta">
-    <h3>FILTER UP</h3>
-    <p>Dunno what to watch yet? Filter Up a bit more with the button Shoot and get amazing movies sorted from various parameters! You can further checkout that movie by clicking on the card.</p>
+    <h2>Filter Up More</h2>
+    <p>Dunno what to watch yet? Filter Up a bit more with the button "Shoot" and get amazing movies sorted on various parameters just for you! You can further checkout similar movies by clicking on the card.</p>
         <div class="pagination">
-          <button class="btn btn-danger loadbtn" id="filterUp" onClick="filtertime()">Shoot</button>
+          <button class="btn btn-danger btn-lg loadbtn" id="filterUp" onClick="filtertime()">Shoot</button>
         </div>
-    <!-- <main id="main">
 
-    </main> -->
    
-    <div class="rating-container">
+    <div class="rating-container">   
+    <!-- <div class="rateCard" onclick="location.href = '/${item.id}'">
+      <h3>${item.title}</h3>
+      <img src="${img_url}${item.backdrop_path}"alt=""  >
+     <div class="card_des">
+         <p class="">${item.overview.substring(0, 100) + '...'}</p>
+     </div>
+     </div> -->
     </div>
     
   </section>
@@ -63,6 +69,7 @@
 
 
  <!-- SUGGESTIONS -->
+
 <div class="suggestions" >
   <h2 class="heading">Suggestions</h2>
   <div class="suggestion-container" id="mainall">
@@ -75,10 +82,6 @@
 </div>
 
 
-
-<div class="pagination">
-  <button class="btn btn-danger loadbtn" id="load">Load More</button>
-</div>
 
 
   <%- include("partials/footer") %>
