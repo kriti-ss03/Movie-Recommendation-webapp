@@ -20,3 +20,5 @@ jspm_packages/
 .env.test.local
 .env.production.local
 .env.local
+node_modules
+package-lock.json
