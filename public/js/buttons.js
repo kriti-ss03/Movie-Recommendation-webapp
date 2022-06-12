@@ -1,3 +1,4 @@
+//TO MAKE SCROLL BTNS
 const makeSwipe = () => {
     const conainter = [...document.querySelectorAll('.swipe')];
     const nxtBtn = [...document.querySelectorAll('.nxt-btn')];

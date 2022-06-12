@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <h1>Search</h1>
     <div class="input-group rounded">
-      <input type="search" class="form-control rounded search" id="search-txt" placeholder="Search Movie" aria-label="Search" aria-describedby="search-addon" />
+      <input type="search" class="form-control rounded search" id="search-txt" placeholder="Search Movie" aria-label="Search" aria-describedby="search-addon" required/>
       <button type="button" id="search-btn" class="btn btn-primary btn-danger">
         <i class="fas fa-search"></i>
       </button>
@@ -46,7 +46,7 @@
     </div>
 
   
-
+ <%- include("partials/footer") %>
 
     <script src="js/api.js"></script>
     <script src="js/search.js"></script>

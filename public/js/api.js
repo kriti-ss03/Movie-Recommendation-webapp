@@ -2,6 +2,9 @@
 //INDIVIDUAL APIS; can work by adding path to base url at the time used also
 
 const api_key="1e75158dd9345ba1d83077ed37edb1fd";
+
+
+
 const base_url = 'https://api.themoviedb.org/3';
 
 const search_http="https://api.themoviedb.org/3/search/movie?sort_by=popularity.desc&";

@@ -11,42 +11,118 @@
     <h1>Ask Friend</h1>
     <hr />
 
-    <h2>
+    <h3>
       Isn't it true that most of the times we see movies based on closed ones
-      suggestions? So, through this send movies-list to your loved ones to get
-      some recommendation
-    </h2>
+      suggestions?
+    </h3>
+    <h3>Make Movie list and fill Mail details to send it to your loved ones's inbox! You can edit the list by using the checkbox respective to each movie-name under movie-list.</h3>
   </div>
 
-  <div class="cta-feature">
-    <button class="btn btn-dark">Ask Friend</button>
-  </div>
-  <h3>You can also invite your loved ones to watch movies with you!</h3>
-  <div class="cta-feature">
-    <button class="btn btn-dark">Invite Friend</button>
-  </div>
+ <section id="mail_details">
+      <div class="row">
+        <!-- COL1 STARTS -->
+        <div class="col-lg-6 col-sm-12">
+          <h2>Movies List</h2>
+
+          <!-- MOVIES ADD N DELETE  -->
+
+          <div class="box">
+       
+
+            <!-- ROUTE FOR ADDING ITEM -->
+            <form class="item" action="/add" method="post">
+              <div class="input-group rounded">
+              <input
+              class="form-control rounded list-input" 
+                type="text"
+                name="newitem"
+                placeholder="Add Movie Name"
+                autocomplete="off"
+              />
+              <button type="submit" id="" class="btn btn-primary btn-danger "><i class="fa-solid fa-plus"></i></button>
+           </div>
+            </form>
+
+                 <% kindaitems.forEach((item,i)=>{ %>
+            <!-- ROUTE FOR DELETING ITEM -->
+            <!-- 'i' IS 0-INDEXED -->
+            <form class="item" action="/delete" method="post">
+              <div class="item">
+                <input
+                  type="checkbox"
+                  name="checkbox"
+                  value="<%= i %>"
+                  onChange="this.form.submit()"
+                />
+                <p class=""><%= item %></p>
+              </div>
+            </form>
+            <% }) %>
+          </div>
+        </div>
+        <!-- COL1 ENDS; COL2 STARTS -->
+        <div class="col-lg-6">
+          <h2 style="margin-bottom:1.2rem;">Mail Details</h2>
+          <!-- MAIL DETAILS -->
+
+          <!-- ROUTE FOR SENDING MAIL -->
+
+
+          <form class="" action="/ask_frnd" method="post">
+            <div class="form-group">
+              <input type="email" class="form-control rounded list-input"  name="to" placeholder="Friend's Email ID" autocomplete="off" required />
+            </div>
+
+            <div class="form-group">
+             
+              <input
+                type="email"
+                class="form-control rounded gap list-input "
+                name="myEmail"
+                placeholder="Your Email ID"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <div class="form-group details">
+              
+              <div class="form-control rounded list-input gap">
+              <% var showAsString = kindaitems.join(', '); %>
+             
+              <p><%= showAsString %></p>
+              </div> 
+            </div>
+
+            <div class="form-group ">
+              <button type="submit" class="btn btn-danger choicebtn" onclick="document.querySelector('#status').innerHTML=' '">Send</button>
+            </div>
+
+            <p id="status"><%= kindastatus %></p>
+
+          </form>
+          <!-- FORM OF MAIL ENDS HERE -->
+        </div>
+        <!-- COL2 ENDS -->
+      </div>
+    
+
+<!-- CLEAR BTN ROUTE -->
+          <div class="gap">
+            <form action="/clear" method="post">
+                 <button type="submit" id="clearList" class="btn btn-danger choicebtn"  name="">Clear All</button>
+              </button>
+            </form>
+          </div>
 </section>
-<!-- 
-<div class="compose">
-  <form class="" action="/" method="post">
-    <div class="form-group">
-      <label>Title</label>
-      <input
-        class="form-control"
-        type="text"
-        placdeholder="Enter movie name"
-        name="postTitle"
-      />
-      <label>Post</label>
-      <textarea
-        class="form-control"
-        name="postBody"
-        rows="5"
-        cols="30"
-      ></textarea>
-    </div>
-    <button class="btn btn-primary" type="submit" name="button">Publish</button>
-  </form>
-</div> -->
+  
+  
+  <h3>You can also invite your loved ones to watch movies with you!</h3>
+  
+</section>
+
 
 <%- include("partials/footer") %>
+
+</body>
+</html>

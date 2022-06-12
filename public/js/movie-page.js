@@ -3,7 +3,6 @@ let movie_id = location.pathname;
 
 
 
-
 //MOVIE DETAILS
 fetch(`${movie_details_http}${movie_id}?` + new URLSearchParams({
     api_key: api_key
@@ -26,6 +25,7 @@ const setupMovieInfo = (data) => {
   
 
     movieName.innerHTML = data.title; 
+    title.innerHTML = data.title;
     //TO GET YEAR
     genres.innerHTML = `${data.release_date.split('-')[0]} | `;
     //GENRES WITH SPACE
@@ -64,7 +64,7 @@ fetch(`${movie_details_http}${movie_id}/credits?` + new URLSearchParams({
 }))
 .then(res => res.json())
 .then(data => {
-    console.log(data);
+    
     const cast = document.querySelector('.starring');
    //getting 6 cast members only
     for(let i = 0; i < 6; i++){
@@ -93,6 +93,7 @@ fetch(`${movie_details_http}${movie_id}/videos?` + new URLSearchParams({
         `;
     }
 })
+.catch(err =>  console.log(err));
 
 //RECOMMENDATION
 const load = document.getElementById('load')
@@ -114,7 +115,7 @@ fetch( url + new URLSearchParams({
 }))
 .then(res => res.json())
 .then(data => {
-    console.log(data);  
+    //console.log(data);  
 
     currentPage = data.page;
     //console.log(currentPage);
@@ -155,10 +156,10 @@ load.addEventListener('click', () => {
   })
 function  moreData(page){
     let urlSplit = lastUrl.split('?');
-    console.log("yoo");
+   
     //AFTER SPLITTING BASE URL+ QUERY PARAMS
     let queryParams = urlSplit[1].split('&');
-    console.log(queryParams);
+   
     //TO GET PAGENO --2ND LAST ELEMENT
     let key = queryParams[queryParams.length -2].split('=');
     

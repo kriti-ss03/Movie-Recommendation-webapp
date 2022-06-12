@@ -63,9 +63,6 @@ color: antiquewhite;
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* background-color: #fff; */
-    /* justify-content: left;
-    margin: 0 4vw; */
 }
 
 .videos h2{
@@ -101,7 +98,9 @@ iframe{
 
 
 @media(max-width: 992px){
-   
+   .movie-name{
+       text-align:center;
+   }
     .movie-info{
         width: 100%;
         height: calc(100vh - 20px);
@@ -126,8 +125,5 @@ iframe{
 .movie-info img{
     opacity:0.7;
 }
-/* .movie-info p{
-    text-align: left; 
-} */
 
 }

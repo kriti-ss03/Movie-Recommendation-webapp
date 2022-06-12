@@ -3,7 +3,6 @@ const main = document.querySelector('.main');
 
 
 
-
 //POPULAR MOVIES
 fetch(popular_movies_http + new URLSearchParams({
     api_key:api_key
@@ -11,7 +10,7 @@ fetch(popular_movies_http + new URLSearchParams({
 .then(res => res.json())
 .then(data => 
     {
-     console.log(data)
+     
      makeDivEl( "popular",data);
     })
     .catch(err =>  console.log(err));
@@ -120,15 +119,6 @@ const makeDivEl = (name,data) => {
 const makeBox = (name, data) => {
   
     const movieContainer = document.getElementById(name); 
-    //const item=data.results;
-    
-    //FOR MOVIE SEARCH RESULTS------------
-    // if(data.results.length ===0){
-    //   console.log("No Items Found")  
-    //   return
-      
-    // }
-   
      data.results.forEach( (item,i) => {
         //console.log(item)
 
@@ -149,7 +139,7 @@ const makeBox = (name, data) => {
         `;
     
         // CARD SLIDER CODE; WORKS ONLY AFTER CARDS ARE MADE
-        // console.log(data);
+        
         // console.log(data.results.length);
         if(i == data.results.length - 1){
             setTimeout(() => {
@@ -170,10 +160,10 @@ const makeCarousel = (name,data) => {
     //USING TEMPLATE LITERALS/VARIABLES
      //ID="" AS NAME INCLUDE 2 WORDS GENRES ALSO 
     main.innerHTML += `
-    <div class="carousel" id=carousel >
+    <div class="carousel" id="tcarousel" >
 
     <button class="pre-btn" id="p-btn"><i class="fa-solid fa-chevron-left"></i></button>
-    <h2 id="${name}+heading">${name} Movies</h2>
+    <h2><span id="TRENDING_HEADING">${name} Movies</span></h2>
     <div class=" carousel-container swipe" id="${name}">
    
     </div>
@@ -226,52 +216,6 @@ const makeBanner = (name, data) => {
   
 
     
-
-
-
-// const makeStyle = (name, data) => {
-  
-//   const movieContainer = document.getElementById(name); 
-//   //const item=data.results;
-  
-//   //FOR MOVIE SEARCH RESULTS------------
-//   if(data.results.length ===0){
-//       console.log("No Items Found")
-//   }
- 
-//    data.results.forEach( (item,i) => {
-//       //console.log(item)
-
-//       //to check if poster is there or not
-//       if(item.backdrop_path == null){
-//           item.backdrop_path = item.poster_path;
-//           if(item.backdrop_path == null){
-//               return;
-//           }
-//       }
-
-//       //ADDING IMG,TITLE AND EVENT LISTENER TO ALL ITEMS(MOVIES)
-//       movieContainer.innerHTML += `
-//       <div class="" onclick="location.href = '/${item.id}'">
-//           <img src="${img_url}${item.backdrop_path}" alt="">
-//           <p class="movie-title">${item.title}</p>
-//       </div>
-//       `;
-  
-//       // CARD SLIDER CODE; WORKS ONLY AFTER CARDS ARE MADE
-//       // console.log(data);
-//       // console.log(data.results.length);
-//       if(i == data.results.length - 1){
-//           setTimeout(() => {
-//               makeSwipe();
-//           }, 100);
-          
-//       }
-
-  
-//   })
-//   }
-
 
 
 

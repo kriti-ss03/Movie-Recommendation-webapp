@@ -1,7 +1,11 @@
+// //environment variables
+require('dotenv').config();
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require("ejs");
-// const nodemailer = require("nodemailer");
+const nodeMailer  = require("nodemailer");
 
 const app = express();
 
@@ -11,12 +15,14 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-let personName=[];
+let personName = [];
+
 
 
 app.get('/', (req, res) => {
   res.render("landing_page");
 })
+
 
 app.get('/home', (req, res) => {
   res.render("home",{kindaname: personName});
@@ -35,14 +41,100 @@ app.get('/search', (req, res) => {
 })
 
 
-app.get('/ask_frnd', (req, res) => {
-  res.render("ask_frnd");
-})
+var to_email = "";
+var sender_mail= "";
+var newitems = [];
+var status = "";
+
+app.get('/ask_frnd', function (req, res) {
+      res.render('ask_frnd',{ kindaitems :newitems, kindastatus:status});
+});
+
+
+
+app.post("/add", function(req,res){
+   var item=req.body.newitem;
+  newitems.push(item);
+  res.redirect("/ask_frnd");
+  
+ 
+
+});
+
+app.post("/delete", function(req,res){
+  const checkedItemIndex = req.body.checkbox;
+  //console.log(checkedItemIndex);
+  newitems.splice(checkedItemIndex, 1);
+  res.redirect("/ask_frnd")
+});
+
+app.post("/clear", function(req,res){
+  newitems = [];
+  status = " ";
+  res.redirect("/ask_frnd")
+});
+
+app.post('/ask_frnd', function (req, res) {
+      var showAsString = newitems.join(', ');
+      sender_mail = req.body.myEmail;
+      to_email = req.body.to;
+      // console.log(newitems);
+
+
+  const output = `
+       <div>
+  <p>Ahoy there, your friend is bit confused and wants you to select a movie to watch from the list shared!</p>
+  <h3>Friend's Name:</h3>
+  <p> ${sender_mail.split('@')[0]}</p>
+  <h3>Movie Names:</h3>
+  <p> ${showAsString}</p>
+  <p>Drop suggestion in your Friend's inbox! <a class="footer-link" href="mailto:${sender_mail}">Send Mail.</a></p>
+  <hr>
+  <h4>This email is sent via Movix.</h4>
+  </div>`;
+      
+
+  
+      let transporter = nodeMailer.createTransport({
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
+          auth: {
+              user: process.env.EMAIL,
+              pass: process.env.PASS
+          }
+      });
+
+
+      let mailOptions = {
+          from: 'process.env.EMAIL', // sender address
+          to: to_email, // list of receivers
+          subject: 'Movie-List from your friend || Movix', // Subject line
+          html: output// html body
+      };
+
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          
+           
+              return console.log(error);
+          }
+        //console.log('Message %s sent: %s', info.messageId, info.response);
+        console.log(info.response);
+        
+        status = "Mail Sent";
+         res.redirect("/ask_frnd")
+        //res.send('message sent succesfully');
+      });
+      
+
+      });
+ 
+
 
 app.get('/:id', (req, res) => {
     res.render("movie");
 })
-  
 
 
 //post request coming from landing page; i.e. is home route
@@ -52,7 +144,6 @@ personName.push(req.body.name);
 res.redirect("/home");
 
 })
-
 
 app.use(function(req, res) {
     res.json("404");

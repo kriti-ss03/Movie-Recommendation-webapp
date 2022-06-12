@@ -173,8 +173,8 @@ const makeRatingCard= (item,genre_id )=> {
    </div>
 `;
    filteredItems=[];
- console.log(filteredItems);
-  console.log("END ");
+//  console.log(filteredItems);
+//   console.log("END ");
 }
 
 
@@ -193,7 +193,7 @@ const displayNow = (urlNow, genreItem) => {
           }))
 .then(res => res.json())
 .then(data => {
-    console.log("genre begins");
+    // console.log("genre begins");
     data.results.forEach(item =>{
     showMovies(item);
     })
@@ -207,13 +207,6 @@ const displayNow = (urlNow, genreItem) => {
 
  //DISPLAY MOVIE    
  const showMovies = (item) =>{
-  
-    console.log(item);
-    //mainall.innerHTML=` `
-
-    // if(load.classList.contains('dead')){
-    //   load.classList.remove('dead');
-    // }
 
 let container = document.querySelector('#mainall');
 

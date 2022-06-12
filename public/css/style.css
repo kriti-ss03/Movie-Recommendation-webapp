@@ -44,6 +44,7 @@ h1{
     font-size:3.5rem;
     font-weight:600; 
     margin: auto;
+    text-transform: capitalize;
     /* line-height:1.4; */
 }
 h2{
@@ -60,16 +61,7 @@ h3{
     font-family:Nunito Sans;
     font-size: 1.2rem;
     font-style: normal;
-    /* font-weight: 600; */
     margin-bottom: 20px;
-    
-    /* font-size:1.2rem; */
-    
-   
-    
-    /* font-family: Montserrat-Bold,sans-serif;
-    font-weight:bold; 
-    font-size:2.5rem; */
 
 }
 
@@ -98,6 +90,13 @@ justify-content: center;
 color:white;
 }
 
+.mail_details {
+    margin: 10% 0;
+    align-items: center;
+    justify-content: center;
+    color: white;
+ }
+
 #features{
     padding: 3% 15%;
 }
@@ -108,7 +107,6 @@ color:white;
     position:relative;
     padding: 12% 20% 6% ;
     line-height: 1.2;
-    /* font-weight:normal; */
 }
 
 
@@ -154,9 +152,6 @@ color:white;
     font-style: normal;
     font-weight: 800;
 }
-/* .nav-img{
-    size: 1px;
-} */
 
 .nav-item{
  padding: 0 18px;
@@ -174,9 +169,7 @@ color:white;
     font-style: normal;
     font-weight: 400;
 }
-/* .nav-link:hover{
-    color:#ff4c68
-} */
+
 /* .navbar-nav > li> a:hover { color: #FF0000;} */
 .navbar-nav .nav-item .nav-link, .container-fluid .landing-link {
     color: #fff;
@@ -190,17 +183,16 @@ color:white;
     background-color: #E60023 ;
  }
 
- 
 .navbar-nav > li > .dropdown-menu { background-color: #191414; }
 .navbar-nav > li > .dropdown-menu a{   color: #fff;  }
 .navbar-nav > li > .dropdown-menu a:hover { background-color: #E60023 ;}
 
 
-/* SEARCH AND ENTER*/
+/* SEARCH - ENTER - ASK FRND*/
 .input-group{
     margin: 6px auto 0;
 }
-.search,.enter{
+.search,.enter, .list-input{
 background-color: transparent;
 color:#fff;
 font-family:inherit;
@@ -211,30 +203,61 @@ box-shadow: none;
 transition: none;
 }
 
-.search:focus, .search:active, .enter:focus, .enter:active{
+.search:focus, .search:active, .enter:focus, .enter:active, .list-input:focus, .list-input:active{
     outline:none!important;
     background-color: #140101;
     color:#fff;
 }
 
-input[type="search"]:focus,input[type="text"]:focus {
+input[type="search"]:focus,input[type="text"]:focus,input[type="email"]:focus {
     border-color: #f292a0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #c21630;
   outline: 0 none;
 }
 
-textarea:hover, 
-input:hover, 
-textarea:active, 
-input:active, 
-textarea:focus, 
-input:focus,
-.search:focus, .search:active
-{
-    outline:0px !important;
-    -webkit-appearance:none;
-    box-shadow: none !important;
+
+/* ASK-FRND LIST */
+#mail_details,.gap{
+    margin: 5% 0;
 }
+
+
+.item {
+    /* min-height: 70px; */
+    display: flex;
+    align-items: center;
+    /* border-bottom: 1px solid #F1F1F1; */
+}
+
+
+/* ITEM IS CHECKED */
+input:checked+p {
+    text-decoration: line-through;
+    text-decoration-color: #6c1825;
+}
+
+input[type="checkbox"] {
+    margin: 20px;
+}
+
+.item p {
+    margin: 0;
+    font-family: Nunito Sans;
+    font-size: 1rem;
+    font-style: normal;
+    text-transform: capitalize;
+}
+
+.details p {
+    margin: 0.2rem 0;
+    font-family: Nunito Sans;
+    font-size: 0.8rem;
+    font-style: normal;
+    color: #bbb5b5;
+    text-align: left;
+    text-transform: capitalize;
+}
+
 
 /* CTA SECTION OF SEARCH N SUGGESTME */
 #cta{
@@ -242,7 +265,7 @@ input:focus,
     color:white;
     text-align:center;
     padding: 0 25%;
-    margin-bottom: 3%;
+    margin-bottom: 0.8%;
   }
 #cta p{
     font-family:Nunito Sans;
@@ -269,17 +292,10 @@ input:focus,
     height: 250px;
     margin-top: 40px;
     position: relative;
-    /* padding:0 4vw;  */
     display: flex;
     flex-wrap: wrap;
 }
 
-/* .movie-heading{
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-} */
 
 .movie-container{
     width: 100%;
@@ -307,7 +323,6 @@ input:focus,
     /* width:24%; */
     width: 300px;
     border-radius: 2px;
-    /* width: 94%; --displays opnly 1 movie but on te same container length*/
     height: 200px;
     text-align: center;
     margin-right: 1rem;
@@ -338,16 +353,7 @@ input:focus,
 .movie:hover p{
     opacity: 2;
 }
-/* .movie p{
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    height: 30px;
-    line-height: 30px;
-    background: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    opacity: 0;
-} */
+
 
 
 /* Scroll Buttons */
@@ -393,29 +399,6 @@ input:focus,
 
 
 /* FOR CAROUSEL/BANNER */
-
-/* .banner-img{
-    width:10%;
-    border-radius:100%;
-    margin:20px;
-} */
-
-
-/* .carousel-item{
-    padding: 7% 15%;
-}
-.test-img{
-    width:10%;
-    border-radius:100%;
-    margin:20px;
-
-} */
-
-
-
-
-
-
 .carousel{
     width: 100%;
     height: 450px;
@@ -429,7 +412,6 @@ input:focus,
 .carousel-container{
     width: 100%;
     height: 400px;
-    /* height: 500px; */
     display: flex;
     align-items: center;
     overflow-x: auto;
@@ -468,7 +450,6 @@ input:focus,
     position: absolute;
     bottom: 40px;
     width: 100%;
-    /* height: 0px; */
     line-height: 30px;
     color: #fff;
     background: rgba(0, 0, 0, 0.5);
@@ -478,10 +459,6 @@ input:focus,
 .banner:hover p {
     opacity: 1;
 }
-
-
-
-
 
 
 
@@ -509,8 +486,6 @@ input:focus,
 
 .movieall img{
     width: 100%;
-    /* height: 200px; */
-    /* height: 170px; */
     object-fit: cover !important;
 
 }
@@ -534,13 +509,7 @@ input:focus,
 
 
 /* FOR SUGGESTION/RECOMENDATION CONTAINER/SEARCH RESULS */
-/* .recommendations-container,suggestion-container,.rating-container{
-    width: 100%;
-    align-items: center;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-} */
+
 .recommendations h2,.suggestions h2{
     color: #fff;
     padding: 5vw 8vw 0;
@@ -588,12 +557,6 @@ input:focus,
     outline: 0;
   box-shadow: none;
 }
-/* .dead:focus{
-    outline: 0;
-    box-shadow: none;
-    background-color:rgb(103, 103, 103);
-
-} */
 .dead:hover{
     border-color: rgb(103, 103, 103);
     box-shadow: none;
@@ -612,10 +575,8 @@ input:focus,
     margin: 10px auto;
 }
 
+
 .choicebtn,.genrebtn{
-    /* color:white;
-    padding:10px 20px;
-    border-radius: 50px; */
     background-color: #6c1825;
     outline: none;
     box-shadow: none;
@@ -626,7 +587,13 @@ input:focus,
 .choicebtn:focus, .genrebtn:focus{
     outline: none;
     box-shadow:none;
+    
 }
+
+.genrebtn:active {
+    background-color: #6c1825;
+}
+
 
 .focus{
     background-color: #c21630 ;
@@ -675,7 +642,6 @@ input:focus,
         font-size:3rem;
         font-weight:550;
         margin-top:80px; 
-        /* line-height:1.4; */
     }
 
     h2{
@@ -683,10 +649,6 @@ input:focus,
         font-weight:300;
     }
    
-    /* .suggest_me h1{
-        font-size:2.5rem;
-        font-weight:500;
-    } */
     hr{
       
         border-width: 0.15vw
@@ -700,6 +662,7 @@ input:focus,
         align-items: center;
         justify-content: center;
     }
+   
 
     p,.movie-heading{
         text-align:center;
@@ -720,19 +683,11 @@ input:focus,
     .banner{
         width: 300px;
         height:200px;
-        /* margin-right:2rem; */
     }
     .banner img{
         width:100%;
         object-fit:cover;
     }
-    
-
-    /* .img{
-        
-        position:static;
-        transform:rotate(0deg);
-    } */
    
 }
 

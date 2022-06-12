@@ -6,14 +6,14 @@ let containerbtn = document.querySelector('#genrebtns');
 const load = document.getElementById('load')
 const current = document.getElementById('current')
 
-var currentPage = 1;
-var k=1;
+let currentPage = 1;
+let k=1;
 
-var loadPage=2;
-var lastUrl = '';
-var totalPages = 100;
+let loadPage=2;
+let lastUrl = '';
+let totalPages = 100;
 
-var selectedGenre = [];
+let selectedGenre = [];
 let i=0;
 setGenre();
 function setGenre() {    
@@ -53,7 +53,7 @@ function setGenre() {
              
             
         } 
-        console.log(selectedGenre);
+        // console.log(selectedGenre);
         getMovies( sort_http +`&with_genres=`+ encodeURI(selectedGenre.join(`,`)) +`&`);
         activeSelection();
     })
@@ -93,26 +93,12 @@ function clearBtn(){
         clear.addEventListener("click", () => {
             selectedGenre = [];
             setGenre(); 
-
             //TO REMOVE NO MORE RESULTS
             mainall.innerHTML=` `
-            
-
             getMovies( sort_http);
         })
         containerbtn.append(clear);
 
-
-    //  containerbtn.innerHTML += 
-    //  `<button class="genrebtn focus" id="clear">Clear ❌</button>
-    //    `;
-    //     document.querySelector("#clear").addEventListener('click', () => {
-    //        //RESET EVERYTHING TO ORG
-    //         selectedGenre = [];
-    //         setGenre();            
-    //         getMovies( sort_http);
-    //         //document.location.reload();
-    //     })
     }
 }
 
@@ -126,7 +112,7 @@ function getMovies(url) {
     .then(res => res.json())
     .then(data => 
     {
-     console.log(data);
+     //console.log(data);
 
       if(data.results.length ==0){
          //TO DISABLE BUTTON AND DISPLAY TEXT
@@ -137,7 +123,7 @@ function getMovies(url) {
 
         showMovies(data.results);
         currentPage = data.page;
-        console.log(currentPage);
+        
         loadPage=currentPage+1;
         totalPages = data.total_pages;
 
@@ -151,12 +137,12 @@ function getMovies(url) {
 const showMovies = (data) =>{
 
     if(load.classList.contains('dead')){
-      console.log("hata denge isko");
+      
       load.classList.remove('dead');
     }
 
 let container = document.querySelector('#mainall');
-console.log(data);
+//console.log(data);
 
         data.forEach( (item) => {
             // console.log(item)
@@ -188,7 +174,7 @@ function  moreData(page){
     let urlSplit = lastUrl.split('?');
     //AFTER SPLITTING BASE URL+ QUERY PARAMS
     let queryParams = urlSplit[1].split('&');
-    console.log(queryParams);
+    //console.log(queryParams);
     //TO GET PAGENO --2ND LAST ELEMENT
     let key = queryParams[queryParams.length -2].split('=');
     
@@ -251,10 +237,11 @@ const fetchSearch = (value) => {
            //TO DISABLE BUTTON AND DISPLAY TEXT
           document.querySelector("#load").classList.add('dead');
           mainall.innerHTML=`<h1 class="try-again">No Results Found. Try Something Else !</h1>` ;
-      }else{
+        } else {
+            
           showMovies(data.results);
           currentPage = data.page;
-          console.log(currentPage);
+          
           loadPage=currentPage+1;
           totalPages = data.total_pages;
       }   
