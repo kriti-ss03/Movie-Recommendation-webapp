@@ -29,6 +29,8 @@ This web application is my submission for **Microsoft Engage'22** challenge.
 - Now run ``` nodemon server.js ``` in the terminal
 
 - The app is now up and running on port 3000!
+
+_npm packages used:"body-parser": "^1.20.0","dotenv": "^16.0.1", "ejs": "^3.1.8", "express": "^4.18.1", "googleapis": "^101.0.0","nodemailer": "^6.7.5","nodemon": "^2.0.16" _
 ## Video Demo and App Link
 
 Drive link for the same:
