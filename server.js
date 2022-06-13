@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require("ejs");
 const nodeMailer  = require("nodemailer");
+const { google } = require('googleapis');
 
 const app = express();
 
@@ -40,11 +41,23 @@ app.get('/search', (req, res) => {
   res.render("search");
 })
 
-
+// FOR EMAIL SENDING -ASK FRND-Using Googleapis and nodemailer
 var to_email = "";
 var sender_mail= "";
 var newitems = [];
 var status = "";
+
+const CLIENT_ID = process.env.CLIENTID;
+const CLEINT_SECRET = process.env.CLIENTS;
+const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+const REFRESH_TOKEN = process.env.RT;
+
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLEINT_SECRET,
+  REDIRECT_URI
+);
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 app.get('/ask_frnd', function (req, res) {
       res.render('ask_frnd',{ kindaitems :newitems, kindastatus:status});
@@ -94,44 +107,52 @@ app.post('/ask_frnd', function (req, res) {
   </div>`;
       
 
-  
-      let transporter = nodeMailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
-          auth: {
-              user: process.env.EMAIL,
-              pass: process.env.PASS
-          }
+    //since want to use await
+  async function sendMail() {
+    try {
+      const accessToken = await oAuth2Client.getAccessToken();
+
+      const transport = nodeMailer.createTransport({
+        service: 'gmail',
+        auth: {
+          type: 'OAuth2',
+          user: process.env.EMAIL,
+          clientId: CLIENT_ID,
+          clientSecret: CLEINT_SECRET,
+          refreshToken: REFRESH_TOKEN,
+          accessToken: accessToken,
+        },
       });
 
 
       let mailOptions = {
-          from: 'process.env.EMAIL', // sender address
+          from: 'Movix <process.env.EMAIL>', // sender address
           to: to_email, // list of receivers
-          subject: 'Movie-List from your friend || Movix', // Subject line
+        subject: 'Movie-List from your friend || Movix', // Subject line
+          text: "html format not supported || movix",  //simple text incase html body is not supported
           html: output// html body
       };
 
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          
-           
-              return console.log(error);
-          }
-        //console.log('Message %s sent: %s', info.messageId, info.response);
-        console.log(info.response);
-        
-        status = "Mail Sent";
-         res.redirect("/ask_frnd")
-        //res.send('message sent succesfully');
-      });
-      
+      const result = await transport.sendMail(mailOptions);
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  sendMail()
+    .then((result) => {
+      console.log('Email sent...', result)
+       status = "Mail Sent";
+      res.redirect("/ask_frnd")
+    })
+    .catch((error) => console.log(error.message));
+  
 
       });
  
 
-
+// PAGE WITH DETAILS OF RESPECTIVE MOVIE
 app.get('/:id', (req, res) => {
     res.render("movie");
 })
