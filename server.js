@@ -1,3 +1,4 @@
+
 // //environment variables
 require('dotenv').config();
 
@@ -51,6 +52,7 @@ const CLIENT_ID = process.env.CLIENTID;
 const CLEINT_SECRET = process.env.CLIENTS;
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
 const REFRESH_TOKEN = process.env.RT;
+const EMAIL_ID = process.env.EMAIL;
 
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
@@ -116,7 +118,7 @@ app.post('/ask_frnd', function (req, res) {
         service: 'gmail',
         auth: {
           type: 'OAuth2',
-          user: process.env.EMAIL,
+          user: EMAIL_ID,
           clientId: CLIENT_ID,
           clientSecret: CLEINT_SECRET,
           refreshToken: REFRESH_TOKEN,
@@ -126,7 +128,7 @@ app.post('/ask_frnd', function (req, res) {
 
 
       let mailOptions = {
-          from: 'Movix <process.env.EMAIL>', // sender address
+          from: 'Movix <EMAIL_ID>', // sender address
           to: to_email, // list of receivers
         subject: 'Movie-List from your friend || Movix', // Subject line
           text: "html format not supported || movix",  //simple text incase html body is not supported
