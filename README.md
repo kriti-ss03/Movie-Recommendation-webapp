@@ -1,196 +1,162 @@
-# Movie-Recommendation-webapp
-About Movix:
 
-Movix is a platform to make movie-browsing experience smooth and efficient. It recommends movies based on the search query, categories selected and some user-specific data. It recognizes the trends and suggests the movies.It further provides information and similar items for each of the movie so as to help the user find what suits them! Further this sums up the motive Search.Select.shoot.
+# Movix 
 
-
+![Movix](https://user-images.githubusercontent.com/96840464/173404151-b2e72c1c-8bbd-4eb0-a053-521d7a6321fa.png)
 
 
-Features:
+**Movix** is a movie-browsing and recommending platform. It makes movie-browsing experience smooth and efficient and recommends movies based on the **search queries, categories selected and some user-specific data.** It recognizes the trends and suggests the movies and further provides information (movie details and related clips) and similar items for each of the movie so as to help the user find what suits them!
 
--The Top 20 trending movies are highlighted to make users up to date and discover it easily.
-
--Discover all-time hits and popular movies.
-
--Explore all the genre-based categorised movies on the landing page. 
-
--For each movie, the important details are provided to help the user make a better choice.
-
--Trailers and Videos Clips are attached which can be zoomed in and out as per the choice.
-
--All the Similar Movies for each of the movie is also provided.
-
--An easy-to-use search option helps to find the desired movie.
-
--Finding movies with multiple genres is also feasible. Select as many genres as you can and the intersection of them will be shown!!!
-
--SUGGEST ME feature makes it feasible to get movie specific for your age and language you like.
-
--The SHOOT MORE option is also given to filter up movies based on the popularity, genres popular at that age, year of release and vote count for the language and age group chosen!
-
--Further. explore the similar movie options for each!
-
--Responsive and easy to the eyes UI
+This web application is my submission for **Microsoft Engage'22** challenge.
+## Run locally
 
 
+- Clone the given repository into your device
 
+- Run the command ```npm install``` in your terminal in the root directory of the project to install the various dependencies
 
+- Install nodemon as a dev dependency by running ```npm install --save-dev nodemon``` in your terminal
 
+- For the Ask Friend mail feature, in the following codes in server.js file:
+   ```
+   const CLIENT_ID = process.env.CLIENTID;
+   const CLEINT_SECRET = process.env.CLIENTS;
+   const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
+   const REFRESH_TOKEN = process.env.RT;
+   const EMAIL_ID = process.env.EMAIL; 
+   ``` 
+   replace ``` process.env.${name} ``` by respective values from gmail account of your choice. For using googleapis (since less secure feature is no longer supported)  the CLIENT_ID and CLEINT_SECRET can be generated from [Google Cloud Platform](https://console.cloud.google.com) and REFRESH_TOKEN from [Google Developers OAuth 2.0 Playground](https://developers.google.com/oauthplayground). Follow the [Video](https://youtu.be/-rcRf7yswfM) incase of any difficulty.
 
+- Now run ``` nodemon server.js ``` in the terminal
 
+- The app is now up and running on port 3000!
+## Video Demo and App Link
 
+Drive link for the same:
+https://drive.google.com/drive/folders/1KbXTlCLtwdBFrAfY9unhoyPLBHx9Fo-x?usp=sharing
 
+## Important Note
+The Ask Friend feature is now updated according to [google's new policy](https://support.google.com/accounts/answer/6010255?hl=en). Incase of difficulty with the feature in deployed app, run it locally!
 
+## Movix Features
 
+- The Top 20 trending movies are highlighted to make user up to date and discover it easily.
 
-How to run this project locally:
+- Discover all-time hits and popular movies.
 
-Clone the given repository into your device
-Run the command npm install in your terminal in the root directory of the project to install the various dependencies
-Install nodemon as a dev dependency by running npm install --save-dev nodemon, body-parser to cover post request by npm install body-parser
- in your terminal and Require body-parser, express and ejs (view engine)
-Now run nodemon server.js in the terminal
-The app is now up and running on port 3000!
+- Explore all the genre-based categorised movies on the landing page.
 
+- For each movie, the important details are provided to help the user make a better choice.
 
+- Trailers and Videos Clips are attached which can be zoomed in and out as per the choice.
 
+- All the Similar Movies for each of the movie is also provided based on the common genres and user selection.
 
+- An easy-to-use search option helps to find the desired movie.
 
+- Finding movies with multiple genres is also feasible. Select as many genres as you can and the intersection of them will be shown!!!
 
-RECOMMENDATION SYSTEM, ALGORITHMS AND API USED:
+- **SUGGEST ME** feature makes it feasible to get movie specific for your age and language preferred. Results are based on the popularity, genres popular at that age, year of release and vote count for the language and age group chosen!
+
+- The **SHOOT MORE** option is given to further filter up the movies from Suggest Me results, so that user can go to quick watch with a click.
+
+- Apart from this **ASK FRIEND** feature is also there which helps the user to get recommendation from their closed ones by sharing movie-list.
+
+- Responsive and easy to the eyes UI.
+### Quick Note on Recommendation Systems, Algorithms and APIs :
 
 Used TMDB apis for fetching data based on various parameters and further sorted it out if needed
 
-Recommendations by-
+**Incorporated Recommendations based on-**
 
-1)
-Incorporated recommendations by popularity item-> Trending, Top-Rated and Popular Section
+-  popularity: Trending, Top-Rated and Popular Section
+- classifiers: selection of genre(s), similar movies
 
-recommendations using classifier-> selection of genre(s), similar movies
+    I used CONTENT-BASED filtering to compare how alike the movies are so as to  get items according to user selection. This item-item based similarity and user-item interaction helped to build the Search engine, Multiple genres selection feature and Similar movies features from the TMDb
 
-I used CONTENT-BASED filtering to get items according to user selection and comparing how alike the movies are. This item-item based similarity and user-item interaction helped to build the Search engine, Multiple genres selection feature and Similar movies features
- 
+- algo: user-data specific suggestions; Suggest Me feature 
 
-2)
-Further filtered the data according to age groups and language choosen especially helpful if the user is new to platform or don't know what to watch.
-This will recommend the desired movie and is as easy as cake!
+    The data is further clustered according to user preference- age groups and language choosen. This is especially helpful in case user is new to platform or don't know what to watch. This will recommend the desired movie and is as easy as cake!
 
-Logic-
-According to resarch and data analysis.
 
-Logic Behind AGE GROUP
+**Segregated conditions of Age Group and Language based on resarch and analyzing data collected under different genre-specific movies.**
 
-i) Popular genres in Age group of kids are Animation/Fantasy and Family movies
-ii) Popular Genres in Age group of adult are DRAMA ACTION COMEDY THRILLER ROMANCE. However on analysis I came to conclusions that DRAMA genre is very common and usually present in most of the movies. Thus,increasing teh chance of suggesting SIMILAR ITEMS twice. Likewise for Thriller. So I tried to fix this by dropping them and adding 2 additional yet popular genres MYSTERY and ADVENTURE. The reason for choosing these two is based on data analysis that other genres like documentry,sci-fi,TV movies don't lack user base or items.
-This further increase the scope that user will like any of these genres atleast.
+#### Understanding Suggest Me Section Further-
 
-Logic Behind REGION/LANGUAGE
+ **AGE GROUP:** helped to select genres
 
-The preferred language helped to decide VOTE COUNT, VOTE AVERAGE and year of PRIMARY RELEASE range!
-As the English movies are more viewed and thus more rated than Indian ones so I used vote average> 7 for English and >6 for hindi depending upon teh voted count.
+* Popular Genres in Age group of kids are Animation/Fantasy and Family movies
+* Popular Genres in Age group of adult are DRAMA ACTION COMEDY THRILLER ROMANCE. However on analysis I came to conclusions that DRAMA genre is very common and usually present in most of the movies. Thus,increasing teh chance of suggesting SIMILAR ITEMS twice alike to Thriller genre case. So I tried to fix this by dropping them and adding 2 additional yet popular genres MYSTERY and ADVENTURE. The reason for choosing these two is based on data analysis that other genres like documentry, sci-fi, TV movies, etc. lack big user-base and movies under these categories. Selecting the former two genres further increase the scope of user liking atleast one of these genre-category!
 
-Finally fetched the data using params
+**REGION/LANGUAGE:** to select range of movie-details 
+
+* The preferred language helped to decide VOTE COUNT, VOTE AVERAGE and year of PRIMARY RELEASE range! As the English movies are more viewed and thus more rated than Indian ones so I used vote average> 7 for English and >6 for hindi depending upon the voted count.
+
+Finally fetched the data from the URL developed using params:
 
 - year of release
+- vote count
+- popularity: high
+- language choosen
+- arrays of genres
 
--vote count
+The **SHOOT MORE** feature enhances the user experience by providing unique elements out of each filtered results, so as to give the option of quick-watch !!!
 
--high popularity 
+This feature somewhat follows COLLABORATIVE FILTERING because it sorts the data based on specific type of user who belongs to certain age and prefers certain language. Although a wholesome collaborative filtering is much more user centric and more complex but it won't be able to suggest items without the database of the user browsing history. So with this build there is possibility of resolving the problem that it's possible to give user suggestion who is NEW TO PLATFORM!!.
 
--language choosen
-
--arrays of genres
-
-The SHOOT MORE feature enhances the user experience  by providing unique elements out of each filtered results !!!
-
-This feature somewhat act as COLLABORATIVE FILTERING because it sorts the data based on specific type of user who belongs to certain age and prefers certain lamguage. 
-Although a wholesome collaborative filtering is much more user centric but it won't be able to suggest items without the database of the user and that is not possible if the user is NEW TO PLATFORM!!
-So with this build there is possibility of resolving that problem.
-
-Refrences used for the genres choosen and 3 types of recommendation system:
+#### Refrences used for the Genres choosen based on Age and three types of recommendation system stated:
 
 https://in.springboard.com/blog/recommender-system-with-python/
 
 https://towardsdatascience.com/the-4-recommendation-engines-that-can-predict-your-movie-tastes-109dc4e10c52
 
 
+## Flow Chart
+
+![flowChart](https://user-images.githubusercontent.com/96840464/173403069-6f7d6e1f-0a67-422a-8179-e96a6fb7b253.jpg)
+## Tech Stack
+
+- Front-end languages and technologies: HTML, CSS, Javascript
+
+- Front-end framework: Bootstrap to design the user interface (UI)
+
+- Templating language: EJS
+
+- Backend: Node.js, Express.js
+
+- Api and database: from TMDB dev community
+
+- GoogleApis and Nodemailer: To facilitate sending mail invite from the app itself on submitting a form 
+
+- Postman: to build apis and verify/analyze data for the suggest-me feature
+
+- Fontawesome and Flaticon: For all the icons in the web app
+
+- Freepik ans Unsplash: For all the images in the web app
+## Software Development Cycle:
+
+Throught the tenure I used Agile Methodology to organize myself to learn-design-develop-review-evalute so as to solve all the bugs and minor issues that a user can face! 
+
+- **LEARN**: Understanding the PS and learning the basics cause I'm a beginner
+
+- **IDEATE**: Ideating and implementing the basic model-Minimum Viable Product(MVP)
+
+- **BUILDING INTERFACE**: Implementation of how front-end should look
+
+- **INCORPORATING COMPLEX FEATURES**: Understanding the process and implementing the complex features
 
 
+## Thoughts behind the UI/UX:
 
+I wanted the UI to be simple and eye soothing, since this is a movie-recommender-app which meant the user is going to spend a lot of time in front of the screen. I designed it in dark theme and make each page connected to each other in style and flow.
 
-Important note:
+ Moreover, I tried to highlight things like _Trending section_ and _Anchor keys_ that helps the user to discover popular things easily. The _buttons_ were made with the motto to provide better user experience. The flow was made further clear by providing alerts and using active styles of buttons.
+ The main motto of the app Fast, Smooth and give better user experience is thus ensured.
+## What's next for the app?:
 
-Currently I'm building Ask Friend feature so the buttons won't work there! 
+- Incorporate invite friend feature so as to get personalized movie viewing and real time chatting under Ask Friend.
 
+- Make Ask Friend and Suggest Me smart: by making our app hands free with the help of AI, individual user-database and better search system. For Suggest Me the review/rating giving system can be added and then comparing it with the vote average and similarity among them the movie can be suggested. 
 
+- Add a login system to personalized the movie subscription system.
 
-
-
-
-
-Technologies and Resources used:
-
--Front end languages and technologies: HTML,CSS,Javascript
-
--Front-end framework: Bootstrap to design the user interface (UI)
-
--Templating language: EJS
-
--Backend: Node.js, Express.js
-
--Api and databas: from TMDB dev community
-
--Postman: to build apis and verify/analyze data for the suggest-me feature
-
--Fontawesome and Flaticon: For all the icons in the web app
-
--Freepik ans Unsplash: For all the images in the web app
-
-
-
-
-
-
-Software Development Cycle in the making of this app:
-
-Throught the tenure i organized myself to learn-design-develop-review-evalute procedure to solve all the bugs and minor issues that a user can face!
-
-LEARN
-Understanding the PS and learning the basics cause I'm a beginner
-
-IDEATE
-Ideating and implementing the basic model-Minimum Viable Product(MVP)
-
-BUILDING INTERFACE
-Implementation of how front-end should look
-
-INCORPORATING COMPLEX FEATURES
-Understanding the process and implementing the complex features
-
-
-
-
-
-
-
-
-Thoughts behind the UI/UX:
-
-I wanted the UI to be simple and eye soothing, since this is a movie-recommender-app which meant the user is going to spend a lot of time in front of the screen. I designed it in dark theme and make each page connected to each other. Moreover, I tried to highlight things like Trending section, Anchor keys and button that helps the user to discover things easily. I tried to see wheteher correct button is selcted or not (by providing prompts) and it's get focused if selected to let user know about the same. The main motto is that it's Fast, Smooth and give better user experience
-
-
-
-
-
-
-
-
-What's next for the app?:
-
-Make the Ask Friend feature for sending movie names via nodemailer and also having personalized movie viewing and chatting room
-
-Make Suggest Me smart. By incorporating rating system and then comparing it with the vote average and finding similarity among them. We can also make our app hands free with the help of AI and database. By collecting data and selecting the genres based on their of selections and movies watched.
-
-Add a login system to personalized the movie subscription system.
-
-Make further improvements in UI
+- Make further improvements in UI
